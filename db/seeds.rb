@@ -76,7 +76,7 @@ puts "Creating missions..."
 # missions (x10)
 # Statuses - new - started - finished
 
-Child.all.each do |child|
+Children.all.each do |child|
   Mission.create!(
     title: "Clear your study desk",
     description: "pack away all the stuff on your desk and then wipe it with cleaning wipe",
@@ -199,7 +199,7 @@ Child.all.each do |child|
   )
 end
 
-Child.all.each do |child|
+Children.all.each do |child|
   Completed_Mission.create!(
     mission: mission,
     completed_at: 11/20/23,
