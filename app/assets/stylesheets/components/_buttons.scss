@@ -16,12 +16,12 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #111112;
+  background: $raisin-black;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #5c5b5f;
+  background: $cool-gray;
   color: white;
 }
 
@@ -30,12 +30,12 @@
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#ab500f, #96370e);
+  background: linear-gradient($medium-brown, $dark-brown);
   transition: background 0.3s ease;
-  border: 1px solid #ab500f;
+  border: 1px solid $medium-brown;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(#dc6714, #c54812);
+  background: linear-gradient($light-brown, $medium-brown);
   color: white;
 }
