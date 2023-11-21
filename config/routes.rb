@@ -19,6 +19,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :manage do
+    get 'rewards/new'
+    get 'rewards/create'
+    get 'missions/new'
+    get 'missions/create'
+    get 'children/new'
+    get 'children/create'
+    get 'children/show'
+    get 'children/index'
     resources :children, only: [:index, :show, :new, :create] do
       resources :missions, only: [:new, :create]
       resources :rewards, only: [:new, :create]
