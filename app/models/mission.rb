@@ -1,7 +1,7 @@
 class Mission < ApplicationRecord
   belongs_to :child
   has_many :completed_missions
-  enum status: { new: "new", started: "started", finished: "finished" }, _default: :new
+  enum status: { not_started: "not_started", started: "started", finished: "finished" }, _default: :not_started
   enum category: { chore: "chore", other: "other", responsibility: "responsibility", activity: "activity", organization: "organization", study: "study" }
   has_one_attached :photo
 
