@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="top-page">
+  <div class="container-box d-flex justify-content-between align-content-center">
+
+      <div class="container-text">
+      <h1> DekiTaYo! </h1>
+        <%= link_to "Sign Up!", new_user_registration_path, class: "btn btn-gradient"%>
+      </div>
+      <div class="container-image">
+        <%= image_tag "family.jpg", class: "image-size" %>
+      </div>
+
+  </div>
+</div>
+<div class="hero-card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="her-card-product-infos">
+    <h2>Lorem Ipsum!</h2>
+    <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit. Suspendisse eget nunc id lacus imperdiet ornare eget vel augue. Cras malesuada neque eu neque rhoncus pellentesque. Nulla ligula tortor, ullamcorper non diam eget, euismod egestas lectus.</p>
+  </div>
+</div>
