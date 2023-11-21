@@ -1,1 +1,28 @@
 // Specific CSS for your home-page
+.top-page {
+  display: flex;
+  justify-content: center;
+  background-color: #789EFF;
+  height: 600px;
+  color: white;
+}
+
+.container-box {
+  width: 80%;
+  background-color: #607ECD;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px;
+}
+
+.container-text {
+  color: white;
+  align-self: center;
+}
+
+
+
+.image-size {
+  width: 400px;
+  align-self: center;
+}

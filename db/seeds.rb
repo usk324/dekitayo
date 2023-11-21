@@ -4,24 +4,24 @@ puts "Cleaning db..."
 User.destroy_all
 Child.destroy_all
 Mission.destroy_all
-Completed_Mission.destroy_all
+CompletedMission.destroy_all
 
 
 # users (x4)
 puts "Creating users..."
-mao = User.create!(email: "mao@gmail.com", password: "mao", first_name: "Mao", last_name: "Christie")
+mao = User.create!(email: "mao@gmail.com", password: "password", first_name: "Mao", last_name: "Christie")
 file = File.open(Rails.root.join("app/assets/images/avatars/mao.jpeg"))
 mao.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
 
-asha = User.create!(email: "asha@gmail.com", password: "asha", first_name: "Asha", last_name: "Uchida")
+asha = User.create!(email: "asha@gmail.com", password: "password", first_name: "Asha", last_name: "Uchida")
 file = File.open(Rails.root.join("app/assets/images/avatars/asha.jpeg"))
 asha.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
 
-sam = User.create!(email: "sam@gmail.com", password: "sam", first_name: "Sam", last_name: "Stone")
+sam = User.create!(email: "sam@gmail.com", password: "password", first_name: "Sam", last_name: "Stone")
 file = File.open(Rails.root.join("app/assets/images/avatars/sam.jpeg"))
 sam.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
 
-yusuke = User.create!(email: "yusuke@gmail.com", password: "yusuke", first_name: "Yusuke", last_name: "Mori")
+yusuke = User.create!(email: "yusuke@gmail.com", password: "password", first_name: "Yusuke", last_name: "Mori")
 file = File.open(Rails.root.join("app/assets/images/avatars/yusuke.jpeg"))
 yusuke.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
 
@@ -76,44 +76,44 @@ puts "Creating missions..."
 # missions (x10)
 # Statuses - new - started - finished
 
-Children.all.each do |child|
+Child.all.each do |child|
   Mission.create!(
     title: "Clear your study desk",
     description: "pack away all the stuff on your desk and then wipe it with cleaning wipe",
-    status: new,
+    status: "not_started",
     coins: 1,
     child: child,
-    category: chores & responsibilities,
+    category: :chore,
     required_photo: true,
   )
 
   Mission.create!(
     title: "Visit grandma after school",
     description: "walk to grandma's house after school and take a picture with grandma",
-    status: new,
+    status: "not_started",
     coins: 1,
     child: child,
-    category: activities,
+    category: :activity,
     required_photo: true,
   )
 
   Mission.create!(
     title: "Go to your baseball lesson",
     description: "walk to your baseball lesson",
-    status: started,
+    status: "started",
     coins: 1,
     child: child,
-    category: activities,
+    category: :activity,
     required_photo: true,
   )
 
   Mission.create!(
     title: "Read for 10 pages",
     description: "read 10 pages from your reading book",
-    status: finished,
+    status: "finished",
     coins: 3,
     child: child,
-    category: homework & study,
+    category: :study,
     required_photo: false,
   )
   puts "Finished!"
@@ -121,95 +121,93 @@ Children.all.each do |child|
   Mission.create!(
     title: "Give water to the plants",
     description: "Give one cup of water to each plant in the kitchen, living room and bathroom",
-    status: started,
+    status: "started",
     coins: 2,
     child: child,
-    category: chores & responsibilities,
+    category: :chore,
     required_photo: false,
   )
 
   Mission.create!(
     title: "Set the dinner table",
     description: "Set the dinner table with chopsticks, napkins and one cup for you, mom and dad",
-    status: finished,
+    status: "finished",
     coins: 2,
     child: child,
-    category: chores & responsibilities,
+    category: :chore,
     required_photo: true,
   )
 
   Mission.create!(
     title: "Write in your journal",
     description: "write 3 sentences about your day in your journal",
-    status: new,
+    status: "not_started",
     coins: 2,
     child: child,
-    category: organisation & planning,
+    category: :responsibility,
     required_photo: true,
   )
 
   Mission.create!(
     title: "Clean up your bedroom",
     description: "put all your toys back in their spot and make sure the floor is cleared",
-    status: started,
+    status: "started",
     coins: 2,
     child: child,
-    category: chores & responsibilities,
+    category: :chore,
     required_photo: true,
   )
 
   Mission.create!(
     title: "Do your math homework",
     description: "finish your math homework. If you get stuck, write down your question in your notebook.",
-    status: started,
+    status: "started",
     coins: 4,
     child: child,
-    category: homework & study,
+    category: :study,
     required_photo: false,
   )
 
   Mission.create!(
     title: "Prepare your pajamas for bedtime",
     description: "Go to your closet and choose your pajamas for tonight. Put them nicely on your bed",
-    status: started,
+    status: "started",
     coins: 1,
     child: child,
-    category: organisation & planning,
+    category: :organization,
     required_photo: true,
   )
 
-  Mission.create!(
+  snack = Mission.create!(
     title: "have a snack and water",
     description: "drink one cup of water and chose one snack from your snack basket",
-    status: finished,
+    status: "finished",
     coins: 1,
     child: child,
-    category: other,
+    category: :other,
     required_photo: false,
   )
 
-  Mission.create!(
+  baseball = Mission.create!(
     title: "Pack your bag for baseball practice",
     description: "pack your baseball shirt, pants, socks, shoes and glove in your baseball bag",
-    status: started,
+    status: "started",
     coins: 2,
     child: child,
-    category: organisation & planning,
+    category: :organization,
     required_photo: false,
   )
-end
 
-Children.all.each do |child|
-  Completed_Mission.create!(
-    mission: mission,
-    completed_at: 11/20/23,
+  CompletedMission.create!(
+    mission: baseball,
+    completed_at: DateTime.now - 1.day,
     completed_latitude: 35.63388858566281,
     completed_longitude: 139.70823189299546,
   )
 
-  Completed_Mission.create!(
-    mission: mission,
-    completed_at: 11/01/23,
+  CompletedMission.create!(
+    mission: snack,
+    completed_at: DateTime.now - 3.days,
     completed_latitude: 35.63409963579853,
     completed_longitude: 139.7156935092282,
   )
