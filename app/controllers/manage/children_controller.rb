@@ -1,4 +1,5 @@
 class Manage::ChildrenController < ApplicationController
+  layout 'manage_children/manage_children'
   def new
   end
 
