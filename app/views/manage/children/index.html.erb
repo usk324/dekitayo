@@ -1,2 +1,3 @@
-<h1>Manage::Children#index</h1>
-<p>Find me in app/views/manage/children/index.html.erb</p>
+  <% @children.each do |child|%>
+    <%= link_to child.name, manage_child_path(child) %>
+  <% end %>

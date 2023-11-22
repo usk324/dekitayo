@@ -1,5 +1,5 @@
 class Child < ApplicationRecord
-  has_merit
+  # has_merit
 
   belongs_to :user
   has_many :missions, dependent: :destroy
