@@ -1,4 +1,4 @@
-
+require "pry"
 puts "Cleaning db..."
 
 User.destroy_all
@@ -85,6 +85,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: true,
+    date: Date.new(2023, 11, 20)
   )
 
   Mission.create!(
@@ -95,6 +96,7 @@ Child.all.each do |child|
     child: child,
     category: :activity,
     required_photo: true,
+    date: Date.new(2023, 11, 22)
   )
 
   Mission.create!(
@@ -105,6 +107,7 @@ Child.all.each do |child|
     child: child,
     category: :activity,
     required_photo: true,
+    date: Date.new(2023, 11, 21)
   )
 
   Mission.create!(
@@ -115,6 +118,7 @@ Child.all.each do |child|
     child: child,
     category: :study,
     required_photo: false,
+    date: Date.new(2023, 11, 21)
   )
   puts "Finished!"
 
@@ -126,6 +130,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: false,
+    date: Date.new(2023, 11, 22)
   )
 
   Mission.create!(
@@ -136,6 +141,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: true,
+    date: Date.new(2023, 11, 19)
   )
 
   Mission.create!(
@@ -146,6 +152,7 @@ Child.all.each do |child|
     child: child,
     category: :responsibility,
     required_photo: true,
+    date: Date.new(2023, 11, 18)
   )
 
   Mission.create!(
@@ -156,6 +163,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: true,
+    date: Date.new(2023, 11, 18)
   )
 
   Mission.create!(
@@ -166,6 +174,7 @@ Child.all.each do |child|
     child: child,
     category: :study,
     required_photo: false,
+    date: Date.new(2023, 11, 17)
   )
 
   Mission.create!(
@@ -176,6 +185,7 @@ Child.all.each do |child|
     child: child,
     category: :organization,
     required_photo: true,
+    date: Date.new(2023, 11, 17)
   )
 
   snack = Mission.create!(
@@ -186,6 +196,7 @@ Child.all.each do |child|
     child: child,
     category: :other,
     required_photo: false,
+    date: Date.new(2023, 11, 16)
   )
 
   baseball = Mission.create!(
@@ -196,6 +207,7 @@ Child.all.each do |child|
     child: child,
     category: :organization,
     required_photo: false,
+    date: Date.new(2023, 11, 19)
   )
 
   CompletedMission.create!(
