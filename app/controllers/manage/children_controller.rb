@@ -2,7 +2,8 @@ class Manage::ChildrenController < ApplicationController
   before_action :set_current_child_id, only: :show
 
   def index
-    @children = current_user.children.all
+    @children = current_user.children
+
   end
 
   def show

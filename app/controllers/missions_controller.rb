@@ -1,4 +1,4 @@
-class MissionsController < ApplicationController
+class MissionsController < GamesController
   def show
   end
 
