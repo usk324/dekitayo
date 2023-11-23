@@ -9,4 +9,9 @@ class Child < ApplicationRecord
   has_one_attached :photo
 
   validates :name, presence: true
+
+  def move_next
+    self.position = position + 1
+    save
+  end
 end
