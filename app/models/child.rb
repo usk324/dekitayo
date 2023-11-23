@@ -1,4 +1,6 @@
 class Child < ApplicationRecord
+  # has_merit
+
   belongs_to :user
   has_many :missions, dependent: :destroy
   has_many :completed_missions, through: :missions, dependent: :destroy
