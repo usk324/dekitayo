@@ -2,6 +2,7 @@
 <p>Find me in app/views/missions/show.html.erb</p>
 this is the page where you will see all the childs missions if they click on all missions from the child homepage(aka missions index page)
 create a page with a would-be pop up in the form of a card which will show missions title, description, pic, form to add a picture, and button to click dekitayo
+<%# TODO
+1. create a button that will mark a task as finished. AKA change Mission status to "finished" %>
 
-
-Test test
+<%= link_to "Dekitayo! / Finish Mission", finish_mission_path(mission), method: :patch %>

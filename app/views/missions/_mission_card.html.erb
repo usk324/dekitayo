@@ -5,13 +5,14 @@
     </div>
     <div class="col-md-7">
       <div class="card-body">
-        <h5 class="card-title">[Morning] Clear your study desk</h5>
+        <h5 class="card-title"><%= mission.title %></h5>
         </div>
         </div>
     <div class="col-md-3">
-        <h5 class="card-text d-flex align-items-center"> 10 coins </h5>
-        <a class="btn btn-gradient" style="width:100px">details</a>
-        <%# <%= link_to "Details", mission_path() %> %>
+        <h5 class="card-text d-flex align-items-center">
+          <%= pluralize(mission.coins, "coin") %>
+        </h5>
+        <%= link_to "Details", mission_path(mission), class: "btn btn-gradient" %>
       </div>
     </div>
 </div>

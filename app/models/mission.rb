@@ -10,4 +10,7 @@ class Mission < ApplicationRecord
   validates :coins, presence: true
   validates :status, presence: true
   validates :date, presence: true
+
+  scope :daily_missions, -> { where(date: Date.today) }
+  scope :future_missions, -> { where('date > ?', Date.today) }
 end
