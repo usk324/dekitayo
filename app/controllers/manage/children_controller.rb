@@ -1,3 +1,4 @@
+require 'open-uri'
 class Manage::ChildrenController < ApplicationController
   layout 'manage_children/manage_children'
   before_action :set_current_child_id, only: :show
