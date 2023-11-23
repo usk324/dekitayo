@@ -5,14 +5,49 @@
     </div>
     <div class="col-md-7">
       <div class="card-body">
-        <h5 class="card-title"><%= mission.title %></h5>
+        <h5 class="card-title">[Morning] <%= mission.title %></h5>
+        <p>Status = <%= mission.status %></p>
         </div>
         </div>
     <div class="col-md-3">
         <h5 class="card-text d-flex align-items-center">
-          <%= pluralize(mission.coins, "coin") %>
+          <%= pluralize(mission.coins, "coin")%>
         </h5>
-        <%= link_to "Details", mission_path(mission), class: "btn btn-gradient" %>
+        <a class="btn btn-gradient" style="width:100px" data-bs-toggle="modal" data-bs-target="#<%= dom_id(mission) %>">details</a>
       </div>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="<%= dom_id(mission) %>" tabindex="-1" aria-labelledby="<%= dom_id(mission) %>Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="<%= dom_id(mission) %>Label">
+          [Morning] <%= mission.title %>
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <h3>
+        <%= mission.description %>
+      </h3>
+      </div>
+      <div><p>Status = <%= mission.status %></p>
+      </div>
+      <div class="modal-footer">
+        <%= button_to "DekiTaYo!",
+                      manage_child_mission_mark_as_finished_path(@child, mission),
+                      method: :patch, class: "btn btn-primary",
+                      data: { bs_dismiss: "modal" } unless mission.status == "finished" %>
+        <%# <button type="button" class="btn btn-primary" data-bs-dismiss="modal">DekiTaYo!</button> %>
+        <button type="button" class="btn btn-third">Keep Doing</button>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
+<%#
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> %>

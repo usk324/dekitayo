@@ -85,7 +85,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Clear your study desk",
     description: "pack away all the stuff on your desk and then wipe it with cleaning wipe",
-    status: "not_started",
+    status: "not started",
     coins: 1,
     child: child,
     category: :chore,
@@ -96,7 +96,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Visit grandma after school",
     description: "walk to grandma's house after school and take a picture with grandma",
-    status: "not_started",
+    status: "not started",
     coins: 1,
     child: child,
     category: :activity,
@@ -152,7 +152,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Write in your journal",
     description: "write 3 sentences about your day in your journal",
-    status: "not_started",
+    status: "not started",
     coins: 2,
     child: child,
     category: :responsibility,
@@ -179,7 +179,7 @@ Child.all.each do |child|
     child: child,
     category: :study,
     required_photo: false,
-    date: Date.new(2023, 11, 17)
+    date: Date.today
   )
 
   Mission.create!(
@@ -190,7 +190,7 @@ Child.all.each do |child|
     child: child,
     category: :organization,
     required_photo: true,
-    date: Date.new(2023, 11, 17)
+    date: Date.today
   )
 
   snack = Mission.create!(
@@ -201,7 +201,7 @@ Child.all.each do |child|
     child: child,
     category: :other,
     required_photo: false,
-    date: Date.new(2023, 11, 16)
+    date: Date.today
   )
 
   baseball = Mission.create!(
@@ -212,7 +212,7 @@ Child.all.each do |child|
     child: child,
     category: :organization,
     required_photo: false,
-    date: Date.new(2023, 11, 19)
+    date: Date.today
   )
 
   CompletedMission.create!(
