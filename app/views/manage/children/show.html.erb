@@ -11,15 +11,14 @@
         <!--flex left -->
         <div class="missions">
                 <h2><strong> Mission </strong></h2>
-                <ul>
-                    <li> <%= render "shared/mission-title" %></li>
-                    <li> <%= render "shared/mission-title" %></li>
-                </ul>
+                    <%= render "shared/mission-title" %>
+                    <%= render "shared/mission-title" %>
+                    <%= render "shared/mission-title" %>
         </div>
 
         <!--flex right -->
         <div id="right-navigation">
-        <h2><strong>Current Coins💰 <%= @child.coins %></strong></h2>
+        <h2><strong>Coins💰 <%= @child.coins %></strong></h2>
         <div id="reward">
                 <h2><strong>Rewards</strong></h2>
                 <i class="fa-regular fa-teddy-bear"></i>
@@ -27,7 +26,6 @@
 
       <div id="gameboard">
        <h1 style="vertical-align=top"> Build your habits and get the special bonus </h1>
-          <div> gameboard should be here....</div>
            <%= render "shared/gameboard" %>
           </div>
           </div>

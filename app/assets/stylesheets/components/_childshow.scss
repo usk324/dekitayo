@@ -4,9 +4,10 @@
 // }
 
 #flexbox{
+  width :100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  gap: 15px;
 }
 
 body {
@@ -16,7 +17,11 @@ body {
 }
 
 .missions{
-  width: 100px;
+   width:30%;
+}
+
+#right-navigation{
+  width:70%;
 }
 
 p {
