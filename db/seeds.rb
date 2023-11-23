@@ -83,7 +83,7 @@ Child.all.each do |child|
     status: "not_started",
     coins: 1,
     child: child,
-    category: :chore,
+    category: :chore, 
     required_photo: true,
     date: Date.new(2023, 11, 20)
   )

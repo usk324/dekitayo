@@ -39,3 +39,14 @@
   background: linear-gradient($light-brown, $medium-brown);
   color: white;
 }
+
+.rewards-link-btn {
+  text-decoration: none;
+  font-size: medium;
+  color: #f0ca0a;
+}
+
+.rewards-link-btn:hover {
+  color: rgb(249, 191, 16);
+  transition: 0.3s;
+}
