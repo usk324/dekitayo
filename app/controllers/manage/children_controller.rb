@@ -4,7 +4,6 @@ class Manage::ChildrenController < ApplicationController
 
   def index
     @children = current_user.children
-
   end
 
   def show
