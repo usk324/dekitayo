@@ -4,15 +4,24 @@
 // }
 
 #flexbox{
+  width :100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  gap: 15px;
 }
 
 body {
     color: #292929;
     font: 90% Roboto, Arial, sans-serif;
     font-weight: 300;
+}
+
+.missions{
+   width:30%;
+}
+
+#right-navigation{
+  width:70%;
 }
 
 p {
