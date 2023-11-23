@@ -1,9 +1,10 @@
+require 'open-uri'
 class Manage::ChildrenController < ApplicationController
+  layout 'manage_children/manage_children'
   before_action :set_current_child_id, only: :show
 
   def index
     @children = current_user.children
-
   end
 
   def show
@@ -13,7 +14,6 @@ class Manage::ChildrenController < ApplicationController
     serialized = URI.open(url).read
     @weather = JSON.parse(serialized)
   end
-
 
   def new
     @child = Child.new()

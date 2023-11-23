@@ -17,17 +17,13 @@
           <li class="nav-item">
             link_to "Messages", "#", class: "nav-link"
           </li> %>
-          <%=link_to rewards_path, class: "rewards-link-btn d-flex nav-link" do %>
-            <i class="fa-solid fa-trophy"></i>
-          <% end %>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to manage_children_path, class:"parent-page-link" do%>
-              <i class="fa-solid fa-lock"></i>   Parent Page
-              <% end %>
+              <%= link_to "Account Settings", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>

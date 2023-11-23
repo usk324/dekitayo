@@ -1,3 +1,22 @@
-  <% @children.each do |child|%>
-    <%= link_to child.name, manage_child_path(child) %>
-  <% end %>
+<div style="background-color: black;">
+  <div class="p-5 mb-5">
+    <h1 class="text-center mb-5 fw-bold fst-italic text-white"> Welcome! Who's Joining? </h1>
+
+    <% @children.each do |child|%>
+      <div class="d-flex justify-content-center">
+        <% if child.photo.attached? %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path child.photo.key%>')">
+            <%= link_to child.name, manage_child_path(child), class: "btn btn-ghost text-white fs-4" %>
+          </div>
+        <% else %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <%= link_to child.name, manage_child_path(child), class: "btn btn-ghost text-white fs-4" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="card-category" style="background-color: grey">
+      <%= link_to image_tag("plus-sign.png", class: "d-block w-100"), new_manage_child_path, class: "btn" %>
+    </div>
+  </div>
+</div>
