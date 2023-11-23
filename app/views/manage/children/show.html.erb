@@ -4,34 +4,30 @@
         <h1>  Lovely <%= @child.name %> Here's your mission 😎</h1>
         <h2><%= @weather['weather'][0]['main']%> in Tokyo<h2>
         <h2> <%=@current_time.strftime("%Y-%m-%d %H:%M") %> <i class="fa-regular fa-clock"></i></h2>
-
-
     </div>
     <!--Header-->
 
-  <!--Main -->
-  <div id ="flexbox">
-    <div id="gameboard">
-            <div> gameboard should be here....</div>
-            <h1 style="vertical-align=top"> Build your habits and get your reward </h1>
-    </div>
+    <div id ="flexbox">
+        <!--flex left -->
+        <div class="missions">
+                <h2><strong> Mission </strong></h2>
+                    <%= render "shared/mission-title" %>
+                    <%= render "shared/mission-title" %>
+                    <%= render "shared/mission-title" %>
+        </div>
 
-    <div id="right-navigation">
-      <div id="reward-flex">
-          <h2><strong>Current Coins💰 <%= @child.coins %></strong></h2>
-          <h2><strong> Mission </strong></h2>
-          <ul>
-              <li> <%= render "shared/mission" %></li>
-              <li> <%= render "shared/mission" %></li>
+        <!--flex right -->
+        <div id="right-navigation">
+        <h2><strong>Coins💰 <%= @child.coins %></strong></h2>
+        <div id="reward">
+                <h2><strong>Rewards</strong></h2>
+                <i class="fa-regular fa-teddy-bear"></i>
+        </div>
 
-          </ul>
-          <h2><strong>Rewards</strong></h2>
-          <i class="fa-regular fa-teddy-bear"></i>
-      </div>
-    </div>
-
-
-    <div id="footer"><p></p>
-    </div>
-</div>
+      <div id="gameboard">
+       <h1 style="vertical-align=top"> Build your habits and get the special bonus </h1>
+           <%= render "shared/gameboard" %>
+          </div>
+          </div>
+        </div>
 </div>
