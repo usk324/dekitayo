@@ -1,0 +1,13 @@
+.character-position {
+  position: absolute;
+  width: 20px;
+  &.position-0 { top: 70px; left: 230px; }
+  &.position-1 { top: 76px; left: 340px; }
+  &.position-2 { top: 82px; left: 350px; }
+  &.position-3 { top: 88px; left: 360px; }
+
+}
+
+.gameboard-tiles {
+  position: relative;
+}

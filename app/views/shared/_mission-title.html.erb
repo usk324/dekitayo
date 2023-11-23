@@ -10,8 +10,49 @@
         </div>
     <div class="col-md-3">
         <h5 class="card-text d-flex align-items-center"> 10 coins </h5>
-        <a class="btn btn-gradient" style="width:100px">details</a>
-        <%# <%= link_to "Details", mission_path() %> %>
+        <a class="btn btn-gradient" style="width:100px" data-bs-toggle="modal" data-bs-target="#exampleModal">details</a>
       </div>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">[Morning] Clear your study desk</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <h3>
+        Gather Supplies: You will need a cloth or sponge, a cleaning solution (which could be a commercial cleaner or a mix of water and mild detergent), and possibly gloves for protection.
+
+Remove Objects from Desk: Clear the desk of any items like papers, electronics, stationery, etc. This ensures a thorough cleaning and protects your items from getting wet or damaged.
+
+Dusting: Before applying any liquid cleaner, it's a good idea to dust the surface. You can use a dry cloth or a duster to remove any loose dust and debris.
+
+Apply Cleaning Solution: Dampen the cloth or sponge with the cleaning solution. It should be damp, not soaking wet, to avoid damaging the desk's surface or seeping into any cracks.
+
+Wipe the Desk: Gently wipe the entire surface of the desk. Pay special attention to areas where dirt and grime tend to accumulate. If your desk has any crevices or intricate designs, you might need a smaller tool, like a toothbrush, to get into these areas.
+
+Rinse and Wipe Again (if necessary): If you're using a soapy solution, you might need to rinse the cloth with clean water and wipe the desk again to remove any soap residue.
+
+Dry the Desk: Use a dry cloth to wipe down the desk, ensuring that no moisture is left on the surface. This step is particularly important for wooden desks to prevent warping or damage.
+
+Replace Items: Once the desk is dry, you can replace all the items you removed.
+
+      </h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">DekiTaYo!</button>
+        <button type="button" class="btn btn-third">Keep Doing</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+</div>
+
+<%#
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> %>

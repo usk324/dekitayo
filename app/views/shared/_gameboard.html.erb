@@ -1,1 +1,6 @@
-     <%= image_tag 'the_mario_boardgame.jpg', width: '800', class: 'rounded' %>
+<div class="" style="background-image: url(<%= image_path "snow-background.jpg" %>)">
+  <div class="gameboard-tiles">
+    <%= image_tag 'tiles.png' %>
+    <%= image_tag "star.png", class: "character-position position-#{position}" %>
+  </div>
+</div>
