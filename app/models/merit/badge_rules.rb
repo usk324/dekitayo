@@ -22,9 +22,9 @@ module Merit
 
     def initialize
 
-      grant_on 'completed_missions#create', badge_id: 1, to: :child do |completed_missions|
-        completed_missions.first.count == 1
-      end
+      # grant_on 'completed_missions#create', badge_id: 1, to: :child do |completed_missions|
+      #   completed_missions.first.count == 1
+      # end
       # If it creates user, grant badge
       # Should be "current_user" after registration for badge to be granted.
       # Find badge by badge_id, badge_id takes presidence over badge

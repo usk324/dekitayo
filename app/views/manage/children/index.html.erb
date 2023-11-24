@@ -4,15 +4,9 @@
 
     <div class="d-flex justify-content-center mb-5">
       <% @children.each do |child|%>
-          <% if child.photo.attached? %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path child.photo.key%>')">
-              <%= link_to child.name, manage_child_path(child), class: "btn btn-ghost text-white fs-4" %>
-            </div>
-          <% else %>
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-              <%= link_to child.name, manage_child_path(child), class: "btn btn-ghost text-white fs-4" %>
-            </div>
-          <% end %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
+          <%= link_to child.name, board_missions_path(child_id: child.id), class: "btn btn-ghost text-white fs-4" %>
+        </div>
       <% end %>
       <div class="card-category" style="background-color: grey">
         <%= link_to image_tag("plus-sign.png", class: "d-block w-100"), new_manage_child_path, class: "btn" %>

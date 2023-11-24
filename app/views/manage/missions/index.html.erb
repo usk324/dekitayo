@@ -1,0 +1,9 @@
+gco List of child's missions
+
+        <div class="missions">
+          <h2><strong>Mission</strong></h2>
+          <%= pluralize(@child.missions.future_missions.size, "mission") %>
+          <% @child.missions.future_missions.each do |mission| %>
+            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+          <% end %>
+        </div>
