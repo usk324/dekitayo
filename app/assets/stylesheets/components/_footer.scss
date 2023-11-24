@@ -1,3 +1,14 @@
+
+.footer {
+  background-color: rgb(81, 75, 69);
+  flex-shrink: 0;
+}
+
+.footer-icon:hover {
+  color: rgb(177, 152, 126);
+  transition: 0.2s;
+}
+
 html, body {
   height: 100%;
 }
@@ -7,7 +18,4 @@ body {
 }
 .content {
   flex: 1 0 auto;
-}
-.footer {
-  flex-shrink: 0;
 }

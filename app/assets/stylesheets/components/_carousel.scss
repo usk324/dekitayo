@@ -1,31 +1,44 @@
-.carousel-caption {
-  position: absolute;
-  top: 57.5%;
-  left: 27%;
-  transform: translate(-50%, -50%);
-}
+// .carousel-caption {
+//   // position: absolute;
+//   // top: 57.5%;
+//   // left: 27%;
+//   // transform: translate(-50%, -50%);
+// }
 
-.carousel-caption h1 {
+.carousel-text {
   margin-bottom: 30px;
   color: white;
   font-size: 2em;
 }
+#carousel-h2 {
+  color: rgb(28, 81, 166);
+}
 
-.carousel-caption button {
+.car-button {
   font-size: 1em;
   position: absolute;
   left: 19%;
   top: 42.5%;
 }
 
-.carousel {
-  background-size: cover;
-  background-position: center;
-  background-color: #789EFF;
-  margin-bottom: 30px;
-}
+// .carousel {
+//   // background-size: cover;
+//   // background-position: center;
+//   // background-color: #789EFF;
+//   margin-bottom: 30px;
+//   width: 100%;
+//   height: 600px;
+// }
 
-.carousel-item img {
-  height: 500px;
-  object-fit: cover;
+// .carousel-item img {
+//   object-fit: cover;
+// }
+
+// #carousel-item-container {
+//   display: flex;
+//   justify-content: end;
+// }
+
+.carousel-height {
+  height: 600px;
 }

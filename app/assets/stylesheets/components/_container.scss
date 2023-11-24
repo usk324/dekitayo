@@ -1,5 +1,15 @@
 .homepage-container {
-  background-image: url;
+  background-image: asset-url("homepage-bg.png");
+  height: 2200px;
   background-size: cover;
   background-position: center;
+  margin: 0;
+  padding: 0;
+}
+
+// .transparent-background {
+//   background-color: rgba(255, 255, 255, 0.1);
+// }
+.home-hero-container {
+  padding-top: 250px;
 }
