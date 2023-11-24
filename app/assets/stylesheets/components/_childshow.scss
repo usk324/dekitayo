@@ -1,0 +1,126 @@
+// html, body {
+//     margin: 0;
+//     padding: 0;
+// }
+
+#flexbox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin:10px;
+}
+
+body {
+    color: #292929;
+    font-family: $kids-font,Roboto, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.missions{
+ width: 30%;
+ min-height: 50%;
+ top: 14%;
+ margin: 1rem;
+
+}
+
+p {
+    padding: 0 10px;
+    line-height: 1.8;
+}
+
+ul li {
+    padding-right: 10px;
+    line-height: 1.6;
+}
+
+h3 {
+    padding: 5px 20px;
+    margin: 0;
+}
+
+// div#header {
+//     position: relative;
+// }
+
+#header {
+ font-family: $kids-font;
+ display: flex;
+ height: 80px;
+ line-height: 80px;
+ margin: 0;
+ padding: 10px;
+ color: #292929;
+ justify-content: space-between;
+ align-items: center;
+}
+
+// #header h1 {
+//     height: 80px;
+//     line-height: 80px;
+//     margin: 0;
+//     padding-left: 10px;
+//     background: #e0e0e0;
+//     color: #292929;
+// }
+
+#header p {
+    position: relative;
+    right: 0;
+    padding: 10px;
+    color: #006;
+}
+
+// div#navigation {
+//     background: #7cb71c;
+// }
+
+li {
+    list-style: none;
+}
+
+// div#extra {
+//     background: #147FA9;
+// }
+
+// div#footer {
+//     background: #42444e;
+//     color: #fff;
+// }
+
+// div#footer p {
+//     padding: 20px 10px;
+// }
+
+div#gameboard {
+  width: 60%;
+  top: 14%;
+  right: 0;
+  margin: 1rem;
+}
+
+
+// div#content {
+//     margin-left: 200px;
+// }
+
+
+// div#navigation {
+//     float: right;
+//     width: 200px
+// }
+
+// div#extra {
+//     float: right;
+//     clear: right;
+//     width: 200px
+// }
+
+// div#footer {
+//     clear: both;
+//     width: 100%
+// }
+.game-bg {
+ background-size: cover;
+}

@@ -1,10 +1,8 @@
 class Manage::ChildrenController < ApplicationController
   layout 'manage_children/manage_children'
-  before_action :set_current_child_id, only: :show
 
   def index
     @children = current_user.children
-
   end
 
   def show
@@ -14,6 +12,7 @@ class Manage::ChildrenController < ApplicationController
 
   def new
     @child = Child.new()
+    @child.user = current_user
   end
 
   def create
@@ -28,11 +27,6 @@ class Manage::ChildrenController < ApplicationController
   end
 
   private
-
-  def set_current_child_id
-    # This stores a `current_child_id` value in the session cookie
-    session[:current_child_id] = params[:id]
-  end
 
   def child_params
     params.require(:child).permit(:name, :date_of_birth, :photo)

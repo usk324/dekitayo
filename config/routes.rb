@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :manage do
     resources :children, only: [:index, :show, :new, :create] do
-      resources :missions, only: [:new, :create]
+      resources :missions, only: [:index, :new, :create]
       resources :rewards, only: [:new, :create]
     end
   end
-  resources :missions, only: [:show, :update] do
+  resources :missions, only: [:index, :update] do
+    resources :completed_missions, only: [:create]
     collection do
       get :board
     end
