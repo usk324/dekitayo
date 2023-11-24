@@ -8,6 +8,8 @@ class Manage::ChildrenController < ApplicationController
   end
 
   def show
+    @child = Child.find(params[:id])
+    @mission = Mission.new()
   end
 
   def new

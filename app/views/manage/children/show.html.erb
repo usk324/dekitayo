@@ -1,2 +1,37 @@
-<<h1>Manage::Children#show</h1>
-<p>Find me in app/views/manage/children/show.html.erb</p>>
+<h1>Manage::Children#show</h1>
+<p>Find me in app/views/manage/children/show.html.erb meow</p>
+<button class="btn btn-primary" onclick="toggleForm()">+ Add a Mission</button>
+
+<section class="form-popup popup-form-container" id="myForm" hidden>
+  <div class="popup-bg-container">
+    <header>
+      <h2>Create a New Mission</h2>
+    </header>
+    <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
+      <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :date, html5: true %>
+        <%= f.input :coins %>
+        <%= f.input :category %>
+        <%= f.input :required_photo %>
+        <%= f.input :photo, as: :file %>
+
+        <div class="d-flex justify-content-center">
+          <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+        </div>
+    <% end %>
+  </div>
+</section>
+
+<script defer>
+  const toggleForm = () => {
+    const form = document.getElementById("myForm");
+    form.hidden = !form.hidden;
+  };
+
+  const submitForm = () => {
+    const form = document.getElementById("myForm");
+    form.hidden = true;
+    return true;
+  };
+</script>

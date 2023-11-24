@@ -1,0 +1,31 @@
+.carousel-caption {
+  position: absolute;
+  top: 57.5%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-caption h1 {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 2em;
+}
+
+.carousel-caption button {
+  font-size: 1em;
+  position: absolute;
+  left: 19%;
+  top: 42.5%;
+}
+
+.carousel {
+  background-size: cover;
+  background-position: center;
+  background-color: #789EFF;
+  margin-bottom: 30px;
+}
+
+.carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}

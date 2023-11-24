@@ -1,0 +1,50 @@
+.new-child-container {
+  align-items: center;
+  background-color: rgb(200, 192, 179);
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.new-child-form {
+  background-color: rgb(233, 222, 216);
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  color: rgb(105, 68, 45);
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 420px;
+}
+
+.new-child-title {
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.new-child-subtitle {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.new-child-input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.new-child-ic1 {
+  margin-top: 40px;
+}
+
+.new-child-ic2 {
+  margin-top: 30px;
+}
