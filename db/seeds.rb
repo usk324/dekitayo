@@ -1,4 +1,4 @@
-require "pry"
+# require "pry"
 puts "Cleaning db..."
 
 User.destroy_all
