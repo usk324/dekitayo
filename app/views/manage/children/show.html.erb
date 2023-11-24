@@ -1,6 +1,94 @@
-<h1>Manage::Children#show</h1>
-<p>Find me in app/views/manage/children/show.html.erb meow</p>
+
+<h1> Hello, <%= @child.user.first_name %> </h1>
+
+    <div class="container">
+    <main class="row">
+        <aside class="col-3">
+
+<!-- menu bar  -->
+        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+  Change your kids
+</a>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      You can change the kids from here
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Iroha</a></li>
+        <li><a class="dropdown-item" href="#">Kurumi</a></li>
+        <li><a class="dropdown-item" href="#"></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- menu bar  -->
+        </aside>
+
+        <div class ="col-9">
+              <header class="main-top">
+
+                <h2><strong>This is the dashboard of <%= @child.name %></strong></h2>
+
 <button class="btn btn-primary" onclick="toggleForm()">+ Add a Mission</button>
+
+
+                <nav class="nav">
+
+<!--bootstrap tabs-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">All missions</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Create new mission</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Account settings</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                  <h2>Missions you assigned </h2>
+                                  <%= pluralize(@child.missions.daily_missions.size, "mission") %>
+                                  <% @child.missions.daily_missions.each do |mission| %>
+                                    <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+                                <% end %>
+  </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+       <h2>Missions you assigned </h2>
+                                  <%= pluralize(@child.missions.future_missions.size, "mission") %>
+                                  <% @child.missions.future_missions.each do |mission| %>
+                                    <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+                                <% end %>
+
+  </div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+</div>
+<!--bootstrap tabs-->
+
+
+
+                <div class="map">
+                </div>
+            </section>
+         </div>
+
+
+</div>
+
 
 <section class="form-popup popup-form-container" id="myForm" hidden>
   <div class="popup-bg-container">

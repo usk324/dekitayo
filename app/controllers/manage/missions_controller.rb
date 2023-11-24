@@ -1,5 +1,10 @@
 class Manage::MissionsController < ApplicationController
   layout 'manage_children/manage_children'
+  def index
+    @child = Child.find(params[:child_id])
+    @missions = @child.missions
+  end
+
   def new
     @mission = Mission.new()
   end
@@ -21,4 +26,5 @@ class Manage::MissionsController < ApplicationController
   def mission_params
     params.require(:mission).permit(:title, :description, :date, :coins, :category, :required_photo, :photo)
   end
+
 end

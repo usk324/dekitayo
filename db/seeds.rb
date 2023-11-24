@@ -32,6 +32,7 @@ babyyoda = Child.create!(
   date_of_birth: "2015/01/01",
   coins: "32",
   user: mao,
+  position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/babyyoda.jpeg"))
 babyyoda.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
@@ -41,6 +42,7 @@ maia = Child.create!(
   date_of_birth: "2022/10/05",
   coins: "11",
   user: asha,
+  position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/maia.jpeg"))
 maia.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
@@ -50,6 +52,7 @@ henry = Child.create!(
   date_of_birth: "2020/08/14",
   coins: "62",
   user: sam,
+  position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/henry.jpeg"))
 henry.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
@@ -59,6 +62,7 @@ iroha = Child.create!(
   date_of_birth: "2022/10/05",
   coins: "89",
   user: yusuke,
+  position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/iroha.jpeg"))
 iroha.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
@@ -68,6 +72,7 @@ rocky = Child.create!(
   date_of_birth: "2019/04/14",
   coins: "56",
   user: yusuke,
+  position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/rocky.jpeg"))
 rocky.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
@@ -80,7 +85,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Clear your study desk",
     description: "pack away all the stuff on your desk and then wipe it with cleaning wipe",
-    status: "not_started",
+    status: "not started",
     coins: 1,
     child: child,
     category: :chore,
@@ -91,7 +96,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Visit grandma after school",
     description: "walk to grandma's house after school and take a picture with grandma",
-    status: "not_started",
+    status: "not started",
     coins: 1,
     child: child,
     category: :activity,
@@ -147,7 +152,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Write in your journal",
     description: "write 3 sentences about your day in your journal",
-    status: "not_started",
+    status: "not started",
     coins: 2,
     child: child,
     category: :responsibility,
@@ -174,7 +179,7 @@ Child.all.each do |child|
     child: child,
     category: :study,
     required_photo: false,
-    date: Date.new(2023, 11, 17)
+    date: Date.today
   )
 
   Mission.create!(
@@ -185,7 +190,7 @@ Child.all.each do |child|
     child: child,
     category: :organization,
     required_photo: true,
-    date: Date.new(2023, 11, 17)
+    date: Date.today
   )
 
   snack = Mission.create!(
@@ -196,7 +201,7 @@ Child.all.each do |child|
     child: child,
     category: :other,
     required_photo: false,
-    date: Date.new(2023, 11, 16)
+    date: Date.today
   )
 
   baseball = Mission.create!(
@@ -207,7 +212,7 @@ Child.all.each do |child|
     child: child,
     category: :organization,
     required_photo: false,
-    date: Date.new(2023, 11, 19)
+    date: Date.today
   )
 
   CompletedMission.create!(
