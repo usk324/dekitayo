@@ -3,8 +3,8 @@
 //     padding: 0;
 // }
 
-#flexbox{
-  width :100%;
+#flexbox {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 15px;
@@ -13,7 +13,7 @@
 
 body {
     color: #292929;
-    font: 90% Roboto, Arial, sans-serif;
+    font-family: $kids-font,Roboto, Arial, sans-serif;
     font-weight: 300;
 }
 
@@ -45,6 +45,7 @@ h3 {
 // }
 
 #header {
+ font-family: $kids-font;
  display: flex;
  height: 80px;
  line-height: 80px;
