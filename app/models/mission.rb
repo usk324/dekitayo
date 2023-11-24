@@ -11,6 +11,9 @@ class Mission < ApplicationRecord
   validates :status, presence: true
   validates :date, presence: true
 
+  scope :daily_missions, -> { where(date: Date.today) }
+  scope :future_missions, -> { where('date > ?', Date.today) }
+
   def check_status
     total_missions = child.missions.where(date: date).count
     finished_missions = child.missions.where(date: date, status: "finished").count

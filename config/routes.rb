@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :manage do
     resources :children, only: [:index, :show, :new, :create] do
-      resources :missions, only: [:new, :create]
+      resources :missions, only: [:index, :new, :create] do
+        patch :mark_as_finished, to: "missions#mark_as_finished"
+      end
       resources :rewards, only: [:new, :create]
     end
   end
-  resources :missions, only: [:show, :update] do
+  resources :missions, only: [:index, :show, :update] do
     collection do
       get :board
     end

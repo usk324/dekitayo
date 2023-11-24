@@ -9,13 +9,16 @@
 
     <div id ="flexbox">
         <!--flex left -->
-        <div class="missions">
-                <h2><strong> Mission completion <%= "children.mission.complete" %></strong></h2>
 
-                    <%= render "shared/mission-title" %>
-                    <%= render "shared/mission-title" %>
-                    <%= render "shared/mission-title" %>
+        <div class="missions">
+          <h2><strong>Mission</strong></h2>
+          <%= pluralize(@child.missions.daily_missions.size, "mission") %>
+          <% @child.missions.daily_missions.each do |mission| %>
+            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+          <% end %>
         </div>
+
+        <%= link_to "View all Missions", manage_child_missions_path(@child), class: "btn btn-gradient" %>
 
         <!--flex right -->
         <div id="right-navigation">
