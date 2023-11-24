@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  layout "game"
   before_action :redirect_to_child_selection, unless: :current_child
 
   private
