@@ -36,8 +36,8 @@
       </div>
       <div class="modal-footer">
         <%= button_to "DekiTaYo!",
-                      manage_child_mission_mark_as_finished_path(@child, mission),
-                      method: :patch, class: "btn btn-primary",
+                      mission_completed_missions_path(mission),
+                      method: :post, class: "btn btn-primary",
                       data: { bs_dismiss: "modal" } unless mission.status == "finished" %>
         <%# <button type="button" class="btn btn-primary" data-bs-dismiss="modal">DekiTaYo!</button> %>
         <button type="button" class="btn btn-third">Keep Doing</button>
