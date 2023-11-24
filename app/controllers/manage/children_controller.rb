@@ -7,6 +7,7 @@ class Manage::ChildrenController < ApplicationController
 
   def new
     @child = Child.new()
+    @child.user = current_user
   end
 
   def show
