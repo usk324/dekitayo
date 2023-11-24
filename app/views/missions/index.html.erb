@@ -1,0 +1,8 @@
+
+        <div class="missions">
+          <h2><strong>Mission</strong></h2>
+          <%= pluralize(@missions.future_missions.size, "mission") %>
+          <% @missions.future_missions.each do |mission| %>
+            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+          <% end %>
+        </div>
