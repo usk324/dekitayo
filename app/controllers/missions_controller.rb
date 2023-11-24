@@ -1,21 +1,19 @@
-class MissionsController < GamesController
+require 'open-uri'
 
+class MissionsController < GamesController
   def index
     @missions = Mission.all
   end
 
-  def show
+  def board
+    set_current_child_id if params[:child_id].present?
+    url = "https://api.openweathermap.org/data/2.5/weather?lat=35.6764&lon=139.6500&appid=68c7d9645dcea9731a25be00174dd457"
+    serialized = URI.open(url).read
+    @weather = JSON.parse(serialized)
   end
 
   def edit
     @mission = Mission.find(params[:id])
-  end
-
-  def current_child
-    return unless current_user && session[:current_child_id].present?
-
-    # We store the child instance in an @instance_variable so that it can be used in the view
-    @current_child ||= current_user.children.find(session[:current_child_id])
   end
 
   def update
@@ -24,6 +22,10 @@ class MissionsController < GamesController
     redirect_to missions_path, notice: "Great job, you finished this mission!"
   end
 
-  def board
+  private
+
+  def set_current_child_id
+    # This stores a `current_child_id` value in the session cookie
+    session[:current_child_id] = params[:child_id]
   end
 end
