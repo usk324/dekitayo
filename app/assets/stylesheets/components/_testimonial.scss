@@ -1,0 +1,48 @@
+.testimonial-header {
+  // border-bottom: 2px solid gray;
+  width: 100%;
+  text-align: center;
+}
+
+.customer-testimonial-container {
+  display: flex;
+  gap: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.customer-testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(246, 242, 238);
+  border-radius: 5px;
+  text-align: center;
+  margin: 20px;
+  padding: 30px;
+}
+
+.avatar-testimonial {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-info {
+  margin-top: 30px;
+}
+
+.testimonial-info h3 {
+  margin-bottom: 5px;
+  color: rgb(117, 88, 57);
+}
+
+.testimonial-info p {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.testimonial-header {
+  color: rgb(28, 81, 166);
+}

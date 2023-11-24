@@ -12,6 +12,7 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  padding-bottom: 12px;
 }
 
 .navbar-logo-text {
@@ -20,7 +21,8 @@
 }
 
 #navbar-logo {
-  font-family: 'PT Serif', serif;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link-1:hover {
@@ -50,4 +52,9 @@
   font-weight: 900;
   font-size: 22px;
   margin-right: 10px;
+}
+
+.logo-image {
+  height: 30px;
+  width: 50px;
 }
