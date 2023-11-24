@@ -130,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_071600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date"
+    t.date "due_date"
     t.index ["child_id"], name: "index_missions_on_child_id"
   end
 

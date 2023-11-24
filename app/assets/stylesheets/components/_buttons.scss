@@ -50,3 +50,14 @@
   color: rgb(249, 191, 16);
   transition: 0.3s;
 }
+
+.btn-home-explore {
+  position: absolute;
+  left: 19%;
+  background-color: rgb(86, 39, 13);
+}
+
+.btn-home-explore:hover {
+  background-color: rgb(49, 22, 7);
+  transition-duration: .5s;
+}

@@ -1,3 +1,4 @@
+
 <h1> Hello, <%= @child.user.first_name %> </h1>
 
     <div class="container">
@@ -36,6 +37,9 @@
               <header class="main-top">
 
                 <h2><strong>This is the dashboard of <%= @child.name %></strong></h2>
+
+
+
                 <nav class="nav">
 
 <!--bootstrap tabs-->
@@ -62,7 +66,11 @@
                                 <% end %>
   </div>
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-All missions
+       <h2>Missions you assigned </h2>
+                                  <%= pluralize(@child.missions.future_missions.size, "mission") %>
+                                  <% @child.missions.future_missions.each do |mission| %>
+                                    <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+                                <% end %>
 
   </div>
   <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
@@ -79,3 +87,38 @@ All missions
 
 
 </div>
+
+
+<section class="form-popup popup-form-container" id="myForm" hidden>
+  <div class="popup-bg-container">
+    <header>
+      <h2>Create a New Mission</h2>
+    </header>
+    <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
+      <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :date, html5: true %>
+        <%= f.input :coins %>
+        <%= f.input :category %>
+        <%= f.input :required_photo %>
+        <%= f.input :photo, as: :file %>
+
+        <div class="d-flex justify-content-center">
+          <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+        </div>
+    <% end %>
+  </div>
+</section>
+
+<script defer>
+  const toggleForm = () => {
+    const form = document.getElementById("myForm");
+    form.hidden = !form.hidden;
+  };
+
+  const submitForm = () => {
+    const form = document.getElementById("myForm");
+    form.hidden = true;
+    return true;
+  };
+</script>

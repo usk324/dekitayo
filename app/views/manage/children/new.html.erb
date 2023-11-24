@@ -1,3 +1,8 @@
-<div class="container">
-  <%= render "shared/formchild", child: @child%>
+<div class="new-child-container">
+  <%# make if statement for one child or none %>
+  <div class="new-child-form">
+    <div class="new-child-title">Welcome</div>
+        <div class="new-child-subtitle">Let's add a child to your account!</div>
+    <%= render "shared/formchild", child: @child%>
+  </div>
 </div>

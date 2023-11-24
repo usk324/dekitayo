@@ -5,13 +5,14 @@ class Manage::ChildrenController < ApplicationController
     @children = current_user.children
   end
 
+  def show
+    @child = Child.find(params[:id])
+    @mission = Mission.new()
+  end
+
   def new
     @child = Child.new()
     @child.user = current_user
-  end
-
-  def show
-    @child = Child.find(params[:id])
   end
 
   def create
