@@ -55,159 +55,103 @@
         </aside>
         <div class ="col-10">
           <header class="main-top">
-            <nav>
-              <!--bootstrap tabs-->
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
-                </li>
-                <!--
+            <!--bootstrap tabs-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
+              </li>
+              <!--
                 <li class="nav-item" role="presentation">
                   <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
                 </li>
 -->
-              </ul>
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                  <h2>Missions you assigned </h2>
-                  <%= pluralize(@child.missions.daily_missions.size, "mission") %>
-                  <% @child.missions.daily_missions.each do |mission| %>
-                    <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-                  <% end %>
-                </div>
-                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                  <h2>Missions you assigned </h2>
-                  <%= pluralize(@child.missions.future_missions.size, "mission") %>
-                  <% @child.missions.future_missions.each do |mission| %>
-                    <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-                  <% end %>
-                </div>
-                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+            </ul>
+          </header>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+              <h2>Missions you assigned </h2>
+              <%= pluralize(@child.missions.daily_missions.size, "mission") %>
+              <% @child.missions.daily_missions.each do |mission| %>
+                <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+              <% end %>
+            </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+              <h2>Missions you assigned </h2>
+              <%= pluralize(@child.missions.future_missions.size, "mission") %>
+              <% @child.missions.future_missions.each do |mission| %>
+                <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+              <% end %>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
+            <div class="chart-container">
+              <div class="chart">
+                <%= line_chart @child.completed_missions_data,
+                colors: ["#98C1D9", "#98C1D9"],
+                xtitle: "Days",
+                ytitle: "Completed Missions",
+                label: "Missions Assigned to #{@child.name}" %>
               </div>
-              <!--bootstrap tabs-->
-              <div class="map">
+              <div class="chart">
+                <%= column_chart @child.assigned_missions_data,
+                id: "users-chart",
+                width: "700px", height: "400px",
+                colors: ["#98C1D9", "#666"],
+                xtitle: "Days",
+                ytitle: "Assigned Missions",
+                label: "Missions Assigned to #{@child.name}"  %>
               </div>
-            </section>
+            </div>
           </div>
         </div>
-        <section class="form-popup popup-form-container" id="myForm" hidden>
-          <div class="popup-bg-container">
-            <header>
-              <h2>Create a New Mission</h2>
-            </header>
-            <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
-              <%= f.input :title %>
-              <%= f.input :description %>
-              <%= f.input :date, html5: true %>
-              <%= f.input :coins %>
-              <%= f.input :category %>
-              <%= f.input :required_photo %>
-              <%= f.input :photo, as: :file %>
-              <div class="d-flex justify-content-center">
-                <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-              <% end %>
-              <div class="tab-content" id="myTabContent">
-                <!-- HOME TAB ("Today missions") -->
-                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                  <h1><%=@child.missions.where(status: "finished").count %>/<%= @child.missions.size %></h1>
-                  <% if @child.missions.daily_missions.find_by(status: "started")%>
-                    <p class="text-center">~You have <%= pluralize(@child.missions.size, "mission") %> to complete today~</p>
-                  <% else %>
-                    <p class="text-center">~No missions available~</p>
-                  <% end %>
-                  <div id="child-missions">
-                    <% @child.missions.each do |mission| %>
-                      <% unless mission.status == "finished"%>
-                        <%= render partial: "shared/mission-title", locals: { mission: mission } %>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-                <!-- PROFILE TAB ("All missions") -->
-                <div class="tab-pane fade p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                  <h2>Missions you assigned </h2>
-                </div>
-                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                  <button class="btn btn-primary" onclick="toggleForm()"> Add a Mission</button>
-                  <%#
-    <div class="tab-pane fade" onclick="toggleForm()" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-  %>
-                  <!-- Charts Tab -->
-                </div>
-                <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
-                  <!-- Charts card
-                  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-                    <div class="chart-container">
+        <!--bootstrap tabs-->
+        <div class="map">
+        </div>
+      </div>
+    </div>
+    <section class="form-popup popup-form-container" id="myForm" hidden>
+      <div class="popup-bg-container">
+        <header>
+          <h2>Create a New Mission</h2>
+        </header>
+        <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :date, html5: true %>
+          <%= f.input :coins %>
+          <%= f.input :category %>
+          <%= f.input :required_photo %>
+          <%= f.input :photo, as: :file %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <!-- PROFILE TAB ("All missions") -->
+    <div class="tab-pane fade p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <h2>Missions you assigned </h2>
+    </div>
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+      <button class="btn btn-primary" onclick="toggleForm()"> Add a Mission</button>
+    </div>
+    <!-- Charts Tab -->
+    <!--bootstrap tabs-->
+    <script defer>
+      const toggleForm = () => {
+        const form = document.getElementById("myForm");
+        form.hidden = !form.hidden;
+      };
 
-                    </div>
-                  </div>
-                  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <h5 class="card-title">Success card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                  </div>
-                </div>
-                 Charts card end -->
-                  <div class="chart">
-                    <%= line_chart @child.completed_missions_data,
-              colors: ["#98C1D9", "#98C1D9"],
-              xtitle: "Days",
-              ytitle: "Completed Missions",
-              label: "Missions Assigned to #{@child.name}" %>
-                  </div>
-                  <div class="chart">
-                    <%= column_chart @child.assigned_missions_data,
-              id: "users-chart",
-              width: "700px", height: "400px",
-              colors: ["#98C1D9", "#666"],
-              xtitle: "Days",
-              ytitle: "Assigned Missions",
-              label: "Missions Assigned to #{@child.name}"  %>
-                  </div>
-                </div>
-              </div>
-              <!--bootstrap tabs-->
-              <div class="map">
-              </div>
-            </div>
-          </div>
-          <section class="form-popup popup-form-container" id="myForm" hidden>
-            <div class="popup-bg-container">
-              <header>
-                <h2>Create a New Mission</h2>
-              </header>
-              <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
-                <%= f.input :title %>
-                <%= f.input :description %>
-                <%= f.input :date, html5: true %>
-                <%= f.input :coins %>
-                <%= f.input :category %>
-                <%= f.input :required_photo %>
-                <%= f.input :photo, as: :file %>
-                <div class="d-flex justify-content-center">
-                  <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-                </div>
-              <% end %>
-            </div>
-          </section>
-          <script defer>
-            const toggleForm = () => {
-              const form = document.getElementById("myForm");
-              form.hidden = !form.hidden;
-            };
-
-            const submitForm = () => {
-              const form = document.getElementById("myForm");
-              form.hidden = true;
-              return true;
-            };
-          </script>
+      const submitForm = () => {
+        const form = document.getElementById("myForm");
+        form.hidden = true;
+        return true;
+      };
+    </script>
