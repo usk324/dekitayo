@@ -18,3 +18,12 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+.circular-image {
+  background-size: cover;
+  background-position: center;
+  width: 100px;  /* or any other size */
+  height:100px; /* must be the same as width for a perfect circle */
+  border-radius: 50%; /* this makes the image circular */
+  object-fit: cover; /* optional: this ensures the image covers the area without stretching */
+}

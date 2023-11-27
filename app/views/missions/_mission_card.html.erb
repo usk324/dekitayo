@@ -6,6 +6,7 @@
     <div class="col-md-7">
       <div class="card-body">
         <h5 class="card-title"><%= mission.title %></h5>
+        <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
       </div>
     </div>
     <div class="col-md-3">
@@ -29,17 +30,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="<%= dom_id(mission) %>Label">
-            [Morning] <%= mission.title %>
+            <%= mission.title %>
           </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h3>
-            <%= mission.description %>
-          </h3>
-        </div>
-        <div>
-          <p>Status = <%= mission.status %></p>
+          <h3><%= mission.description %></h3>
+          <p class="<%= status_color_class(mission.status) %>">Status = <%= mission.status %></p>
         </div>
         <div class="modal-footer">
           <%= button_to "DekiTaYo!",

@@ -11,7 +11,8 @@ class Manage::MissionsController < ApplicationController
 
   def create
     @mission = Mission.new(mission_params)
-
+    @child = Child.find(params[:child_id])
+    @mission.child = @child
     respond_to do |format|
       if @mission.save
         format.js

@@ -1,16 +1,12 @@
-<div style="background-color: black;">
+<div style="background-color: #98C1D9;">
   <div class="p-5">
     <h1 class="text-center mb-5 fw-bold fst-italic text-white"> Welcome! Who's Joining? </h1>
-
     <div class="d-flex justify-content-center mb-5">
       <% @children.each do |child|%>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
           <%= link_to child.name, board_missions_path(child_id: child.id), class: "btn btn-ghost text-white fs-4" %>
         </div>
       <% end %>
-      <div class="card-category" style="background-color: grey">
-        <%= link_to image_tag("plus-sign.png", class: "d-block w-100"), new_manage_child_path, class: "btn" %>
-      </div>
     </div>
   </div>
 </div>
