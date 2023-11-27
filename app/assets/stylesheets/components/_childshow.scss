@@ -18,10 +18,10 @@ body {
 }
 
 .missions{
- width: 30%;
- min-height: 50%;
- top: 14%;
- margin: 1rem;
+  width: 30%;
+  min-height: 50%;
+  top: 14%;
+  margin: 1rem;
 
 }
 
@@ -45,15 +45,16 @@ h3 {
 // }
 
 #header {
- font-family: $kids-font;
- display: flex;
- height: 80px;
- line-height: 80px;
- margin: 0;
- padding: 10px;
- color: #292929;
- justify-content: space-between;
- align-items: center;
+  font-family: $kids-font;
+  display: flex;
+  height: 80px;
+  line-height: 80px;
+  margin: 0;
+  padding: 10px;
+  color: #292929;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid white;
 }
 
 // #header h1 {
@@ -93,12 +94,12 @@ li {
 //     padding: 20px 10px;
 // }
 
-div#gameboard {
-  width: 60%;
-  top: 14%;
-  right: 0;
-  margin: 1rem;
-}
+// div#gameboard { THIS ONE
+//   width: 60%;
+//   top: 14%;
+//   right: 0;
+//   margin: 1rem;
+// }
 
 
 // div#content {
@@ -121,6 +122,6 @@ div#gameboard {
 //     clear: both;
 //     width: 100%
 // }
-.game-bg {
- background-size: cover;
-}
+// .game-bg {
+//   background-size: cover;
+// }
