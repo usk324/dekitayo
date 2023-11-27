@@ -35,8 +35,9 @@
     </div>
     <!--flex right -->
     <div id="gameboard" class="position-fixed">
-      <%= render "shared/gameboard", position: current_child.position %>
+      <%# <%= render "shared/gameboard", position: current_child.position %> %>
     </div>
+    <%= image_tag "star.png", class: "tile-position position-#{current_child.position} character" %>
     <%# -------------tiles 1-9--------------- %>
     <% (1..9).each do |number| %>
       <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>

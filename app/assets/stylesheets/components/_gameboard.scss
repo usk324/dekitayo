@@ -1,9 +1,15 @@
 .tile-position {
   position: absolute;
+  z-index: 1;
+
   &.character {
-    position: relative;
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+    position: absolute;
     // we can change character piece here
   }
+
   &.position-1 { top: 223px; left: 615px; }
   &.position-2 { top: 111px; left: 685px; }
   &.position-3 { top: 109px; left: 819px; }
@@ -60,7 +66,7 @@
 }
 
 #snowflakeContainer {
-  background-color: #B1EDE8;
+  background-color: black;
   position: relative;
   // left: 0px;
   // top: 0px;
