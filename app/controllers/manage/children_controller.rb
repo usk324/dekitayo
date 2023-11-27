@@ -6,6 +6,7 @@ class Manage::ChildrenController < ApplicationController
   end
 
   def show
+    @children = current_user.children
     @child = Child.find(params[:id])
     @mission = Mission.new()
   end
