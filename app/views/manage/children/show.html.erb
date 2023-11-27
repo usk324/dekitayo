@@ -82,7 +82,7 @@
           <h1><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h1>
           <%= pluralize(@child.missions.daily_missions.size, "mission") %>
           <% @child.missions.daily_missions.each do |mission| %>
-            <%= render partial: "shared/mission-title", locals: { mission: mission } %>
+            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
           <% end %>
         </div>
         <!-- PROFILE TAB ("All missions") -->
