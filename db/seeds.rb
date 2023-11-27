@@ -1,10 +1,12 @@
 # require "pry"
 puts "Cleaning db..."
 
+ClaimedReward.destroy_all
 User.destroy_all
 Child.destroy_all
 Mission.destroy_all
 CompletedMission.destroy_all
+Reward.destroy_all
 
 
 # users (x4)
@@ -77,7 +79,7 @@ rocky = Child.create!(
 file = File.open(Rails.root.join("app/assets/images/avatars/rocky.jpeg"))
 rocky.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
 
-puts "Creating missions..."
+puts "Creating missions and rewards..."
 # missions (x10)
 # Statuses - new - started - finished
 
@@ -228,6 +230,64 @@ Child.all.each do |child|
     completed_latitude: 35.63409963579853,
     completed_longitude: 139.7156935092282,
   )
+
+  Reward.create!(
+    name: "Ice cream",
+    description: "A yummy frozen treat",
+    price: 20,
+    inventory: 100,
+    child: child
+  )
+
+  Reward.create!(
+    name: "500 yen",
+    description: "Choose something from the store",
+    price: 15,
+    inventory: 100,
+    child: child
+  )
+
+  Reward.create!(
+    name: "Hair bow",
+    description: "Hair bow from Daiso",
+    price: 10,
+    inventory: 20,
+    child: child  )
+
+  Reward.create!(
+    name: "Museum Trip",
+    description: "Choose a museum to visit",
+    price: 50,
+    inventory: 25,
+    child: child  )
+
+  Reward.create!(
+    name: "Beach Day",
+    description: "Let's go to the beach for a day",
+    price: 75,
+    inventory: 10,
+    child: child  )
+
+  Reward.create!(
+    name: "One Outfit",
+    description: "Get a new outfit from the store",
+    price: 100,
+    inventory: 15,
+    child: child  )
+
+  Reward.create!(
+  name: "Test",
+  description: "info",
+  price: 1,
+  inventory: 0,
+  child: child  )
+
+  Reward.create!(
+    name: "Book",
+    description: "Choose something to read from the library",
+    price: 25,
+    inventory: 80,
+    child: child  )
 end
 
 puts "Finished!"
