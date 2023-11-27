@@ -62,14 +62,16 @@
                   <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">All missions</button>
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Create new mission</button>
+                  <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
                 </li>
+                <!--
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Account settings</button>
+                  <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
                 </li>
+-->
               </ul>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
@@ -110,21 +112,7 @@
               <%= f.input :photo, as: :file %>
               <div class="d-flex justify-content-center">
                 <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
-                </li>
-                <!--
-              <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false" disabled> Mission Stats </button>
-              </li>
--->
-              </ul>
+              <% end %>
               <div class="tab-content" id="myTabContent">
                 <!-- HOME TAB ("Today missions") -->
                 <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
@@ -154,12 +142,10 @@
                   <!-- Charts Tab -->
                 </div>
                 <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
-                  <!-- Charts card -->
+                  <!-- Charts card
                   <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <%# <h5 class="card-title">Success card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> %>
+                    <div class="chart-container">
+
                     </div>
                   </div>
                   <div class="card text-bg-success mb-3" style="max-width: 18rem;">
@@ -170,60 +156,58 @@
                     </div>
                   </div>
                 </div>
-                <!-- Charts card end -->
-              </div>
-            </div>
-            <!--bootstrap tabs-->
-            <div class="map">
-            </div>
-          </div>
-        </div>
-        <section class="form-popup popup-form-container" id="myForm" hidden>
-          <div class="popup-bg-container">
-            <header>
-              <h2>Create a New Mission</h2>
-            </header>
-            <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
-              <%= f.input :title %>
-              <%= f.input :description %>
-              <%= f.input :date, html5: true %>
-              <%= f.input :coins %>
-              <%= f.input :category %>
-              <%= f.input :required_photo %>
-              <%= f.input :photo, as: :file %>
-              <div class="d-flex justify-content-center">
-                <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-              </div>
-            <% end %>
-          </div>
-        </section>
-        <script defer>
-          const toggleForm = () => {
-            const form = document.getElementById("myForm");
-            form.hidden = !form.hidden;
-          };
-
-          const submitForm = () => {
-            const form = document.getElementById("myForm");
-            form.hidden = true;
-            return true;
-          };
-        </script>
-        <div class="chart-container">
-          <div class="chart">
-            <%= line_chart @child.completed_missions_data,
+                 Charts card end -->
+                  <div class="chart">
+                    <%= line_chart @child.completed_missions_data,
               colors: ["#98C1D9", "#98C1D9"],
               xtitle: "Days",
               ytitle: "Completed Missions",
               label: "Missions Assigned to #{@child.name}" %>
-          </div>
-          <div class="chart">
-            <%= column_chart @child.assigned_missions_data,
+                  </div>
+                  <div class="chart">
+                    <%= column_chart @child.assigned_missions_data,
               id: "users-chart",
               width: "700px", height: "400px",
               colors: ["#98C1D9", "#666"],
               xtitle: "Days",
               ytitle: "Assigned Missions",
               label: "Missions Assigned to #{@child.name}"  %>
+                  </div>
+                </div>
+              </div>
+              <!--bootstrap tabs-->
+              <div class="map">
+              </div>
+            </div>
           </div>
-        </div>
+          <section class="form-popup popup-form-container" id="myForm" hidden>
+            <div class="popup-bg-container">
+              <header>
+                <h2>Create a New Mission</h2>
+              </header>
+              <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
+                <%= f.input :title %>
+                <%= f.input :description %>
+                <%= f.input :date, html5: true %>
+                <%= f.input :coins %>
+                <%= f.input :category %>
+                <%= f.input :required_photo %>
+                <%= f.input :photo, as: :file %>
+                <div class="d-flex justify-content-center">
+                  <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+                </div>
+              <% end %>
+            </div>
+          </section>
+          <script defer>
+            const toggleForm = () => {
+              const form = document.getElementById("myForm");
+              form.hidden = !form.hidden;
+            };
+
+            const submitForm = () => {
+              const form = document.getElementById("myForm");
+              form.hidden = true;
+              return true;
+            };
+          </script>
