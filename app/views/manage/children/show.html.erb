@@ -1,240 +1,157 @@
-
 <h1 class="text-center p-3"><strong>Dekitayo dashboard of your kids</strong></h1>
-
-
-
 <div class="container">
   <main class="row">
     <aside class="col-2 card text-bg-secondary mb-3">
       <!-- menu bar  -->
-
-
-    <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-     <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
-<!--
+      <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
+          <!--
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
 -->
         </div>
-        </a>
-        <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %><p>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <div>
+      </a>
+      <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %>
+        <p>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-
-
-            <p> <i class="fa-solid fa-pen-to-square"></i> edit profiles </p>
-            <p> <i class="fa-regular fa-comment"></i> Notification setting </p>
-            <p> <i class="fa-solid fa-plus"></i> Add new profiles </p>
-            <br>
-            <div class="dropdown mt-3">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                Select profile
-              </button>
-              <ul class="dropdown-menu">
-                <% @children.each do |child|%>
-                  <li><a class="dropdown-item" href="#">
-                      <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
-                      </div>
-                    </a></li>
-                <% end %>
-                <div class="circular-image" style="background-color: grey">
-                  <%= link_to image_tag("plus-sign.png", class: "d-block w-100"), new_manage_child_path, class: "btn" %>
-                </div>
-              </ul>
+            <div class="offcanvas-body">
+              <div>
+              </div>
+              <p> <i class="fa-solid fa-pen-to-square"></i> edit profiles </p>
+              <p> <i class="fa-regular fa-comment"></i> Notification setting </p>
+              <p> <i class="fa-solid fa-plus"></i> Add new profiles </p>
+              <br>
+              <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  Select profile
+                </button>
+                <ul class="dropdown-menu">
+                  <% @children.each do |child|%>
+                    <li><a class="dropdown-item" href="#">
+                        <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
+                        </div>
+                      </a></li>
+                  <% end %>
+                  <div class="circular-image" style="background-color: grey">
+                    <%= link_to image_tag("plus-sign.png", class: "d-block w-100"), new_manage_child_path, class: "btn" %>
+                  </div>
+                </ul>
+              </div>
             </div>
-
           </div>
-        </div>
-        <br>
-        <br>
-        <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-solid fa-rocket"></i> New Mission</button>
-        <br>
-        <br>
-        <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-regular fa-message"></i> Message </button>
-        <br>
-        <br>
-        <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-regular fa-map"></i> Map </button>
-        <!-- menu bar  -->
-      </aside>
-      <div class ="col-10">
-        <header class="main-top">
-          <nav>
+          <br>
+          <br>
+          <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-solid fa-rocket"></i> New Mission</button>
+          <br>
+          <br>
+          <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-regular fa-message"></i> Message </button>
+          <br>
+          <br>
+          <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-regular fa-map"></i> Map </button>
+          <!-- menu bar  -->
+        </aside>
+        <div class ="col-10">
+          <header class="main-top">
             <!--bootstrap tabs-->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">All missions</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Create new mission</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Account settings</button>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-        <h2>Missions you assigned </h2>
-            <%= pluralize(@child.missions.daily_missions.size, "mission") %>
-            <% @child.missions.daily_missions.each do |mission| %>
-              <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-          <% end %>
-  </div>
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <h2>Missions you assigned </h2>
-      <%= pluralize(@child.missions.future_missions.size, "mission") %>
-        <% @child.missions.future_missions.each do |mission| %>
-          <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-        <% end %>
-
-  </div>
-  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
-</div>
-<!--bootstrap tabs-->
-
-
-
-    <div class="map">
-    </div>
-            </section>
-         </div>
-
-
-</div>
-
-
-<section class="form-popup popup-form-container" id="myForm" hidden>
-  <div class="popup-bg-container">
-    <header>
-      <h2>Create a New Mission</h2>
-    </header>
-    <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
-      <%= f.input :title %>
-        <%= f.input :description %>
-        <%= f.input :date, html5: true %>
-        <%= f.input :coins %>
-        <%= f.input :category %>
-        <%= f.input :required_photo %>
-        <%= f.input :photo, as: :file %>
-
-        <div class="d-flex justify-content-center">
-          <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-
               <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
               </li>
-
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
+                <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
               </li>
-
-<!--
-              <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false" disabled> Mission Stats </button>
-              </li>
+              <!--
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
+                </li>
 -->
             </ul>
-            <div class="tab-content" id="myTabContent">
-              <!-- HOME TAB ("Today missions") -->
-              <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                <h1><%=@child.missions.where(status: "finished").count %>/<%= @child.missions.size %></h1>
-                <% if @child.missions.daily_missions.find_by(status: "started")%>
-                  <p class="text-center">~You have <%= pluralize(@child.missions.size, "mission") %> to complete today~</p>
-                <% else %>
-                  <p class="text-center">~No missions available~</p>
-                <% end %>
-                <div id="child-missions">
-                  <% @child.missions.each do |mission| %>
-                    <% unless mission.status == "finished"%>
-                      <%= render partial: "shared/mission-title", locals: { mission: mission } %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-              <!-- PROFILE TAB ("All missions") -->
-              <div class="tab-pane fade p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                <h2>Missions you assigned </h2>
-              </div>
-              <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                <button class="btn btn-primary" onclick="toggleForm()"> Add a Mission</button>
-                <%#
-    <div class="tab-pane fade" onclick="toggleForm()" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-  %>
-
-              <!-- Charts Tab -->
-              </div>
-              <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
-
-              <!-- Charts card -->
-
-
-
-                  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <%# <h5 class="card-title">Success card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> %>
-                    </div>
-                  </div>
-
-                  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <h5 class="card-title">Success card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                  </div>
-              </div>
-              <!-- Charts card end -->
-
+          </header>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+              <h2>Missions you assigned </h2>
+              <%= pluralize(@child.missions.daily_missions.size, "mission") %>
+              <% @child.missions.daily_missions.each do |mission| %>
+                <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+              <% end %>
+            </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+              <h2>Missions you assigned </h2>
+              <%= pluralize(@child.missions.future_missions.size, "mission") %>
+              <% @child.missions.future_missions.each do |mission| %>
+                <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+              <% end %>
             </div>
           </div>
-          <!--bootstrap tabs-->
-          <div class="map">
+          <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
+            <div class="chart-container">
+              <div class="chart">
+                <%= line_chart @child.completed_missions_data,
+                colors: ["#98C1D9", "#98C1D9"],
+                xtitle: "Days",
+                ytitle: "Completed Missions",
+                label: "Missions Assigned to #{@child.name}" %>
+              </div>
+              <div class="chart">
+                <%= column_chart @child.assigned_missions_data,
+                id: "users-chart",
+                width: "700px", height: "400px",
+                colors: ["#98C1D9", "#666"],
+                xtitle: "Days",
+                ytitle: "Assigned Missions",
+                label: "Missions Assigned to #{@child.name}"  %>
+              </div>
+            </div>
           </div>
-
+        </div>
+        <!--bootstrap tabs-->
+        <div class="map">
         </div>
       </div>
-      <section class="form-popup popup-form-container" id="myForm" hidden>
-        <div class="popup-bg-container">
-          <header>
-            <h2>Create a New Mission</h2>
-          </header>
-          <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
-            <%= f.input :title %>
-            <%= f.input :description %>
-            <%= f.input :date, html5: true %>
-            <%= f.input :coins %>
-            <%= f.input :category %>
-            <%= f.input :required_photo %>
-            <%= f.input :photo, as: :file %>
-            <div class="d-flex justify-content-center">
-              <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-            </div>
+    </div>
+    <section class="form-popup popup-form-container" id="myForm" hidden>
+      <div class="popup-bg-container">
+        <header>
+          <h2>Create a New Mission</h2>
+        </header>
+        <%= simple_form_for [:manage, @child, @mission], remote: true, html: { onsubmit: "return submitForm();" } do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :date, html5: true %>
+          <%= f.input :coins %>
+          <%= f.input :category %>
+          <%= f.input :required_photo %>
+          <%= f.input :photo, as: :file %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
           <% end %>
         </div>
-      </section>
-      <script defer>
-        const toggleForm = () => {
-          const form = document.getElementById("myForm");
-          form.hidden = !form.hidden;
-        };
+      </div>
+    </section>
+    <!-- PROFILE TAB ("All missions") -->
+    <div class="tab-pane fade p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <h2>Missions you assigned </h2>
+    </div>
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+      <button class="btn btn-primary" onclick="toggleForm()"> Add a Mission</button>
+    </div>
+    <!-- Charts Tab -->
+    <!--bootstrap tabs-->
+    <script defer>
+      const toggleForm = () => {
+        const form = document.getElementById("myForm");
+        form.hidden = !form.hidden;
+      };
 
-        const submitForm = () => {
-          const form = document.getElementById("myForm");
-          form.hidden = true;
-          return true;
-        };
-      </script>
+      const submitForm = () => {
+        const form = document.getElementById("myForm");
+        form.hidden = true;
+        return true;
+      };
+    </script>
