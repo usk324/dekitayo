@@ -1,15 +1,22 @@
-<h1 class="text-center p-3"><strong>This is the dashboard of <%= @child.name %> id <%=@child.id  %></strong></h1>
+
+<h1 class="text-center p-3"><strong>Dekitayo dashboard of your kids</strong></h1>
+
+
+
 <div class="container">
   <main class="row">
-    <aside class="col-2">
+    <aside class="col-2 card text-bg-secondary mb-3">
       <!-- menu bar  -->
 
 
-      <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+     <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
+<!--
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
+-->
         </div>
-
         </a>
+        <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %><p>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
@@ -18,6 +25,12 @@
           <div class="offcanvas-body">
             <div>
             </div>
+
+
+            <p> <i class="fa-solid fa-pen-to-square"></i> edit profiles </p>
+            <p> <i class="fa-regular fa-comment"></i> Notification setting </p>
+            <p> <i class="fa-solid fa-plus"></i> Add new profiles </p>
+            <br>
             <div class="dropdown mt-3">
               <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 Select profile
@@ -25,22 +38,16 @@
               <ul class="dropdown-menu">
                 <% @children.each do |child|%>
                   <li><a class="dropdown-item" href="#">
-                      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
-                        <%= link_to child.name, manage_child_path(child_id: child.id), class: "btn btn-ghost text-white fs-4" %>
+                      <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
                       </div>
                     </a></li>
                 <% end %>
-                <div class="card-category" style="background-color: grey">
+                <div class="circular-image" style="background-color: grey">
                   <%= link_to image_tag("plus-sign.png", class: "d-block w-100"), new_manage_child_path, class: "btn" %>
                 </div>
-                <li><a class="dropdown-item" href="#"><%= @child.user%></a></li>
-                <li><a class="dropdown-item" href="#">Kurumi</a></li>
               </ul>
             </div>
-            <br>
-            <p> <i class="fa-solid fa-pen-to-square"></i> manage profiles </p>
-            <p> <i class="fa-regular fa-comment"></i> Notification setting </p>
-            <p> <i class="fa-solid fa-plus"></i> Add new profiles </p>
+
           </div>
         </div>
         <br>
@@ -63,18 +70,18 @@
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">All missions</button>
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
               </li>
-              <!-- <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Create new mission</button>
-              <button class="btn btn-primary" onclick="toggleForm()"> Add a Mission</button>
-            </li> -->
+
               <li class="nav-item" role="presentation">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled> Reward Setting </button>
-                </li>
-                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Account settings</button>
+                <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
               </li>
+
+<!--
+              <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false" disabled> Mission Stats </button>
+              </li>
+-->
             </ul>
             <div class="tab-content" id="myTabContent">
               <!-- HOME TAB ("Today missions") -->
@@ -102,10 +109,30 @@
                 <%#
     <div class="tab-pane fade" onclick="toggleForm()" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
   %>
+
+              <!-- Charts Tab -->
               </div>
-              <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
-                Set new reward
+              <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
+
+              <!-- Charts card -->
+                  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Success card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                  </div>
+
+                  <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Success card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                  </div>
               </div>
+              <!-- Charts card end -->
+
             </div>
           </div>
           <!--bootstrap tabs-->

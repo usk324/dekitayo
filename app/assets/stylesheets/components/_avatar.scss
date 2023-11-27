@@ -20,6 +20,8 @@
 }
 
 .circular-image {
+  background-size: cover;
+  background-position: center;
   width: 100px;  /* or any other size */
   height:100px; /* must be the same as width for a perfect circle */
   border-radius: 50%; /* this makes the image circular */
