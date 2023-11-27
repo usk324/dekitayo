@@ -5,16 +5,37 @@
   &.position-1 { top: 55px; left: 290px; }
   &.position-2 { top: 35px; left: 232px; }
   &.position-3 { top: 88px; left: 360px; }
-
 }
+
 
 .gameboard-tiles {
   position: relative;
 }
-// 45px 175px
-// 35  203
-// 35 340
 
+.bg-board {
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-//60 250
-//
+#snowflakeContainer {
+  background-color: #64b5f6;
+  // position: absolute;
+  // left: 0px;
+  // top: 0px;
+  height: 100vh;
+}
+.snowflake {
+  padding-left: 15px;
+  font-family: Times, Georgia, serif;
+  font-size: 14em;
+  line-height: 24px;
+  position: fixed;
+  color: #ffffff;
+  user-select: none;
+  z-index: 1000;
+}
+.snowflake:hover {
+  cursor: default;
+}
