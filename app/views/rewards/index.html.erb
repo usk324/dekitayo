@@ -7,7 +7,7 @@
     </div>
     <div class="child-coins">
       <i class="fa-solid fa-circle" style="color: #f5cb56;"></i>
-      <%= @child.coins %>
+      <%= current_child.coins %>
     </div>
   </div>
   <div class="rewards-container">
@@ -28,9 +28,9 @@
               <div class="modal-footer" data-controller="purchase-reward">
                 <button type="button" class="btn btn-primary">Favorite this reward</button>
                 <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
-                    <input type="hidden" value="<%= @child.id %>" name="child_id">
+                    <input type="hidden" value="<%= current_child.id %>" name="child_id">
                     <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
-                    <%= reward.inventory.zero? || reward.price > @child.coins ? "disabled" : '' %>>Purchase this reward</button>
+                    <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
                 <% end %>
 
                 <%# are you sure? %>
