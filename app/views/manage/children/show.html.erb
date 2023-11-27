@@ -67,11 +67,11 @@
                                 <% end %>
   </div>
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-       <h2>Missions you assigned </h2>
-                                  <%= pluralize(@child.missions.future_missions.size, "mission") %>
-                                  <% @child.missions.future_missions.each do |mission| %>
-                                    <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-                                <% end %>
+    <h2>Missions you assigned </h2>
+      <%= pluralize(@child.missions.future_missions.size, "mission") %>
+        <% @child.missions.future_missions.each do |mission| %>
+          <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+        <% end %>
 
   </div>
   <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
