@@ -1,67 +1,68 @@
 <div class="homepage-container">
-  <div class="top-page">
-    <div class=" d-flex justify-content-between align-content-center">
-
-        <div class="container-text">
-        <h1> DekiTaYo! </h1>
-          <%= link_to "Sign Up!", new_user_registration_path, class: "btn btn-gradient"%>
-        </div>
-        <div class="container-image">
-          <%= image_tag "family.jpg", class: "image-size" %>
-        </div>
-    </div>
-  </div>
-
-  <div class="home-hero-container">
-    <div class="hero-left-card-product hero-card">
-      <%= image_tag "hero.png" %>
-        <div class="hero-left-card-product-infos">
-          <h2>Adventure, Empowerment & Collaboration</h2>
-          <p>Imagine a world where tasks become missions and good habits turn into superpowers! <strong>DeKiTaYo </strong>empowers parents and kids to team up, making daily tasks a breeze and transforming routine into a fun and rewarding journey</p>
-      </div>
-    </div>
-
-    <div class="hero-right-card-product hero-card">
-      <%= image_tag "hero2.png" %>
-        <div class="hero-right-card-product-infos">
-          <h2>Productivity meets Lifelong Learning</h2>
-          <p>Unlock the magic of productivity with <strong>DeKiTaYo</strong>! Join us in creating a positive, collaborative space where parents and children work hand-in-hand to build lifelong skills</p>
-      </div>
-    </div>
-
-    <div class="hero-left-card-product hero-card">
-      <%= image_tag "hero1.png" %>
-        <div class="hero-left-card-product-infos">
-          <h2>Habit Building Haven</h2>
-          <p>Say goodbye to the bedtime battles! <strong>DeKiTaYo</strong> is the key to fostering good habits in your little ones. By making tasks engaging and rewarding, we're on a mission to help families thrive together</p>
-      </div>
-    </div>
-  </div>
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
     <!-- Carousel inner -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%= image_tag("little-girl.png", class: 'd') %>
-        <div class="carousel-caption">
+    <div class="carousel-inner carousel-height">
+      <div class="carousel-item active" id="carousel-item-container">
+        <div class="container">
+          <div class="row pt-5">
           <!-- Header and button inside the carousel item -->
-          <h1>Task management skills (all temporary)</h1>
-          <%= link_to "Sign up today", new_user_registration_path, class:"btn btn-primary btn-home-explore" %>
+            <div class="col-6 d-flex justify-content-center flex-column ps-5 carousel-text text-white">
+              <h2 id="carousel-h2"><strong>Enhanced task management skills</strong></h2>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                optio, eaque rerum!
+              </p>
+              <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4 pt-5">
+              <%= image_tag "little-girl.png", class:"w-100" %>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <%= image_tag("little-boy.png", class: 'd') %>
-        <div class="carousel-caption">
+      <div class="carousel-item" id="carousel-item-container">
+       <div class="container">
+          <div class="row pt-5">
           <!-- Header and button inside the carousel item -->
-          <h1>Get back your time to relax</h1>
-          <%= link_to "Sign up today", new_user_registration_path, class:"btn btn-primary btn-home-explore" %>
+            <div class="col-6 d-flex justify-content-center flex-column ps-5 carousel-text text-white">
+              <h2 id="carousel-h2"><strong>A fun and interactive learning environment</strong></h2>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                optio, eaque rerum!
+              </p>
+              <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4 pt-5">
+              <%= image_tag "little-boy.png", class:"w-100" %>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <%= image_tag("mom.png", class: 'd') %>
-        <div class="carousel-caption">
+      <div class="carousel-item" id="carousel-item-container">
+        <div class="container">
+          <div class="row pt-5">
           <!-- Header and button inside the carousel item -->
-          <h1>Kids will have fun</h1>
-          <%= link_to "Sign up today", new_user_registration_path, class:"btn btn-primary btn-home-explore" %>
+            <div class="col-6 d-flex justify-content-center flex-column ps-5 carousel-text text-white">
+              <h2 id="carousel-h2"><strong>Get more connected to your child</strong></h2>
+              <p class="text-white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                optio, eaque rerum!
+              </p>
+              <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4 pt-5">
+              <%= image_tag "mom.png", class:"w-100" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,5 +76,59 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>
+  <div class="home-hero-container">
+    <div class="hero-left-card-product hero-card">
+      <%= image_tag "hero.png" %>
+        <div class="hero-left-card-product-infos">
+          <h2 class="hero-header-text">Adventure, Empowerment & Collaboration</h2>
+          <p>Imagine a world where tasks become missions and good habits turn into superpowers! <strong>DeKiTaYo </strong>empowers parents and kids to team up, making daily tasks a breeze and transforming routine into a fun and rewarding journey</p>
+      </div>
+    </div>
+
+    <div class="hero-right-card-product hero-card">
+      <%= image_tag "hero2.png" %>
+        <div class="hero-right-card-product-infos">
+          <h2 class="hero-header-text">Productivity meets Lifelong Learning</h2>
+          <p>Unlock the magic of productivity with <strong>DeKiTaYo</strong>! Join us in creating a positive, collaborative space where parents and children work hand-in-hand to build lifelong skills</p>
+      </div>
+    </div>
+
+    <div class="hero-left-card-product hero-card">
+      <%= image_tag "hero1.png" %>
+        <div class="hero-left-card-product-infos">
+          <h2 class="hero-header-text">Habit Building Haven</h2>
+          <p>Say goodbye to the bedtime battles! <strong>DeKiTaYo</strong> is the key to fostering good habits in your little ones. By making tasks engaging and rewarding, we're on a mission to help families thrive together</p>
+      </div>
+    </div>
+  </div>
+  <div class="testimonial-container">
+    <div class="testimonial-header">
+      <h2><strong>Hear from our Users:</strong></h2>
+    </div>
+    <div class="customer-testimonial-container">
+      <div class="customer-testimonial">
+        <%= image_tag "mom-pic.png", class:"avatar-testimonial" %>
+        <div class="testimonial-info">
+          <h3><strong>Keiko</strong></h3>
+          <p>
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+            numquam blanditiis"
+          </p>
+        </div>
+      </div>
+      <div class="customer-testimonial">
+        <%= image_tag "child-pic.png", class:"avatar-testimonial" %>
+        <div class="testimonial-info">
+          <h3><strong>Chiyo</strong></h3>
+          <p>
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+            numquam blanditiis"
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

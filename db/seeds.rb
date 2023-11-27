@@ -90,7 +90,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: true,
-    date: Date.new(2023, 11, 20)
+    date: Date.new(2023, 11, 29)
   )
 
   Mission.create!(
@@ -101,7 +101,7 @@ Child.all.each do |child|
     child: child,
     category: :activity,
     required_photo: true,
-    date: Date.new(2023, 11, 22)
+    date: Date.new(2023, 11, 29)
   )
 
   Mission.create!(
@@ -112,7 +112,7 @@ Child.all.each do |child|
     child: child,
     category: :activity,
     required_photo: true,
-    date: Date.new(2023, 11, 21)
+    date: Date.new(2023, 11, 29)
   )
 
   Mission.create!(
@@ -123,7 +123,7 @@ Child.all.each do |child|
     child: child,
     category: :study,
     required_photo: false,
-    date: Date.new(2023, 11, 21)
+    date: Date.new(2023, 11, 30)
   )
   puts "Finished!"
 
@@ -135,7 +135,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: false,
-    date: Date.new(2023, 11, 22)
+    date: Date.new(2023, 11, 30)
   )
 
   Mission.create!(
@@ -146,7 +146,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: true,
-    date: Date.new(2023, 11, 19)
+    date: Date.new(2023, 12, 02)
   )
 
   Mission.create!(
@@ -157,7 +157,7 @@ Child.all.each do |child|
     child: child,
     category: :responsibility,
     required_photo: true,
-    date: Date.new(2023, 11, 18)
+    date: Date.new(2023, 12, 02)
   )
 
   Mission.create!(
@@ -168,7 +168,7 @@ Child.all.each do |child|
     child: child,
     category: :chore,
     required_photo: true,
-    date: Date.new(2023, 11, 18)
+    date: Date.new(2023, 12, 02)
   )
 
   Mission.create!(

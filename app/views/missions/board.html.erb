@@ -1,5 +1,5 @@
 <div id="container">
-  <div class="game-bg position-fixed vw-100 vh-100 top-0 start-0" style="background-image: url(<%= image_path "snow-background.jpg" %>)">
+  <div class="game-bg position-fixed vw-100 vh-100 top-0 start-0" style="background-image: url(<%= image_path "game_bk.jpg" %>)">
     <div id="header">
       <div class="header-left d-flex fs-3 fw-bold">
         <div>  Hi <%= current_child.name %>😎</div>
@@ -28,7 +28,7 @@
           <%= render partial: "missions/mission_card", locals: { mission: mission } %>
         <% end %>
       <% end %>
-      <%= link_to "View all Missions", missions_path, class: "btn btn-gradient" %>
+      <%= link_to "View Future Missions", missions_path, class: "btn btn-gradient" %>
     </div>
     <!--flex right -->
     <div id="gameboard" class="position-fixed">
