@@ -7,7 +7,7 @@
 
 <!-- menu bar  -->
         <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-  Change your kids
+  View another child page
 </a>
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
@@ -16,7 +16,7 @@
   </div>
   <div class="offcanvas-body">
     <div>
-      You can change the kids from here
+      You can view another child page from here
     </div>
     <div class="dropdown mt-3">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -60,14 +60,14 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                  <h2>Missions you assigned </h2>
+                  <h2>Missions you assigned: </h2>
                                   <%= pluralize(@child.missions.daily_missions.size, "mission") %>
                                   <% @child.missions.daily_missions.each do |mission| %>
                                     <%= render partial: "missions/mission_card", locals: { mission: mission } %>
                                 <% end %>
   </div>
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-       <h2>Missions you assigned </h2>
+       <h2>Missions you assigned: </h2>
                                   <%= pluralize(@child.missions.future_missions.size, "mission") %>
                                   <% @child.missions.future_missions.each do |mission| %>
                                     <%= render partial: "missions/mission_card", locals: { mission: mission } %>

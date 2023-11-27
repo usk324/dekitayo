@@ -3,6 +3,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-document.addEventListener('DOMContentLoaded', function () {
-  var myCarousel = new bootstrap.Carousel(document.getElementById('myCarousel'));
-});
