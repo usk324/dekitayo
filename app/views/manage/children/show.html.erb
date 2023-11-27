@@ -10,8 +10,7 @@
 -->
         </div>
       </a>
-      <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %>
-        <p>
+      <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %></p>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
@@ -47,10 +46,14 @@
           <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-solid fa-rocket"></i> New Mission</button>
           <br>
           <br>
-          <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-regular fa-message"></i> Message </button>
+          <button class="btn btn-primary" onclick="#"> <i class="fa-regular fa-message"></i> Message </button>
           <br>
           <br>
-          <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-regular fa-map"></i> Map </button>
+          <button class="btn btn-primary" onclick="#"> <i class="fa-regular fa-map"></i> Map </button>
+          <br>
+          <br>
+          <button class="btn btn-primary" onclick="#"> <i class="fa-solid fa-gift"></i> Rewarrd </button>
+
           <!-- menu bar  -->
         </aside>
         <div class ="col-10">
@@ -73,19 +76,24 @@
 -->
             </ul>
           </header>
+
+    <!-- Home TAB ("Today's missions") -->
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
               <h2>Missions you assigned </h2>
+                <h1><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h1>
               <%= pluralize(@child.missions.daily_missions.size, "mission") %>
               <% @child.missions.daily_missions.each do |mission| %>
-                <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+                <%= render partial: "shared/mission-title", locals: { mission: mission } %>
               <% end %>
             </div>
+    <!-- PROFILE TAB ("All missions") -->
+
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
               <h2>Missions you assigned </h2>
               <%= pluralize(@child.missions.future_missions.size, "mission") %>
               <% @child.missions.future_missions.each do |mission| %>
-                <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+                <%= render partial: "missions /mission_card", locals: { mission: mission } %>
               <% end %>
             </div>
           </div>
@@ -115,7 +123,8 @@
         </div>
       </div>
     </div>
-    <section class="form-popup popup-form-container " id="myForm" hidden>
+
+    <section class="form-popup popup-form-container" id="myForm" hidden>
       <div class="popup-bg-container">
         <header>
           <h2>Create a New Mission</h2>
@@ -140,15 +149,8 @@
         </div>
       </div>
     </section>
-    <!-- PROFILE TAB ("All missions") -->
-    <div class="tab-pane fade p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-      <h2>Missions you assigned </h2>
-    </div>
-    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-      <button class="btn btn-primary" onclick="toggleForm()"> Add a Mission</button>
-    </div>
-    <!-- Charts Tab -->
-    <!--bootstrap tabs-->
+
+
     <script defer>
       const toggleForm = () => {
         const form = document.getElementById("myForm");
