@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_123907) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_27_131920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_123907) do
   create_table "missions", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "status"
+    t.string "status", default: "incomplete", null: false
     t.integer "coins"
     t.bigint "child_id", null: false
     t.string "category"
