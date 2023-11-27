@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       resources :rewards, only: [:new, :create]
     end
   end
+
   resources :missions, only: [:index, :update] do
+    patch :update_status, on: :member
     resources :completed_missions, only: [:create]
     collection do
       get :board

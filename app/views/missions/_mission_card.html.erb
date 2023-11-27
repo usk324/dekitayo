@@ -13,10 +13,13 @@
       <h5 class="card-text d-flex align-items-center">
         <%= pluralize(mission.coins, "coin")%>
       </h5>
+      <%= button_to "Start this mission!",
+                update_status_mission_path(mission),
+                method: :patch, class: "btn btn-success" if mission.status == "pending" %>
       <%= button_to "DekiTaYo!",
                       mission_completed_missions_path(mission),
                       method: :post, class: "btn btn-primary",
-                      data: { bs_dismiss: "modal" } unless mission.status == "finished" %>
+                      data: { bs_dismiss: "modal" } if mission.status == "started" %>
       <%
 =begin%>
       <a class="btn btn-gradient" style="width:100px" data-bs-toggle="modal" data-bs-target="#<%= dom_id(mission) %>">details</a>
