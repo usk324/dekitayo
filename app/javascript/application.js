@@ -5,3 +5,6 @@ import "@popperjs/core"
 import "bootstrap"
 import "chartkick"
 import "Chart.bundle"
+document.addEventListener('DOMContentLoaded', function () {
+  var myCarousel = new bootstrap.Carousel(document.getElementById('myCarousel'));
+});
