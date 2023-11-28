@@ -18,8 +18,11 @@
 
 .child-dashboard-card {
 width: 500px;
-background-color: rgb(124, 187, 187);
+background-color: #f8f5e3;
 color: black;
+border-radius: 5px;
+border-style: solid black;
+margin-bottom: 5px;
 }
 
 .child-dashboard-card-text {
@@ -40,5 +43,3 @@ color: black;
   font-weight: bold;
   border-radius: 8px;
 }
-
-
