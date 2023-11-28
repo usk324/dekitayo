@@ -13,15 +13,18 @@ class Manage::MissionsController < ApplicationController
     @mission = Mission.new(mission_params)
     @child = Child.find(params[:child_id])
     @mission.child = @child
-    respond_to do |format|
-      if @mission.save
-        format.html
-        format.js
-      else
-        format.html
-        format.js { render :new }
-      end
-    end
+    # respond_to do |format|
+      # if @mission.save
+        # format.js
+        # format.html
+      # else
+        # format.js { render :new }
+        # format.html
+      # end
+    # end
+    @mission.save
+    redirect_to manage_child_path(@child)
+
   end
 
   private
