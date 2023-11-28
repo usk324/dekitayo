@@ -1,19 +1,24 @@
-<div class="card" style="max-width: 600px;height:70px;">
+<div class="card" style="max-width: 900px;height:70px;">
   <div class="row g-1 align-items-center">
-    <div class="col-md-3">
-      <h5><%= mission.date %></h5>
+    <div class="col-md-2">
+      <h5 class="text-center"><%= mission.date %></h5>
     </div>
     <div class="col-md-6">
         <p><%= mission.title %></p>
-        <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
+<i class="fa-solid fa-circle-info"></i>See description
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <h5 class="card-text d-flex align-items-center">
         <%= pluralize(mission.coins, "coin")%>
       </h5>
-<i class="fa-solid fa-circle-info"></i>
     </div>
+
+    <div class="col-md-2">
+        <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
+    </div>
+
+
   </div>
 
 
