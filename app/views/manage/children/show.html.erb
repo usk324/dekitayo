@@ -1,13 +1,14 @@
-<h1 class="text-center p-3"><strong>Dekitayo dashboard of your kids</strong></h1>
+<h1 class="text-center p-3"><strong> Dekitayo dashboard of your kids</strong></h1>
+
+
+
+
 <div class="container">
   <main class="row">
     <aside class="col-2 card text-bg-secondary mb-3">
-      <!-- menu bar  -->
+      <!-- menu bar from the end -->
       <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
-          <!--
-        <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
--->
         </div>
       </a>
       <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %></p>
@@ -53,11 +54,11 @@
       <br>
       <br>
       <button class="btn btn-primary" onclick="#"> <i class="fa-solid fa-gift"></i> Rewarrd </button>
-      <!-- menu bar  -->
+      <!-- aside menu bar  -->
     </aside>
     <div class ="col-10">
+        <!--bootstrap tabs -->
       <header class="main-top">
-        <!--bootstrap tabs-->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
@@ -68,29 +69,33 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
           </li>
-          <!--
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission Charts</button>
-                </li>
--->
         </ul>
       </header>
       <!-- Home TAB ("Today's missions") -->
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-          <h2>Missions you assigned </h2>
-          <h1><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h1>
+          <h3 mt-3>Missions for today <%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h3>
           <%= pluralize(@child.missions.daily_missions.size, "mission") %>
           <% @child.missions.daily_missions.each do |mission| %>
-            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+            <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
           <% end %>
         </div>
         <!-- PROFILE TAB ("All missions") -->
         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-          <h2>Missions you assigned </h2>
+        <!-- Filtering Option -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"> Started</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"> Finished</label>
+          </div>
+
+        <!-- Show all missions in the future -->
           <%= pluralize(@child.missions.future_missions.size, "mission") %>
           <% @child.missions.future_missions.each do |mission| %>
-            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+            <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
           <% end %>
         </div>
       </div>
