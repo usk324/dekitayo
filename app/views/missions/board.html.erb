@@ -43,19 +43,16 @@
                 </div>
                 <div class="col-md-3">
                   <h2 class="card-text d-flex align-items-center child-dashboard-card-text"> <%= mission.coins %>&#160;<i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></h2>
-                  <%= button_to "Start this mission!",
-                      update_status_mission_path(mission),
-                      method: :patch, class: "btn btn-success" if mission.status == "pending" %>
                   <%= button_to "DekiTaYo!",
                       mission_completed_missions_path(mission),
-                      method: :post, class: "btn btn-primary",
+                      method: :post, class: "btn btn-board-dekitayo",
                       data: { bs_dismiss: "modal" } if mission.status == "started" %>
                 </div>
               </div>
             </div>
           <% end %>
         <% end %>
-        <%= link_to "View Future Missions", missions_path, class: "btn btn-gradient" %>
+        <%= link_to "View Future Missions", missions_path, class: "btn btn-view-all" %>
       </div>
       <!--flex right -->
       <div id="gameboard" class="flex-grow-1">
