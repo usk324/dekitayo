@@ -5,8 +5,8 @@ module ApplicationHelper
 
   def status_color_class(status)
     case status
-    when "completed"
-      "completed-status"
+    when "finished"
+      "finished-status"
     when "started"
       "started-status"
     else
