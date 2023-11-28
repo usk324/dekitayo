@@ -49,7 +49,10 @@
       <button class="btn btn-primary" onclick="#"> <i class="fa-regular fa-map"></i> Map </button>
       <br>
       <br>
-      <button class="btn btn-primary" onclick="#"> <i class="fa-solid fa-gift"></i> Rewarrd </button>
+      <button class="btn btn-primary" onclick="#"> <i class="fa-solid fa-gift"　></i> <%= link_to "reward", rewards_path, class: "nav-link nav-link-1 text-white" %>
+ </button>
+
+
       <!-- aside menu bar  -->
     </aside>
     <div class ="col-10">
@@ -127,6 +130,9 @@
       </div>
     </div>
   </div>
+
+
+
   <section class="form-popup popup-form-container" id="myForm" hidden>
     <div class="popup-bg-container">
       <header class="d-flex justify-content-between">
