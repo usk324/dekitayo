@@ -4,14 +4,22 @@
       <h5 class="text-center"><%= mission.date %></h5>
     </div>
     <div class="col-md-6">
+
+      <p><%= mission.title %></p>
+      <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
+
         <p><%= mission.title %></p>
 <i class="fa-solid fa-circle-info"></i>See description
+
 
     </div>
     <div class="col-md-2">
       <h5 class="card-text d-flex align-items-center">
         <%= pluralize(mission.coins, "coin")%>
       </h5>
+
+      <i class="fa-solid fa-circle-info"></i>
+
     </div>
 
     <div class="col-md-2">
@@ -20,8 +28,6 @@
 
 
   </div>
-
-
   <!-- Modal -->
   <div class="modal fade" id="<%= dom_id(mission) %>" tabindex="-1" aria-labelledby="<%= dom_id(mission) %>Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
@@ -36,17 +42,10 @@
           <h3><%= mission.description %></h3>
           <p class="<%= status_color_class(mission.status) %>">Status = <%= mission.status %></p>
         </div>
-        <div class="modal-footer">
-          <%= button_to "DekiTaYo!",
-                      mission_completed_missions_path(mission),
-                      method: :post, class: "btn btn-primary",
-                      data: { bs_dismiss: "modal" } unless mission.status == "finished" %>
-          <%# <button type="button" class="btn btn-primary" data-bs-dismiss="modal">DekiTaYo!</button> %>
-          <button type="button" class="btn btn-third">Keep Doing</button>
-        </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <%#
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
