@@ -1,13 +1,15 @@
 <div class="reward-index-container">
-  <div class="reward-header">
-    <div class="reward-header-name">
+  <div class="reward-header row">
+    <div class="col-4"></div>
+    <div class="reward-header-name col-4">
       <i class="fa-regular fa-star" style="color: #ffc342;"></i>
       <h1><strong>REWARDS</strong></h1>
       <i class="fa-regular fa-star" style="color: #ffc342;"></i>
     </div>
-    <div class="child-coins">
+    <div class="col-2"></div>
+    <div class="child-coins col-2">
       <i class="fa-solid fa-circle" style="color: #f5cb56;"></i>
-      <%= current_child.coins %>
+      <span><%= current_child.coins %></span>
     </div>
   </div>
   <div class="rewards-container">
@@ -20,10 +22,15 @@
                 <h5 class="modal-title" id="rewardModalLabel"><%= reward.name %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body modal-body-content">
                 <%= reward.description %>
-                <%= reward.price %>
-                <%= reward.inventory %>
+                <div class="modal-content-bottom">
+                  <div class="modal-content-price">
+                    <i class="fa-solid fa-circle" style="color: #f5cb56;"></i>
+                    <span class="text-black"><%= reward.price %></span>
+                  </div>
+                  <%= reward.inventory %> left for sale.
+                </div>
               </div>
               <div class="modal-footer" data-controller="purchase-reward favorite-reward">
                 <%= simple_form_for(current_child) do |f| %>
@@ -42,10 +49,10 @@
             </div>
           </div>
         </div>
-        <li class="col-4">
-          <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
-           <div class="reward-card">
-            <div class="reward-card-top <%= reward.inventory.zero? ? 'disabled-reward' : '' %>">
+        <li class="col-4 d-flex">
+          <%#= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
+           <div class="reward-card" data-bs-toggle="modal" data-bs-target="#rewardModal<%= reward.id %>">
+            <div class="flex-grow-1 reward-card-top <%= reward.inventory.zero? ? 'disabled-reward' : '' %>">
               <h3><strong><%= reward.name %></strong>
               <% if reward.id == current_child.favorite_reward %>
                 <i class="fa-solid fa-star" style="color: #ffed75;"></i>
@@ -70,10 +77,10 @@
                 </div>
               </div> %>
               <i class="fa-solid fa-circle" style="color: #f5cb56;"></i>
-              <h4 class="text-black"><%= reward.price %></h4>
+              <span class="text-black"><%= reward.price %></span>
             </div>
           </div>
-          <% end %>
+          <%# end %>
         </li>
       <% end %>
     </div>
