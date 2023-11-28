@@ -75,7 +75,7 @@
   &.position-63 { top: 1856px; left: 1031px; }
   &.position-64 { top: 1856px; left: 897px; }
   &.position-65 { top: 1856px; left: 762px; }
-  &.position-66 { top: 1975px; left: 665px; }
+  &.position-66 { top: 1979px; left: 662px; }
 }
 
 .dancing-monkey {
@@ -92,30 +92,52 @@
 }
 
 #snowflakeContainer {
-  background-color: black;
-  position: relative;
-  // left: 0px;
-  // top: 0px;
+  background-color: lightblue;
   height: 100vh;
 }
-.snowflake {
-  padding-left: 15px;
-  font-family: Times, Georgia, serif;
-  font-size: 14em;
-  line-height: 24px;
-  position: fixed;
-  color: #ffffff;
-  user-select: none;
-  z-index: 1000;
-}
-.snowflake:hover {
-  cursor: default;
+
+
+.snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.completed-status {
-  color: green;
+.snowflake {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: snowflakes-fall linear infinite;
+}
+
+@keyframes snowflakes-fall {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.finished-status {
+    color: green;
 }
 
 .started-status {
-  color: orange;
+  color: rgb(200, 130, 0);
+}
+
+
+
+.gameboard-marker {
+  text-align: center;
+  font-size: 110px;
+
 }
