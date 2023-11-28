@@ -2,7 +2,7 @@
   <div class="reward-header">
     <div class="reward-header-name">
       <i class="fa-regular fa-star" style="color: #ffc342;"></i>
-      <h1>REWARDS</h1>
+      <h1><strong>REWARDS</strong></h1>
       <i class="fa-regular fa-star" style="color: #ffc342;"></i>
     </div>
     <div class="child-coins">
@@ -25,12 +25,15 @@
                 <%= reward.price %>
                 <%= reward.inventory %>
               </div>
-              <div class="modal-footer" data-controller="purchase-reward">
-                <button type="button" class="btn btn-primary">Favorite this reward</button>
+              <div class="modal-footer" data-controller="purchase-reward favorite-reward">
+                <%= simple_form_for(current_child) do |f| %>
+                  <input type="hidden" value="<%= reward.id %>%" name="child[favorite_reward]">
+                  <button type="submit" class="btn btn-primary" data-action="click->favorite-reward#favorite">Favorite this reward</button>
+                <% end %>
                 <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
-                    <input type="hidden" value="<%= current_child.id %>" name="child_id">
-                    <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
-                    <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
+                  <input type="hidden" value="<%= current_child.id %>" name="child_id">
+                  <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase">
+                  <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>Purchase this reward</button>
                 <% end %>
 
                 <%# are you sure? %>
@@ -42,8 +45,12 @@
         <li class="col-4">
           <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
            <div class="reward-card">
-            <div class="reward-card-top">
-              <h3><%= reward.name %></h3>
+            <div class="reward-card-top <%= reward.inventory.zero? ? 'disabled-reward' : '' %>">
+              <h3><strong><%= reward.name %></strong>
+              <% if reward.id == current_child.favorite_reward %>
+                <i class="fa-solid fa-star" style="color: #ffed75;"></i>
+              <% end %>
+              </h3>
               <%= image_tag @random_images.sample %>
             </div>
             <div class="d-flex">
