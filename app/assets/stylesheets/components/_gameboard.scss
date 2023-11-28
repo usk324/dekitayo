@@ -153,3 +153,7 @@
   height: calc(100vh - 80px);
   background-color: lightblue;
 }
+
+.coins {
+  z-index: 99999;
+}
