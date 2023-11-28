@@ -3,9 +3,11 @@
     <h1 class="text-center mb-5 fw-bold fst-italic text-white"> Welcome! Who's Joining? </h1>
     <div class="d-flex justify-content-center mb-5">
       <% @children.each do |child|%>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
-          <%= link_to child.name, board_missions_path(child_id: child.id), class: "btn btn-ghost text-white fs-4" %>
-        </div>
+        <%= link_to board_missions_path(child_id: child.id), class: "btn btn-ghost text-white fs-4" do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
+            <%= child.name %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
