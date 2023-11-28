@@ -52,7 +52,7 @@
         </div>
         <li class="col-4 d-flex justify-content-center">
           <%#= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
-           <div class="reward-card" data-bs-toggle="modal" data-bs-target="#rewardModal<%= reward.id %>">
+           <div class="reward-card mb-5" data-bs-toggle="modal" data-bs-target="#rewardModal<%= reward.id %>">
             <div class="flex-grow-1 justify-content-center reward-card-top <%= reward.inventory.zero? ? 'disabled-reward' : '' %>">
               <h3><strong><%= reward.name %></strong>
               <% if reward.id == current_child.favorite_reward %>
