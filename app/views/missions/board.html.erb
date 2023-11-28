@@ -10,7 +10,7 @@
         <div><i class="fa-regular fa-clock"></i> <%=Time.now.strftime("%H:%M") %></div>
       </div>
       <div class="header-center-right d-flex fs-4 align-items-center">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-self-cente mt-2">
           <p><i class="<%= @weather_icon %>"></i></p>
           <p> <%= @weather['main']['temp'] %> °C</p>
         </div>
