@@ -43,7 +43,7 @@ maia = Child.create!(
   name: "Maia",
   date_of_birth: "2022/10/05",
   coins: "11",
-  user: asha,
+  user: yusuke,
   position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/maia.jpeg"))
@@ -61,7 +61,7 @@ henry.photo.attach(io: file, filename: "nes.jpeg", content_type: "image/jpeg")
 
 iroha = Child.create!(
   name: "Iroha",
-  date_of_birth: "2022/10/05",
+  date_of_birth: "2015/07/01",
   coins: "89",
   user: yusuke,
   position: 0,
@@ -73,7 +73,7 @@ rocky = Child.create!(
   name: "Rocky",
   date_of_birth: "2019/04/14",
   coins: "56",
-  user: yusuke,
+  user: asha,
   position: 0,
 )
 file = File.open(Rails.root.join("app/assets/images/avatars/rocky.jpeg"))
