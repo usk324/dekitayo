@@ -87,7 +87,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Clear your study desk",
     description: "pack away all the stuff on your desk and then wipe it with cleaning wipe",
-    status: "not started",
+    status: "pending",
     coins: 1,
     child: child,
     category: :chore,
@@ -98,7 +98,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Visit grandma after school",
     description: "walk to grandma's house after school and take a picture with grandma",
-    status: "not started",
+    status: "pending",
     coins: 1,
     child: child,
     category: :activity,
@@ -154,7 +154,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Write in your journal",
     description: "write 3 sentences about your day in your journal",
-    status: "not started",
+    status: "pending",
     coins: 2,
     child: child,
     category: :responsibility,
