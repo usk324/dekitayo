@@ -92,8 +92,9 @@
 }
 
 #snowflakeContainer {
-  background-color: lightblue;
   height: 100vh;
+  width: 100vw;
+  position: fixed;
 }
 
 
@@ -140,4 +141,15 @@
   text-align: center;
   font-size: 110px;
 
+}
+
+#gameboard {
+  overflow: scroll;
+  // position: relative;
+  right: 600px;
+}
+
+#gameboard-body {
+  height: calc(100vh - 80px);
+  background-color: lightblue;
 }
