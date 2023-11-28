@@ -23,11 +23,11 @@ class MissionsController < GamesController
     redirect_to missions_path, notice: "Great job, you finished this mission!"
   end
 
-  def update_status
-    @mission = Mission.find(params[:id])
-    @mission.update(status: "started")
-    redirect_to board_missions_path, notice: "Mission started!"
-  end
+  # def update_status
+  #   @mission = Mission.find(params[:id])
+  #   @mission.update(status: "started")
+  #   redirect_to board_missions_path, notice: "Mission started!"
+  # end
 
   private
 

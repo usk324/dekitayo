@@ -26,11 +26,6 @@
         <div class="d-flex justify-content-between">
           <h2><strong>Today's Missions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</strong><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h2>
         </div>
-        <% if current_child.missions.daily_missions.find_by(status: "started")%>
-          <p><%= current_child.name %>, you have <%= pluralize(current_child.missions.daily_missions.size, "mission") %> to complete today. Let's do it!</p>
-        <% else %>
-          <p class="text-center">~No missions available~</p>
-        <% end %>
         <% current_child.missions.daily_missions.each do |mission| %>
           <% unless mission.status == "blank"%>
             <div class="card child-dashboard-card">
@@ -45,7 +40,7 @@
                   <h2 class="card-text d-flex align-items-center child-dashboard-card-text"> <%= mission.coins %>&#160;<i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></h2>
                   <%= button_to "DekiTaYo!",
                       mission_completed_missions_path(mission),
-                      method: :post, class: "btn btn-board-dekitayo",
+                      method: :post, class: "btn-board-dekitayo",
                       data: { bs_dismiss: "modal" } if mission.status == "started" %>
                 </div>
               </div>
