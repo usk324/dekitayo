@@ -850,7 +850,7 @@ Child.all.each do |child|
   )
 
   Reward.create!(
-    name: "Ice cream",
+    name: "Ice Cream",
     description: "A yummy frozen treat",
     price: 20,
     inventory: 100,
@@ -858,7 +858,7 @@ Child.all.each do |child|
   )
 
   Reward.create!(
-    name: "500 yen",
+    name: "Eraser Set",
     description: "Choose something from the store",
     price: 15,
     inventory: 100,
@@ -873,7 +873,7 @@ Child.all.each do |child|
     child: child  )
 
   Reward.create!(
-    name: "Museum Trip",
+    name: "Museum",
     description: "Choose a museum to visit",
     price: 50,
     inventory: 25,
@@ -894,7 +894,7 @@ Child.all.each do |child|
     child: child  )
 
   Reward.create!(
-  name: "Visit Tokyo Dome",
+  name: "Tokyo Dome",
   description: "See a baseball game for this season",
   price: 75,
   inventory: 0,
