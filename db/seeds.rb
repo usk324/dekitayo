@@ -899,9 +899,9 @@ Child.all.each do |child|
     child: child  )
 
   Reward.create!(
-  name: "Test",
-  description: "info",
-  price: 1,
+  name: "Visit Tokyo Dome",
+  description: "See a baseball game for this season",
+  price: 75,
   inventory: 0,
   child: child  )
 
