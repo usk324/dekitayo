@@ -6,9 +6,9 @@
       <h1><strong>REWARDS</strong></h1>
       <i class="fa-regular fa-star" style="color: #ffc342;"></i>
     </div>
-    <div class="col-2"></div>
-    <div class="child-coins col-2">
-      <i class="fa-solid fa-circle" style="color: #f5cb56;"></i>
+    <div class="col-3"></div>
+    <div class="child-coins col-1">
+      <i class="fa-solid fa-circle pe-3" style="color: #f5cb56;"></i>
       <span><%= current_child.coins %></span>
     </div>
   </div>
@@ -24,12 +24,13 @@
               </div>
               <div class="modal-body modal-body-content">
                 <%= reward.description %>
+                <p></p>
                 <div class="modal-content-bottom">
                   <div class="modal-content-price">
-                    <i class="fa-solid fa-circle" style="color: #f5cb56;"></i>
-                    <span class="text-black"><%= reward.price %></span>
+                    <i class="fa-solid fa-circle me-2" style="color: #f5cb56;"></i>
+                    <span class="text-black">  <%= reward.price %></span>
                   </div>
-                  <%= reward.inventory %> left for sale.
+                  <%= reward.inventory %> left
                 </div>
               </div>
               <div class="modal-footer" data-controller="purchase-reward favorite-reward">
@@ -39,8 +40,8 @@
                 <% end %>
                 <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
                   <input type="hidden" value="<%= current_child.id %>" name="child_id">
-                  <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase">
-                  <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>Purchase this reward</button>
+                  <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
+                  <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
                 <% end %>
 
                 <%# are you sure? %>
@@ -49,10 +50,10 @@
             </div>
           </div>
         </div>
-        <li class="col-4 d-flex">
+        <li class="col-4 d-flex justify-content-center">
           <%#= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
-           <div class="reward-card" data-bs-toggle="modal" data-bs-target="#rewardModal<%= reward.id %>">
-            <div class="flex-grow-1 reward-card-top <%= reward.inventory.zero? ? 'disabled-reward' : '' %>">
+           <div class="reward-card mb-5" data-bs-toggle="modal" data-bs-target="#rewardModal<%= reward.id %>">
+            <div class="flex-grow-1 justify-content-center reward-card-top <%= reward.inventory.zero? ? 'disabled-reward' : '' %>">
               <h3><strong><%= reward.name %></strong>
               <% if reward.id == current_child.favorite_reward %>
                 <i class="fa-solid fa-star" style="color: #ffed75;"></i>

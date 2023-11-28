@@ -14,7 +14,11 @@
                 numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
                 optio, eaque rerum!
               </p>
-              <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+               <% if user_signed_in? %>
+                <%= link_to "View DekitaYo Portal", manage_children_path, class:"w-25 btn btn-primary" %>
+              <% else %>
+                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+              <% end %>
             </div>
             <div class="col-1"></div>
             <div class="col-4 pt-5">
@@ -35,7 +39,11 @@
                 numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
                 optio, eaque rerum!
               </p>
-              <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+              <% if user_signed_in? %>
+                <%= link_to "View DekitaYo Portal", manage_children_path, class:"w-25 btn btn-primary" %>
+              <% else %>
+                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+              <% end %>
             </div>
             <div class="col-1"></div>
             <div class="col-4 pt-5">
@@ -56,7 +64,11 @@
                 numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
                 optio, eaque rerum!
               </p>
-              <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+               <% if user_signed_in? %>
+                <%= link_to "View DekitaYo Portal", manage_children_path, class:"w-25 btn btn-primary" %>
+              <% else %>
+                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+              <% end %>
             </div>
             <div class="col-1"></div>
             <div class="col-4 pt-5">
@@ -102,7 +114,7 @@
   <div class="testimonial-container">
     <div class="testimonial-header">
       <h2><strong style="
-    border-bottom: 2px solid #7E604C">Hear from our Users:</strong></h2>
+    border-bottom: 2px solid #B0B0B0">Hear from our Users:</strong></h2>
     </div>
     <div class="customer-testimonial-container">
       <div class="customer-testimonial">
