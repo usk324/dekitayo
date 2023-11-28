@@ -41,7 +41,7 @@
                 <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
                   <input type="hidden" value="<%= current_child.id %>" name="child_id">
                   <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
-                  <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
+                  <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>> Purchase this reward</button>
                 <% end %>
 
                 <%# are you sure? %>
