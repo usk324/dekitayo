@@ -25,3 +25,20 @@ color: black;
 .child-dashboard-card-text {
   font-size: 25px;
 }
+
+.card-dashboard {
+  background-size: cover;
+  background-position: center;
+  width: 250px;
+  height: 10px;
+  margin-left: 2%;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+
