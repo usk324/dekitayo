@@ -15,8 +15,10 @@ class Manage::MissionsController < ApplicationController
     @mission.child = @child
     respond_to do |format|
       if @mission.save
+        format.html
         format.js
       else
+        format.html
         format.js { render :new }
       end
     end
