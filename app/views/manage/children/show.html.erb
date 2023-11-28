@@ -2,8 +2,7 @@
 <div class="container">
   <main class="row">
     <aside class="col-2 card text-bg-secondary mb-3">
-
-<!-- menu bar from the end -->
+      <!-- menu bar from the end -->
       <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
         </div>
@@ -29,8 +28,8 @@
               <% @children.each do |child|%>
                 <li><a class="dropdown-item" href="#">
                     <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
-                 <%= link_to child.name, manage_child_path(child), class: "btn fs-9 text-white" %>
-                   </div>
+                      <%= link_to child.name, manage_child_path(child), class: "btn fs-9 text-white" %>
+                    </div>
                   </a></li>
               <% end %>
               <div class="circular-image" style="background-color: grey">
@@ -40,11 +39,10 @@
           </div>
         </div>
       </div>
-<!--end of menu bar -->
-
+      <!--end of menu bar -->
       <br>
       <br>
-      <button class="btn btn-primary" onclick="toggleForm()"> <i class="fa-solid fa-rocket"></i> New Mission</button>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fa-solid fa-rocket"></i> New Mission</button>
       <br>
       <br>
       <button class="btn btn-primary" onclick="#"> <i class="fa-regular fa-message"></i> Message </button>
@@ -54,10 +52,9 @@
       <br>
       <br>
       <button class="btn btn-primary" onclick="#"> <i class="fa-solid fa-gift"　></i> <%= link_to "reward", rewards_path, class: "nav-link nav-link-1 text-white" %>
-     </button>
+      </button>
       <!-- aside menu bar  -->
     </aside>
-
     <div class ="col-10">
       <!--bootstrap tabs -->
       <header class="main-top">
@@ -133,44 +130,35 @@
       </div>
     </div>
   </div>
-
-
-
-  <section class="form-popup popup-form-container" id="myForm" hidden>
-    <div class="popup-bg-container">
-      <header class="d-flex justify-content-between">
-        <h2>Create a New Mission</h2>
-        <%= link_to " ", manage_child_path(@child), class: "fa-solid fa-xmark fs-4"%>
-      </header>
-      <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
-        <div class="d-flex justify-content-between">
-          <div class="form-column">
-            <%= f.input :title %>
-            <%= f.input :coins %>
-            <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
-            <%= f.input :required_photo %>
-          </div>
-          <div class="form-colum">
-            <%= f.input :description %>
-            <%= f.input :date, html5: true %>
-            <%= f.input :photo, as: :file %>
+  <!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-style">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
+            <div class="d-flex justify-content-between">
+              <div class="form-column">
+                <%= f.input :title %>
+                <%= f.input :coins %>
+                <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
+                <%= f.input :required_photo %>
+              </div>
+              <div class="form-colum">
+                <%= f.input :description %>
+                <%= f.input :date, html5: true %>
+                <%= f.input :photo, as: :file %>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+            <% end %>
           </div>
         </div>
-        <div class="d-flex justify-content-center">
-          <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-        <% end %>
       </div>
     </div>
-  </section>
-  <script defer>
-    const toggleForm = () => {
-      const form = document.getElementById("myForm");
-      form.hidden = !form.hidden;
-    };
-
-    const submitForm = () => {
-      const form = document.getElementById("myForm");
-      form.hidden = true;
-      return true;
-    };
-  </script>
+  </div>
