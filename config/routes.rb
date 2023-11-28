@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :children, only: [:update]
+
   resources :missions, only: [:index, :update] do
     patch :update_status, on: :member
     resources :completed_missions, only: [:create]

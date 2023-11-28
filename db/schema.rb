@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_123907) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_031221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_123907) do
     t.integer "sash_id"
     t.integer "level", default: 0
     t.integer "position", default: 1, null: false
+    t.integer "favorite_reward"
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
