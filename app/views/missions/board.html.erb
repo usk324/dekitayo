@@ -6,85 +6,91 @@
       <div class="header-left d-flex fs-3 fw-bold">
         <div>  Welcome back, <%= current_child.name %>!</div>
       </div>
-      <div class="header-center d-flex  gap-4 fs-4">
-        <div> Today is <%=Time.now.strftime("%A, %B %d, %Y") %> </div>
-        <div><i class="fa-solid fa-map-pin"></i> It is <%= @weather['main']['temp'] %> °C in Tokyo</div>
+      <div class="header-center-left d-flex  gap-5 fs-4">
+        <div> Today is <%=Time.now.strftime("%A, %B %d") %> </div>
         <div><i class="fa-regular fa-clock"></i> <%=Time.now.strftime("%H:%M") %></div>
+      </div>
+      <div class="header-center-right d-flex fs-4 align-items-center">
+        <div class="d-flex align-items-center">
+          <p><i class="<%= @weather_icon %>"></i></p>
+          <p> <%= @weather['main']['temp'] %> °C</p>
+        </div>
       </div>
       <div class="header-right d-flex">
         <div><%= link_to current_child.coins, rewards_path, class: "btn fs-3 fw-bold "%><i class="fa-solid fa-sack-dollar fa-beat fa-2xl" style="color: #e69b19;"></i></div>
       </div>
     </div>
-    <!--flex left -->
-    <div class="missions position-fixed">
-      <div class="d-flex justify-content-between">
-        <h2><strong>Today's Missions</strong></h2>
-        <h1><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h1>
-      </div>
-      <% if current_child.missions.daily_missions.find_by(status: "started")%>
-        <p class="text-center">~You have <%= pluralize(current_child.missions.daily_missions.size, "mission") %> to complete today~</p>
-      <% else %>
-        <p class="text-center">~No missions available~</p>
-      <% end %>
-      <% current_child.missions.daily_missions.each do |mission| %>
-        <% unless mission.status == "finished"%>
-          <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-        <% end %>
-      <% end %>
-      <%= link_to "View Future Missions", missions_path, class: "btn btn-gradient" %>
-    </div>
-    <!--flex right -->
-    <div id="gameboard" class="position-fixed">
-      <%# <%= render "shared/gameboard", position: current_child.position %>
-    </div>
-    <div>
-      <%= image_tag "star.png", class: "tile-position position-#{current_child.position} character" %>
-      <%# -------------tiles 1-9--------------- %>
-      <% (1..9).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------Special tile #10----------- %>
-      <%= image_tag("purple.png", alt: "game tile", size: "150x150", class: "tile-position position-10") %>
-      <%# -------------tiles 11-19--------------- %>
-      <% (11..19).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------Special tile #20----------- %>
-      <%= image_tag("multi.png", alt: "game tile", size: "150x150", class: "tile-position position-20") %>
-      <%# -------------tiles 21-29--------------- %>
-      <% (21..29).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------Special tile #30----------- %>
-      <%= image_tag("blue.png", alt: "game tile", size: "150x150", class: "tile-position position-30") %>
-      <%# -------------tiles 31-39--------------- %>
-      <% (31..39).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------Special tile #40----------- %>
-      <%= image_tag("pink.png", alt: "game tile", size: "150x150", class: "tile-position position-40") %>
-      <%# -------------tiles 41-49--------------- %>
-      <% (41..49).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------Special tile #50----------- %>
-      <%= image_tag("purpleblue.png", alt: "game tile", size: "150x150", class: "tile-position position-50") %>
-      <%# -------------tiles 51-59--------------- %>
-      <% (51..59).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------Special tile #60----------- %>
-      <%= image_tag("red.png", alt: "game tile", size: "150x150", class: "tile-position position-60") %>
-      <%# -------------tiles 61-65--------------- %>
-      <% (61..65).each do |number| %>
-        <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
-      <% end %>
-      <%# ------FINISH tile #66----------- %>
-      <%= image_tag("gold.png", alt: "game tile", size: "350x350", class: "tile-position position-66") %>
-      <%# ---------------gamboard background items-------------- %>
-      <%= image_tag("https://gifdb.com/images/high/cute-cartoon-dancing-monkey-b8w8o0wwfcqkw67o.gif", size: "450x450", class: "dancing-monkey") %>
-    </div>
   </div>
+  <!--flex left -->
+  <div class="missions position-fixed">
+    <div class="d-flex justify-content-between">
+      <h2><strong>Today's Missions</strong></h2>
+      <h1><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h1>
+    </div>
+    <% if current_child.missions.daily_missions.find_by(status: "started")%>
+      <p class="text-center">~You have <%= pluralize(current_child.missions.daily_missions.size, "mission") %> to complete today~</p>
+    <% else %>
+      <p class="text-center">~No missions available~</p>
+    <% end %>
+    <% current_child.missions.daily_missions.each do |mission| %>
+      <% unless mission.status == "finished"%>
+        <%= render partial: "missions/mission_card", locals: { mission: mission } %>
+      <% end %>
+    <% end %>
+    <%= link_to "View Future Missions", missions_path, class: "btn btn-gradient" %>
+  </div>
+  <!--flex right -->
+  <div id="gameboard" class="position-fixed">
+    <%# <%= render "shared/gameboard", position: current_child.position %>
+  </div>
+  <div>
+    <%= image_tag "star.png", class: "tile-position position-#{current_child.position} character" %>
+    <%# -------------tiles 1-9--------------- %>
+    <% (1..9).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------Special tile #10----------- %>
+    <%= image_tag("purple.png", alt: "game tile", size: "150x150", class: "tile-position position-10") %>
+    <%# -------------tiles 11-19--------------- %>
+    <% (11..19).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------Special tile #20----------- %>
+    <%= image_tag("multi.png", alt: "game tile", size: "150x150", class: "tile-position position-20") %>
+    <%# -------------tiles 21-29--------------- %>
+    <% (21..29).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------Special tile #30----------- %>
+    <%= image_tag("blue.png", alt: "game tile", size: "150x150", class: "tile-position position-30") %>
+    <%# -------------tiles 31-39--------------- %>
+    <% (31..39).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------Special tile #40----------- %>
+    <%= image_tag("pink.png", alt: "game tile", size: "150x150", class: "tile-position position-40") %>
+    <%# -------------tiles 41-49--------------- %>
+    <% (41..49).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------Special tile #50----------- %>
+    <%= image_tag("purpleblue.png", alt: "game tile", size: "150x150", class: "tile-position position-50") %>
+    <%# -------------tiles 51-59--------------- %>
+    <% (51..59).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------Special tile #60----------- %>
+    <%= image_tag("red.png", alt: "game tile", size: "150x150", class: "tile-position position-60") %>
+    <%# -------------tiles 61-65--------------- %>
+    <% (61..65).each do |number| %>
+      <%= image_tag("game_tile.png", alt: "game tile", size: "150x150", class: "tile-position position-#{number}") %>
+    <% end %>
+    <%# ------FINISH tile #66----------- %>
+    <%= image_tag("gold.png", alt: "game tile", size: "350x350", class: "tile-position position-66") %>
+    <%# ---------------gamboard background items-------------- %>
+    <%= image_tag("https://gifdb.com/images/high/cute-cartoon-dancing-monkey-b8w8o0wwfcqkw67o.gif", size: "450x450", class: "dancing-monkey") %>
+  </div>
+</div>
 </div>
 </div>
 <%# -------------------Javascript------------------ %>
