@@ -32,7 +32,7 @@
         <%#------- mission card START------- %>
         <% current_child.missions.daily_missions.in_order_of(:status, Mission.statuses.keys).each do |mission| %>
           <% unless mission.status == "blank"%>
-            <div class="card child-dashboard-card">
+            <div class="card child-dashboard-card <%= 'bg-gray' if mission.status == "finished" %>">
               <div class="row g-1 align-items-center p-1">
                 <div class="col-md-9">
                   <div class="card-body">
@@ -41,10 +41,14 @@
                 </div>
                 <div class="col-md-3">
                   <h2 class="card-text d-flex align-items-center child-dashboard-card-text"> <%= mission.coins %>&#160;<i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></h2>
-                  <%= button_to "DekiTaYo!",
-                      mission_completed_missions_path(mission),
-                      method: :post, class: "btn-board-dekitayo",
-                      data: { bs_dismiss: "modal" } if mission.status == "started" %>
+                  <% if mission.status != "finished" %>
+                    <%= simple_form_for [mission, CompletedMission.new],
+                      data: { controller: 'location' } do |f| %>
+                      <%= f.input :completed_latitude, as: :hidden, input_html: { data: { location_target: 'completed_latitude' }} %>
+                      <%= f.input :completed_longitude, as: :hidden, input_html: { data: { location_target: 'completed_longitude' }} %>
+                      <%= f.submit "Dekitayo!", class: "btn btn-board-dekitayo" %>
+                    <% end %>
+                  <% end%>
                 </div>
               </div>
             </div>
