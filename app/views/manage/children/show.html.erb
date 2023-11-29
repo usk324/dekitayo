@@ -127,6 +127,8 @@
         <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
           <div class="chart-container">
             <div class="chart mb-4">
+                <p class="align-self-center font-weight-bold">Missions completed by <%= @child.name%></p>
+
               <div class="d-flex">
                 <div class="bg-white mt-4">
                   <%= line_chart @child.completed_missions_data,
@@ -136,10 +138,11 @@
                       ytitle: "Completed Missions",
                       label: "Missions Assigned to #{@child.name}" %>
                 </div>
-                <p class="align-self-center">Missions completed by <%= @child.name%></p>
               </div>
             </div>
             <div class="chart">
+               <p class="align-self-center font-weight-bold">Missions assigned by me</p>
+
               <div class="d-flex">
                 <div class="bg-white">
                   <%= column_chart @child.assigned_missions_data,
@@ -150,7 +153,6 @@
                         ytitle: "Assigned Missions",
                         label: "Missions Assigned to #{@child.name}"  %>
                 </div>
-                <p class="align-self-center">Missions assigned by me</p>
               </div>
             </div>
           </div>
