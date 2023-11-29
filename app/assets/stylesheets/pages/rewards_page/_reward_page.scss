@@ -1,7 +1,30 @@
+.reward-index-container {
+  background-color: rgb(179, 218, 252);
+}
+
 .reward-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.reward-missions-back-btn {
+  margin-left: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(28, 81, 166);
+}
+
+.transparent-yellow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 225, 0, 0.833); /* Solid yellow with transparency */
+  width: 55px; /* Adjust the width as needed */
+  height: 55px; /* Adjust the height as needed */
+  border-radius: 50%; /* Adjust border-radius for rounded corners */
+  color: white; /* Text color */
+  font-size: 20px; /* Adjust the font size */
 }
 
 .reward-header-name {
@@ -24,8 +47,9 @@
   font-size: 33px;
   align-items: center;
   position: fixed;
-  background-color: white;
+  background-color: rgb(179, 218, 252);
   right: 0;
+  padding: 0;
   border-radius: 10px;
   z-index: 1030;
 }
@@ -38,14 +62,35 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   h3 {
     text-align: center;
   }
 }
 
-.disabled-reward {
-  filter: grayscale(100%);
+.reward-card-image {
+  background-image: url('/assets/Reward-icon-4-6bc5ce9c07afd43efd89bb6959935e2eab69d51605c28029a91c63876db9d9f0.png');
+  background-size: cover;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  height: 180px;
+  background-position: center;
 }
+
+.reward-iterate-container {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
+  // grid-column-gap: 20px;
+  // grid-row-gap: 20px;
+}
+
+// .disabled-reward {
+//   filter: grayscale(100%);
+// }
 
 .reward-card-top img {
   width: 100%;
