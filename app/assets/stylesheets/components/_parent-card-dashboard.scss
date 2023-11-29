@@ -1,4 +1,13 @@
 .parent-card-dashboard{
-  background-color:white;
+  background-color:whitesmoke;
+  border-radius: 30px;
+}
+.col-10 .parent-card-dashboard{
+  height: 200px;
+  background-color:whitesmoke;
+}
 
+aside.col-2 .parent-card-dashboard{
+  min-height: 2000px;
+  background-color:whitesmoke;
 }

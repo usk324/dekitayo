@@ -5,11 +5,12 @@
 
 .show_container{
   background-color: rgb(179, 218, 252);
-  padding: 10px,10px;
+  padding: 3em;
 }
 
 .show_container .aside-card{
   background-color: #efeeec !important;
+  padding: 3em;
 }
 
 .parent-btn{
@@ -17,4 +18,14 @@
   border:none;
   background: transparent;
   text-align: left;
+}
+
+.kids-profile{
+  position:absolute;
+  top:150px;
+  left:30px;
+}
+
+.parent-card-dashboard{
+  height:1000px;
 }
