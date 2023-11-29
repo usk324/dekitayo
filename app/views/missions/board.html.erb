@@ -6,28 +6,31 @@
       <div class="header-left d-flex fs-3 fw-bold">
         <div>  Welcome back, <%= current_child.name %>!</div>
       </div>
-      <div class="header-center-left d-flex  gap-5 fs-4">
+      <div class="header-center-left d-flex  gap-5 fs-4 white-text">
         <div> Today is <%=Time.now.strftime("%A, %B %d") %> </div>
-        <%# <div><i class="fa-regular fa-clock"></i> <%=Time.now.strftime("%H:%M") %>
       </div>
       <div class="header-center-right d-flex fs-4 align-items-center">
         <div class="d-flex align-items-center mt-3">
           <p><i class="<%= @weather_icon %> text-warning"></i></p>
-          <p> <%= @weather['main']['temp'] %> °C</p>
+          <p class="white-text"> <%= @weather['main']['temp'].round %> °C</p>
         </div>
       </div>
       <div class="header-right d-flex coins">
-        <div><%= link_to current_child.coins, rewards_path, class: "btn fs-3 fw-bold "%><i class="fa-solid fa-sack-dollar fa-beat fa-2xl" style="color: #e69b19;"></i></div>
+        <div><%= link_to rewards_path, class: "btn fs-3 fw-bold white-text " do %>
+            <%= current_child.coins %>
+            <i class="fa-solid fa-sack-dollar fa-beat fa-2l" style="color: #e69b19;"></i>
+          <% end %>
+        </div>
       </div>
     </div>
     <div id="gameboard-body" class="d-flex">
       <!--flex left -->
-      <div class="board-mission-text position-sticky top-0  h-100">
+      <div class="board-mission-text position-sticky top-0 h-100 pt-3">
         <div class="d-flex justify-content-between">
           <h2><strong>Today's Missions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</strong><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h2>
         </div>
         <%#------- mission card START------- %>
-        <% current_child.missions.daily_missions.each do |mission| %>
+        <% current_child.missions.daily_missions.in_order_of(:status, Mission.statuses.keys).each do |mission| %>
           <% unless mission.status == "blank"%>
             <div class="card child-dashboard-card">
               <div class="row g-1 align-items-center p-1">
