@@ -1,7 +1,7 @@
-<h1 class="text-center mb-0 p-3" id="show-body"><strong> Dekitayo dashboard of your kids</strong></h1>
+<h1 class="text-center mb-0" id="show-body"><strong> Dekitayo dashboard of your kids</strong></h1>
 <div class="show_container" id="show-body">
   <main class="row">
-    <aside class="col-1 card mb-3">
+    <aside class="col-1 card p-50">
       <!-- menu bar from the end -->
       <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
