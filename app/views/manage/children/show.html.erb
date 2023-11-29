@@ -58,7 +58,7 @@
         <div class="col-4 card parent-card-dashboard">
           <div class="card-body">
             <h5 class="card-title"> Today Mission <i class="fa-solid fa-pencil"></i></h5>
-            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <h6 class="card-subtitle mb-2 text-muted center"></h6>
             <h1 class="card-text"></h1>
             <h1 mt-3><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h1>
           </div>
@@ -68,7 +68,7 @@
                 <h5 class="card-title"> Completion Rate <i class="fa-solid fa-percent"></i></h5>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
                 <h1 class="card-text">
-                <%=@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100%>
+                <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
                 </h1>
             </div>
         </div>
@@ -76,7 +76,7 @@
           <div class="card-body">
             <h5 class="card-title"> Coins <i class="fa-solid fa-coins"></i></h5>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
-            <h1 class="card-text">100</h1>
+            <h1 class="card-text"><%=@child.coins%> </h1>
           </div>
         </div>
       </div>
