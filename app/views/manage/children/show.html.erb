@@ -30,6 +30,7 @@
                     <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= child.photo.attached? ? cl_image_path(child.photo.key) : image_path('monkey.jpg') %>')">
                       <%= link_to child.name, manage_child_path(child), class: "btn fs-9 text-white" %>
                     </div>
+                    <%= link_to "Select Profile", "#", class: "dropdown-item" %>
                   </a></li>
               <% end %>
               <div class="circular-image" style="background-color: grey">
