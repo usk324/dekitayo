@@ -128,20 +128,27 @@
           </div>
         </div>
         <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
-          <% if @claimed_reward.read == false %>
-            <div class="card">
-              <div class="card-header">
-                <p>Reward Claimed <%= @claimed_reward.claimed_at %></p>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><%= @reward.name %></h5>
-                <p class="card-text"><%= @reward.description %></p>
-                <p class="card-text"><%= @reward.price %></p>
-                <p class="card-text"><%= @reward.inventory %> left</p>
-                <div class="btn btn-gradient"><% %>Ok</div>
-              </div>
-            </div>
-          <% end %>
+          <div class="notif-container">
+            <% @claimed_rewards.each do |claimed_reward| %>
+              <% if claimed_reward.read == false %>
+                <div class="card w-50">
+                  <div class="card-header">
+                    <p>Reward Claimed <%= claimed_reward.claimed_at %></p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= claimed_reward.reward.name %></h5>
+                    <p class="card-text"><%= claimed_reward.reward.description %></p>
+                    <p class="card-text"><%= claimed_reward.reward.price %></p>
+                    <p class="card-text"><%= claimed_reward.reward.inventory %> left</p>
+                    <%= simple_form_for [claimed_reward] do |f|%>
+                      <%= f.input :read, as: :hidden, input_html: {value: true}%>
+                      <%= f.submit "OK", class: "btn btn-gradient"%>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
       <!--bootstrap tabs-->
