@@ -6,20 +6,20 @@
         <div class="container">
           <div class="row pt-5">
             <!-- Header and button inside the carousel item -->
-            <div class="col-6 d-flex justify-content-center flex-column ps-5 carousel-text text-white">
+            <div class="col-6 d-flex justify-content-center flex-column carousel-text text-white" style="padding-left: 100px;">
               <h2 id="carousel-h2"><strong>Enhanced task management skills</strong></h2>
               <p class="text-white">
                 Developing supercharged task management skills for kids means learning how to organize and prioritize their activities with fun and creativity. It's like becoming a mission superhero, making sure everything gets done while having a blast along the way!
               </p>
               <% if user_signed_in? %>
-                <%= link_to "Your account", manage_children_path, class:"w-25 btn btn-primary" %>
+                <%= link_to "Your account", manage_children_path, class:"w-25 btn btn-primary ps-2" %>
               <% else %>
-                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary ps-2" %>
               <% end %>
             </div>
             <div class="col-1"></div>
             <div class="col-4 pt-5">
-              <%= image_tag "caro1.png", class:"w-100" %>
+              <%= image_tag "caro-1.png", style:"width: 80%;" %>
             </div>
           </div>
         </div>
@@ -28,20 +28,20 @@
         <div class="container">
           <div class="row pt-5">
             <!-- Header and button inside the carousel item -->
-            <div class="col-6 d-flex justify-content-center flex-column ps-5 carousel-text text-white">
+            <div class="col-6 d-flex justify-content-center flex-column carousel-text text-white" style="padding-left: 100px;">
               <h2 id="carousel-h2"><strong>A fun and interactive learning environment</strong></h2>
               <p class="text-white">
                 Creating an active and fun learning environment for children involves turning education into an exciting adventure, where curiosity is sparked, and knowledge is gained through interactive and enjoyable activities. It's all about making learning a thrilling journey filled with discovery and joy!
               </p>
               <% if user_signed_in? %>
-                <%= link_to "Your account", manage_children_path, class:"w-25 btn btn-primary" %>
+                <%= link_to "Your account", manage_children_path, class:"w-25 btn btn-primary ps-2" %>
               <% else %>
-                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary ps-2" %>
               <% end %>
             </div>
             <div class="col-1"></div>
             <div class="col-4 pt-5">
-              <%= image_tag "caro1.png", class:"w-100" %>
+              <%= image_tag "caro-3.png", style:"width: 80%;" %>
             </div>
           </div>
         </div>
@@ -50,20 +50,20 @@
         <div class="container">
           <div class="row pt-5">
             <!-- Header and button inside the carousel item -->
-            <div class="col-6 d-flex justify-content-center flex-column ps-5 carousel-text text-white">
+            <div class="col-6 d-flex justify-content-center flex-column carousel-text text-white" style="padding-left: 100px;">
               <h2 id="carousel-h2"><strong>Get more connected to your child</strong></h2>
               <p class="text-white">
                 Deepening your connection with your child means fostering meaningful moments through open communication and shared activities. It's about building a strong bond that goes beyond words, creating a closeness that lasts a lifetime!
               </p>
               <% if user_signed_in? %>
-                <%= link_to "Your account", manage_children_path, class:"w-25 btn btn-primary" %>
+                <%= link_to "Your account", manage_children_path, class:"w-25 btn btn-primary ps-2" %>
               <% else %>
-                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary" %>
+                <%= link_to "Sign up today", new_user_registration_path, class:"w-25 btn btn-primary ps-2" %>
               <% end %>
             </div>
             <div class="col-1"></div>
             <div class="col-4 pt-5">
-              <%= image_tag "caro1.png", class:"w-100" %>
+              <%= image_tag "caro-2.png", style:"width: 80%;" %>
             </div>
           </div>
         </div>
@@ -104,8 +104,7 @@
   </div>
   <div class="testimonial-container">
     <div class="testimonial-header">
-      <h2><strong style="
-    border-bottom: 2px solid #B0B0B0">Hear from our Users:</strong></h2>
+      <h2><strong style="border-bottom: 2px solid #B0B0B0">Hear from our Users:</strong></h2>
     </div>
     <div class="customer-testimonial-container">
       <div class="customer-testimonial">
@@ -113,7 +112,7 @@
         <div class="testimonial-info">
           <h3><strong>Keiko</strong></h3>
           <p>
-            "DeKiTaYo has truly transformed the way my family approaches daily tasks. It's no longer just about chores; it's about embarking on exciting missions together. The adventure, empowerment, and collaboration make every day a joyous journey for both parents and kids. It's like turning mundane routines into superhero training grounds—where missions become superpowers!"
+            "DeKiTaYo has truly transformed the way my family approaches daily tasks. The adventure, empowerment, and collaboration make every day a joyous journey for both parents and kids. It's like turning mundane routines into superhero training grounds—where missions become superpowers!"
           </p>
         </div>
       </div>
@@ -122,7 +121,7 @@
         <div class="testimonial-info">
           <h3><strong>Chiyo</strong></h3>
           <p>
-            "I love how DeKiTaYo makes learning cool and productive. It's not just about school stuff; it's about working together with my mom and dad to build habits"
+            "I love how DeKiTaYo makes learning cool and productive. It's not just about school stuff and clean-up; it's about working together with my mom and dad to build habits and get fun prizes for my progress. I like coming back everyday to get closer to new rewards."
           </p>
         </div>
       </div>
