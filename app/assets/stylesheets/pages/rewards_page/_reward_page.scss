@@ -4,7 +4,11 @@
 
 .reward-card {
   display: flex;
-  height: 250px;
+  width: 450px;
+  position: relative;
+  border-radius: 20px;
+  padding: 20px 0px 20px 18px;
+  background-color: #6f91e9;
 }
 
 .reward-missions-back-btn {
@@ -18,14 +22,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgb(28, 81, 166);
   font-size: 25px;
-  h1 {
-    font-size: 50px;
+  h3 {
+    color: rgb(28, 81, 166);
   }
 }
 
 .rewards-container {
   padding: 30px;
+}
+
+.reward-inv {
+  position: absolute;
+  top: 137px;
+  color: #ffffff80;
+  font-size: 14px;
+  right: 27px;
 }
 
 .child-coins {
@@ -36,27 +49,26 @@
   position: fixed;
   background-color: rgb(179, 218, 252);
   right: 0;
+  width: 100px;
   padding: 0;
   border-radius: 10px;
   z-index: 1030;
 }
 
+.reward-desc {
+  padding-right: 10px;
+  padding-left: 0;
+}
+
 .reward-card-info {
   background-color: #6f91e9;
 }
-// .reward-header-name h1, .reward-card h3 {
-//   color: rgb(28, 81, 166);
-// }
 
-// .reward-card-top {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   align-items: center;
-//   h3 {
-//     text-align: center;
-//   }
-// }
+.reward-price {
+  position: absolute;
+  top: 9px;
+  right: 14px;
+}
 
 .reward-card-image {
   background-image: url('/assets/Reward-icon-4-6bc5ce9c07afd43efd89bb6959935e2eab69d51605c28029a91c63876db9d9f0.png');
@@ -64,6 +76,7 @@
   width: 150px;
   display: flex;
   align-items: center;
+  margin-right: 10px;
   justify-content: center;
   color: white;
   text-align: center;
@@ -74,66 +87,20 @@
 .reward-iterate-container {
   display: grid;
   grid-template-columns: 6fr 6fr;
-  // grid-column-gap: 20px;
-  // grid-row-gap: 20px;
+  grid-row-gap: 20px;
+  place-items: center;
 }
 
-// .disabled-reward {
-//   filter: grayscale(100%);
-// }
+.reward-card-text {
+  color: white;
+  padding-top: 30px;
+  h3 {
+    padding: 0;
+  }
+}
 
-// .reward-card-top img {
-//   width: 100%;
-//   height: 100%;
-// }
-
-
-// .reward-card-info {
-//   float: left;
-//   height: 420px;
-//   width: 327px;
-//   border-radius: 0 7px 10px 7px;
-//   background-color: #ffffff;
-// }
-
-// .reward-card-text {
-//   height: 300px;
-//   width: 327px;
-// }
-
-// .reward-card-text h1 {
-//   margin: 0 0 0 38px;
-//   padding-top: 52px;
-//   font-size: 34px;
-//   color: #474747;
-// }
-
-
-// .reward-card-price-btn {
-//   height: 103px;
-//   width: 327px;
-// }
-
-// .reward-card-price-btn p {
-//   height: 50px;
-//   font-size: 28px;
-//   font-weight: lighter;
-//   color: #474747;
-// }
-
-// span {
-//   display: inline-block;
-//   height: 50px;
-//   font-size: 34px;
-// }
-
-// .reward-card-price-btn button {
-//   float: right;
-//   display: inline-block;
-//   height: 50px;
-//   width: 176px;
-//   margin: 0 40px 0 16px;
-//   box-sizing: border-box;
-//   border: transparent;
-//   border-radius: 60px;
-// }
+.reward-card-price-btn {
+  bottom: 20px;
+  position: absolute;
+  right: 15px;
+}

@@ -902,7 +902,7 @@ Child.all.each do |child|
 
   Reward.create!(
     name: "Book",
-    description: "Choose something to read from the library",
+    description: "Choose something from the library",
     price: 25,
     inventory: 80,
     child: child  )
