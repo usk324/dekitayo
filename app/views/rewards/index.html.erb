@@ -8,62 +8,59 @@
     </div>
     <div class="col-3"></div>
     <div class="child-coins col-1">
-      <i class="fa-solid fa-sack-dollar fa-beat fa-2xl pe-1" style="color: #e69b19;"></i>
+      <i class="fa-solid fa-sack-dollar fa-beat fa-2l pe-1" style="color: #e69b19;"></i>
       <span style="color: rgb(28, 81, 166);"><%= current_child.coins %></span>
     </div>
   </div>
   <div class="rewards-container">
     <div class="reward-iterate-container">
       <% @rewards.each do |reward| %>
-          <%# simple_form_for(current_child) do |f| %>
-            <%# <input type="hidden" value="<%=# reward.id%" name="child[favorite_reward]"> %>
-            <%# <button type="submit" class="btn btn-primary" data-action="click->favorite-reward#favorite">Favorite this reward</button> %>
+        <%# simple_form_for(current_child) do |f| %>
+          <%# <input type="hidden" value="<%=# reward.id%" name="child[favorite_reward]"> %>
+          <%# <button type="submit" class="btn btn-primary" data-action="click->favorite-reward#favorite">Favorite this reward</button> %>
           <%# <%end  %>
-        <li>
-          <div class="reward-card">
-            <div class="reward-card-image" style="background-image: url('<%= image_path(@random_images.sample) %>');">
-            </div>
-            <div class="reward-card-info">
-              <div class="reward-card-text">
-                <h1><%= reward.name %></h1>
-                <p class="m-0 p-0"><%= reward.description %></p>
-                <p class="m-0 p-0"><%= reward.inventory %></p>
-                <p class="m-0 p-0"><%= reward.price %><i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></p>
+          <li>
+            <div class="reward-card">
+              <div class="reward-card-image" style="background-image: url('<%= image_path(@random_images.sample) %>');">
               </div>
-              <div class="reward-card-price-btn" data-controller="purchase-reward favorite-reward">
-                <%# <p><span></span>coins</p> %>
-                <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
-                  <input type="hidden" value="<%= current_child.id %>" name="child_id">
-                  <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
-                  <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
-                <% end %>
+              <div class="reward-card-info">
+                <div class="reward-card-text">
+                  <h1><%= reward.name %></h1>
+                  <p class="m-0 p-0"><%= reward.description %></p>
+                  <p class="m-0 p-0"><%= reward.inventory %></p>
+                  <p class="m-0 p-0"><%= reward.price %><i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></p>
+                </div>
+                <div class="reward-card-price-btn" data-controller="purchase-reward favorite-reward">
+                  <%# <p><span></span>coins</p> %>
+                  <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
+                    <input type="hidden" value="<%= current_child.id %>" name="child_id">
+                    <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
+                      <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card-product">
-        </li>
-      <% end %>
+            <div class="card-product">
+            </li>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-          <%#= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
-              <%# <% if reward.id == current_child.favorite_reward %>
-                <%# <i class="fa-solid fa-star" style="color: #ffed75;"></i>
+    <%#= link_to '#', data: { bs_toggle: "modal", bs_target: "#rewardModal#{reward.id}" } do %>
+      <%# <% if reward.id == current_child.favorite_reward %>
+      <%# <i class="fa-solid fa-star" style="color: #ffed75;"></i>
               <% else %>
-                 <%# <%= simple_form_for(current_child) do |f| %>
-                  <%# <input type="hidden" value="<%= reward.id" name="child[favorite_reward]">
+      <%# <%= simple_form_for(current_child) do |f| %>
+        <%# <input type="hidden" value="<%= reward.id" name="child[favorite_reward]">
                   <button type="submit" class="btn m-0 p-0" data-action="click->favorite-reward#favorite">
                     <i class="fa-regular fa-star" style="color: #3f3f3f54;"></i>
                   </button>  %>
-                <%#end%>
-                <%# <i class="fa-regular fa-star" style="color: #3f3f3f54;"></i> %>
-              <div class="reward-card-image" style="background-image: url('<%= image_path(@random_images.sample) %>');">
-              </div>
-            </div>
-
-<%# when reward inventory 0, box is grayed out %>
-<%# when reward is favorited, star icon on bottom right %>
-
-
-<i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i>
-<i class="fa-solid fa-sack-dollar fa-beat fa-2xl" style="color: #e69b19;"></i>
+        <%#end%>
+        <%# <i class="fa-regular fa-star" style="color: #3f3f3f54;"></i> %>
+        <div class="reward-card-image" style="background-image: url('<%= image_path(@random_images.sample) %>');">
+        </div>
+      </div>
+      <%# when reward inventory 0, box is grayed out %>
+      <%# when reward is favorited, star icon on bottom right %>
+      <i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i>
+      <i class="fa-solid fa-sack-dollar fa-beat fa-2xl" style="color: #e69b19;"></i>
