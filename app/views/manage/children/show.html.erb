@@ -7,7 +7,7 @@
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
         </div>
       </a>
-      <p><i class="fa-solid fa-pen-to-square"></i><%= @child.name %></p>
+      <p><%= @child.name %></p>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
@@ -63,7 +63,7 @@
       <div class="d-flex">
         <div class="col-4 card parent-card-dashboard">
             <div class="card-body">
-                <h5 class="card-title"> Today Mission <i class="fa-solid fa-pencil"></i></h5>
+                <h5 class="card-title"> Today remaining Mission <i class="fa-solid fa-pen-to-square"></i></h5>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
                 <h1 class="card-text">
                 <h1 mt-3><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %>
@@ -76,7 +76,9 @@
             <div class="card-body">
                 <h5 class="card-title"> Completion Rate <i class="fa-solid fa-percent"></i></h5>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
-                <h1 class="card-text">67%</p>
+                <h1 class="card-text">
+                <%=@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100%>
+                </h1>
             </div>
         </div>
 
@@ -95,7 +97,7 @@
 
       <!--bootstrap tabs -->
       <header class="main-top">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs nav-justified mt-3" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
           </li>
@@ -111,7 +113,7 @@
         </ul>
       </header>
       <!-- Home TAB ("Today's missions") -->
-      <div class="tab-content" id="myTabContent">
+      <div class="tab-content p-3" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
           <%= pluralize(@child.missions.daily_missions.size, "mission") %>
           <% @child.missions.daily_missions.each do |mission| %>
