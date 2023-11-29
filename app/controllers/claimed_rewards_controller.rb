@@ -14,4 +14,8 @@ class ClaimedRewardsController < GamesController
       redirect_to rewards_path(current_child)
     end
   end
+
+  def update
+
+  end
 end
