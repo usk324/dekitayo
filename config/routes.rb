@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :rewards, only: [:index] do
-    resources :claimed_rewards, only: [:create, :update]
+    resources :claimed_rewards, only: [:create]
   end
+
+  resources :claimed_rewards, only: [:update]
 
 end

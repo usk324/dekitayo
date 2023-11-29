@@ -16,6 +16,9 @@ class ClaimedRewardsController < GamesController
   end
 
   def update
-
+    @claimed_reward = ClaimedReward.find(params[:id])
+    @claimed_reward.read = true
+    @claimed_reward.save
+    redirect_to manage_child_path(current_child)
   end
 end
