@@ -161,3 +161,69 @@
 .coins {
   z-index: 99999;
 }
+
+
+#flexbox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin:10px;
+}
+
+body {
+    color: #292929;
+    font-family: $kids-font,Roboto, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.missions {
+  width: 30%;
+  min-height: 50%;
+  top: 14%;
+  margin: 1rem;
+  color: rgb(28, 81, 166);
+}
+.board-mission-text {
+  color: rgb(28, 81, 166);
+}
+
+p {
+    padding: 0 10px;
+    line-height: 1.8;
+}
+
+ul li {
+    padding-right: 10px;
+    line-height: 1.6;
+}
+
+h3 {
+    padding: 5px 20px;
+    margin: 0;
+}
+
+#header {
+  font-family: $kids-font;
+  display: flex;
+  height: 80px;
+  line-height: 80px;
+  margin: 0;
+  padding: 10px;
+  color: whitesmoke;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid white;
+  background-color: #789EFF;
+}
+
+#header p {
+    position: relative;
+    right: 0;
+    padding: 10px;
+    color: #006;
+}
+
+.bg-view-all {
+  background-color: rgb(179, 218, 252);
+}
