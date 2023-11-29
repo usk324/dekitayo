@@ -1,8 +1,27 @@
-
-        <div class="missions">
-          <h2><strong>Mission</strong></h2>
-          <%= pluralize(@missions.future_missions.size, "mission") %>
-          <% @missions.future_missions.each do |mission| %>
-            <%= render partial: "missions/mission_card", locals: { mission: mission } %>
-          <% end %>
-        </div>
+<div id="container">
+  <div id="header">
+    <div class="header-left d-flex fs-3 fw-bold ">
+      <%= link_to "Back to gameboard", board_missions_path, class: "btn btn-view-all-header "%>
+    </div>
+    <div class="header-right d-flex coins">
+      <div><%= link_to current_child.coins, rewards_path, class: "btn fs-3 fw-bold "%><i class="fa-solid fa-sack-dollar fa-beat fa-2xl" style="color: #e69b19;"></i></div>
+    </div>
+  </div>
+  <div class="board-mission-text text-center bg-view-all">
+    <h2><strong>Here are all your future missions!</strong></h2>
+    <p>You have a total of <%=@missions.future_missions.size %> future missions</p>
+    <%# ------cards below------- %>
+    <% current_child.missions.daily_missions.each do |mission| %>
+      <div class="view-all-child-dashboard-card">
+        <% unless mission.status == "blank"%>
+          <div class="view-all-child-dashboard-card-text">
+            <h4 class="card-title board-mission-text"><%= mission.title %></h4>
+            <h5 class="<%=status_color_class(mission.status) %>"><%= mission.status %></h5>
+          </div>
+          <h2 class="child-dashboard-card-text"><%= mission.coins %>  &#160; <i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></h2>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to "Back to gameboard", board_missions_path, class: "btn btn-view-all"%>
+  </div>
+</div>
