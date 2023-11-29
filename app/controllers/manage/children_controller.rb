@@ -9,6 +9,12 @@ class Manage::ChildrenController < ApplicationController
     @children = current_user.children
     @child = Child.find(params[:id])
     @mission = Mission.new()
+    @claimed_rewards = @child.claimed_rewards
+    @claimed_rewards.each do |claimed_reward|
+      @claimed_reward = claimed_reward
+      @reward_id = claimed_reward.reward_id
+    end
+    @reward = Reward.find(@reward_id)
   end
 
   def new

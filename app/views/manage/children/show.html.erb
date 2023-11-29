@@ -68,6 +68,9 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
           </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false">Notifications</button>
+          </li>
         </ul>
       </header>
       <!-- Home TAB ("Today's missions") -->
@@ -124,39 +127,55 @@
             </div>
           </div>
         </div>
+        <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
+          <% if @claimed_reward.read == false %>
+            <div class="card">
+              <div class="card-header">
+                <p>Reward Claimed <%= @claimed_reward.claimed_at %></p>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= @reward.name %></h5>
+                <p class="card-text"><%= @reward.description %></p>
+                <p class="card-text"><%= @reward.price %></p>
+                <p class="card-text"><%= @reward.inventory %> left</p>
+                <div class="btn btn-gradient"><% %>Ok</div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
       <!--bootstrap tabs-->
       <div class="map">
       </div>
     </div>
-  </div>
-  <!-- Button trigger modal -->
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content modal-style">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
-            <div class="d-flex justify-content-between">
-              <div class="form-column">
-                <%= f.input :title %>
-                <%= f.input :coins %>
-                <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
-                <%= f.input :required_photo %>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content modal-style">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
+              <div class="d-flex justify-content-between">
+                <div class="form-column">
+                  <%= f.input :title %>
+                  <%= f.input :coins %>
+                  <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
+                  <%= f.input :required_photo %>
+                </div>
+                <div class="form-colum">
+                  <%= f.input :description %>
+                  <%= f.input :date, html5: true %>
+                  <%= f.input :photo, as: :file %>
+                </div>
               </div>
-              <div class="form-colum">
-                <%= f.input :description %>
-                <%= f.input :date, html5: true %>
-                <%= f.input :photo, as: :file %>
-              </div>
+              <div class="d-flex justify-content-center">
+                <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+              <% end %>
             </div>
-            <div class="d-flex justify-content-center">
-              <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-            <% end %>
           </div>
         </div>
       </div>
