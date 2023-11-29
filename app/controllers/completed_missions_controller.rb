@@ -8,7 +8,7 @@ class CompletedMissionsController < GamesController
     @completed_mission.completed_at = DateTime.now
     @completed_mission.save
     flash[:notice] = 'Mission finished successfully!'
-    # redirect_to board_missions_path
+    redirect_to board_missions_path
   end
 
   private
