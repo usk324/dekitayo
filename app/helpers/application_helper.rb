@@ -9,6 +9,8 @@ module ApplicationHelper
       "finished-status"
     when "started"
       "started-status"
+    when "pending"
+      "pending-status"
     else
       ""
     end

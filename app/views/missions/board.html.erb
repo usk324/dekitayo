@@ -8,7 +8,7 @@
       </div>
       <div class="header-center-left d-flex  gap-5 fs-4">
         <div> Today is <%=Time.now.strftime("%A, %B %d") %> </div>
-        <div><i class="fa-regular fa-clock"></i> <%=Time.now.strftime("%H:%M") %></div>
+        <%# <div><i class="fa-regular fa-clock"></i> <%=Time.now.strftime("%H:%M") %>
       </div>
       <div class="header-center-right d-flex fs-4 align-items-center">
         <div class="d-flex align-items-center mt-3">
@@ -22,17 +22,18 @@
     </div>
     <div id="gameboard-body" class="d-flex">
       <!--flex left -->
-      <div class="missions position-sticky top-0  h-100">
+      <div class="board-mission-text position-sticky top-0  h-100">
         <div class="d-flex justify-content-between">
           <h2><strong>Today's Missions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</strong><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h2>
         </div>
+        <%#------- mission card START------- %>
         <% current_child.missions.daily_missions.each do |mission| %>
           <% unless mission.status == "blank"%>
             <div class="card child-dashboard-card">
               <div class="row g-1 align-items-center p-1">
                 <div class="col-md-9">
                   <div class="card-body">
-                    <h4 class="card-title"><%= mission.title %></h4>
+                    <h4 class="card-title board-mission-text"><%= mission.title %></h4>
                     <h5 class="<%= status_color_class(mission.status) %>"><%= mission.status %></h5>
                   </div>
                 </div>
@@ -47,6 +48,7 @@
             </div>
           <% end %>
         <% end %>
+        <%#------- mission card END------- %>
         <%= link_to "View Future Missions", missions_path, class: "btn btn-view-all" %>
       </div>
       <!--flex right -->
