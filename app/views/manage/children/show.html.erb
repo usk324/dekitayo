@@ -1,4 +1,5 @@
-<h1 class="text-center mb-0" id="show-body"><strong> Dekitayo dashboard of your kids</strong></h1>
+<h1 class="text-center mb-0" id="show-body">
+<strong> "Dekitayo" from your kids ! </strong></h1>
 <div class="show_container" id="show-body">
   <main class="row">
     <aside class="col-1 card p-50">
@@ -7,7 +8,7 @@
         <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
         </div>
       </a>
-      <p><%= @child.name %></p>
+      <h3><%= @child.name %></h3>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
@@ -57,7 +58,7 @@
       <div class="d-flex">
         <div class="col-4 card parent-card-dashboard">
           <div class="card-body">
-            <h5 class="card-title"> Today Mission <i class="fa-solid fa-pencil"></i></h5>
+            <h3 class="card-title"> Today's Mission <i class="fa-solid fa-pencil"></i></h3>
             <h6 class="card-subtitle mb-2 text-muted center"></h6>
             <h1 class="card-text"></h1>
             <h1 mt-3><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h1>
@@ -65,7 +66,7 @@
         </div>
         <div class="col-4 card parent-card-dashboard">
             <div class="card-body">
-                <h5 class="card-title"> Completion Rate <i class="fa-solid fa-percent"></i></h5>
+                <h3 class="card-title"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
                 <h1 class="card-text">
                 <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
@@ -74,7 +75,7 @@
         </div>
         <div class="col-4 card parent-card-dashboard">
           <div class="card-body">
-            <h5 class="card-title"> Coins <i class="fa-solid fa-coins"></i></h5>
+            <h3 class="card-title"> Coins <i class="fa-solid fa-coins"></i></h3>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
             <h1 class="card-text"><%=@child.coins%> </h1>
           </div>
@@ -85,16 +86,16 @@
       <header class="main-top">
         <ul class="nav nav-tabs nav-justified mt-3" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Today missions</button>
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><h4>Today missions</h4></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Future missions</button>
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><h4>Future missions</h4></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Mission chart</button>
+            <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false"><h4>Mission chart</h4></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false">Notifications</button>
+            <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false"><h4>Notifications</h4></button>
           </li>
         </ul>
       </header>
@@ -161,8 +162,8 @@
         <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
           <div class="d-flex">
             <div class="reward-container">
-              <h2>Rewards
-                <h2>
+              <h4>Rewards
+                </h4>
                   <% @claimed_rewards.each do |claimed_reward| %>
                     <% if claimed_reward.read == false %>
                       <div class="card card-notif">
@@ -186,7 +187,7 @@
                   <% end %>
                 </div>
                 <div class="mission-notif-container">
-                  <h2>All Missions Completed</h2>
+                  <h4>All Missions Completed</h4>
                   <%if @missions_done_today == @missions_due_today%>
                     <div class="card-body card-notif">
                       <p> All Missions Done!</p>
