@@ -135,11 +135,6 @@
   color: rgb(200, 130, 0);
 }
 
-.pending-status {
-  color: rgb(160, 0, 0);
-}
-
-
 
 .gameboard-marker {
   text-align: center;
@@ -186,6 +181,10 @@ body {
 }
 .board-mission-text {
   color: rgb(28, 81, 166);
+}
+
+.mission-date-text {
+  color: #798086;
 }
 
 p {
