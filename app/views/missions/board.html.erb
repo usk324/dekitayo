@@ -46,7 +46,7 @@
                       data: { controller: 'location' } do |f| %>
                       <%= f.input :completed_latitude, as: :hidden, input_html: { data: { location_target: 'completed_latitude' }} %>
                       <%= f.input :completed_longitude, as: :hidden, input_html: { data: { location_target: 'completed_longitude' }} %>
-                      <%= f.submit "Dekitayo!", data: { action: "click->location#getGeolocation" }, class: "btn btn-board-dekitayo" %>
+                      <%= f.submit "Dekitayo!", data: { action: "click->location#getGeolocation" }, class: "btn-board-dekitayo" %>
                     <% end %>
                   <% end%>
                 </div>
