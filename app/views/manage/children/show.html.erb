@@ -249,7 +249,7 @@
                         <% if claimed_reward.read == false %>
                           <div class="card card-notif">
                             <div class="card-header d-flex justify-content-between">
-                              <h3 class="mt-4">New Reward requested !! Give them reward 😀</h3>
+                              <h3 class="mt-4">New Reward requested !! Give them a reward 😀</h3>
                               <!--<%= claimed_reward.claimed_at %></p>-->
                               <div class="card-button-notif">
                                 <%= simple_form_for [claimed_reward] do |f|%>
@@ -273,11 +273,15 @@
                       <h3>When All Missions are Completed</h3>
                       <% if @child.missions.daily_missions.where(status: "finished").count ==  @child.missions.daily_missions.size %>
                         <div class="card card-notif">
-                          <div class="card-body card-notif w-100">
+                          <div class="card-body card-notif">
                             <p> <%=@child.name%> finished all missions for the day!</p>
                           </div>
                         </div>
                       <% end %>
+                      <div style="width: 100%; min-height: 600px; border-radius: 10px;"
+                              data-controller="map"
+                              data-map-markers-value="<%= @markers.to_json %>"
+                              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
                     </div>
                   </div>
                 </div>
