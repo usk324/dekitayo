@@ -1,5 +1,5 @@
 .avatar {
-  width: 40px;
+  width: 52px;
   border-radius: 50%;
 }
 .avatar-large {
@@ -20,10 +20,56 @@
 }
 
 .circular-image {
+  position:absolute;
+  top:120px;
+  left:70px;
   background-size: cover;
   background-position: center;
-  width: 100px;  /* or any other size */
-  height:100px; /* must be the same as width for a perfect circle */
+  z-index: 3;
+  width: 230px;  /* or any other size */
+  height:230px; /* must be the same as width for a perfect circle */
   border-radius: 50%; /* this makes the image circular */
   object-fit: cover; /* optional: this ensures the image covers the area without stretching */
+}
+
+.charactor-image{
+  position:absolute;
+  width: 100px;
+  height: auto;
+  top:100px;
+  right:40px;
+  z-index: 3;
+}
+
+.robot-image{
+  position:absolute;
+  width: 100px;
+  height: auto;
+  top:600px;
+  right:40px;
+  z-index: 3;
+}
+
+.voice-pop{
+  position:absolute;
+  width: 100px;
+  height: auto;
+  bottom:1000px;
+  right:150px;
+  z-index: 4;
+}
+
+.robot-image2{
+  width: 100px;
+  height: auto;
+  z-index: 3;
+}
+
+.robot-image3{
+  position:absolute;
+  width: 100px;
+  height: auto;
+  bottom:700px;
+  right:150px;
+  z-index: 3;
 }

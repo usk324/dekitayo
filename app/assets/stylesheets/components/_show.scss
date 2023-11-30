@@ -1,16 +1,31 @@
 #show-body{
   background-color: rgb(179, 218, 252);
+  padding-top: 50px;
 }
 
 .show_container{
   background-color: rgb(179, 218, 252);
+  padding: 3em;
 }
 
 .show_container .aside-card{
-  background-color: $bg-card !important;
+  background-color: #efeeec !important;
+  padding: 3em;
 }
 
 .parent-btn{
+  padding-left: 10px;
   border:none;
   background: transparent;
+  text-align: left;
+}
+
+.kids-profile{
+  position:absolute;
+  top:150px;
+  left:30px;
+}
+
+.parent-card-dashboard{
+  height:1000px;
 }

@@ -1,7 +1,13 @@
-.chart-container {
-
+.chart-container logo-image {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  top: 60px;
+  right: 0px;
+  z-index: 3;
 }
 
 
 .chart {
+  padding-left: 10px;
 }

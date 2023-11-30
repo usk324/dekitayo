@@ -18,10 +18,15 @@
 
 .child-dashboard-card {
 width: 500px;
-background-color: #f8f5e3;
+background-color: #d1f5be;
 border-radius: 5px;
 border-style: solid black;
 margin-bottom: 5px;
+}
+
+.bg-gray {
+  opacity: .5;
+  filter: grayscale(1);
 }
 
 .child-dashboard-card-text {

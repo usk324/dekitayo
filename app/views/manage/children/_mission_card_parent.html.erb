@@ -1,20 +1,20 @@
-<div class="card" style="height:70px;background:#F7F5E3; border-radius:10px">
+<div class="card parent-dashboard-child-tasks-card">
   <div class="row g-1 align-items-center">
     <div class="col-md-2">
       <h5 class="text-center"><%= mission.date %></h5>
     </div>
     <div class="col-md-6">
-        <p><%= mission.title %></p>
-        <i class="fa-solid fa-circle-info"></i>See description
+      <p class="parent-dashboard-child-tasks-card-title"><%= mission.title %></p>
+      <i class="fa-solid fa-circle-info" style="color: #5862ee;"></i>
+      <%= mission.description %>
     </div>
     <div class="col-md-2">
-      <h5 class="card-text d-flex align-items-center">
+      <h5 class="card-text d-flex align-items-center"><i class="fa-solid fa-coins" style="color: #f19009;"> &#160;</i>
         <%= pluralize(mission.coins, "coin")%>
       </h5>
-      <i class="fa-solid fa-circle-info"></i>
     </div>
     <div class="col-md-2">
-        <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
+      <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
     </div>
   </div>
 </div>

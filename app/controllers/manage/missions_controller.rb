@@ -3,6 +3,7 @@ class Manage::MissionsController < ApplicationController
   def index
     @child = Child.find(params[:child_id])
     @missions = @child.missions
+
   end
 
   def new
