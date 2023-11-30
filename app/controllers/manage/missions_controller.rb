@@ -4,7 +4,7 @@ class Manage::MissionsController < ApplicationController
     @child = Child.find(params[:child_id])
     @missions = @child.missions
     @missions_due_today = @misssions.where(date: Date.today).count
-    @missions_done_today = @missions.where(status: "finished").count
+    @missions_done_today = @missions.where(status: "finished", date: Date.today).count
   end
 
   def new
