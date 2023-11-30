@@ -10,7 +10,14 @@ aside {
   display: block;
 }
 
-.notif-container {
+.card-notif {
   display: flex;
-  width: 80%;
+  background-color: #45FEBC;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px #EFEEEC;
+}
+
+.card-button-notif {
+  background-color: white;
 }
