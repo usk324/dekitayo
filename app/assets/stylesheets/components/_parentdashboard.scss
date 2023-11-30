@@ -12,12 +12,42 @@ aside {
 
 .card-notif {
   display: flex;
-  background-color: #45FEBC;
+  background-color: #D1F5BE;
   margin: 10px;
   border-radius: 8px;
   box-shadow: 1px 1px 1px #EFEEEC;
 }
 
-.card-button-notif {
-  background-color: white;
+.parent-card-dashboard-left {
+  background-color: #f79d9fea;
+  height: 200px;
+  border-radius: 15px;
+  size: 20px;
+  font-weight: 400;
+}
+
+.parent-card-dashboard-center {
+  background-color: #65d9f6f5;
+  height: 200px;
+  border-radius: 15px;
+}
+
+.parent-card-dashboard-right {
+  background-color: #c772b2c9;
+  height: 200px;
+  border-radius: 15px;
+}
+
+.parent-card-dashboard{
+  background-color:whitesmoke;
+  border-radius: 30px;
+}
+.col-10 .parent-card-dashboard{
+  height: 200px;
+  background-color:whitesmoke;
+}
+
+aside.col-2 .parent-card-dashboard{
+  min-height: 2000px;
+  background-color:whitesmoke;
 }
