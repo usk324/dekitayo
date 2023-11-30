@@ -20,7 +20,7 @@ class CompletedMissionsController < GamesController
       @finished_sound = true
     end
     flash[:notice] = 'Mission finished successfully!'
-    render "missions/board"
+    render "missions/board", status: :created
   end
 
   private
