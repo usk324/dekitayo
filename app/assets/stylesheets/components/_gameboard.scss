@@ -19,20 +19,20 @@
   &.position-7 { top: 126px; left: 1034px; }
   &.position-8 { top: 126px; left: 1146px; }
   &.position-9 { top: 220px; left: 1201px; }
-  &.position-10 { top: 219px; left: 1312px; }
-  &.position-11 { top: 314px; left: 1368px; }
-  &.position-12 { top: 412px; left: 1316px; }
-  &.position-13 { top: 508px; left: 1371px; }
-  &.position-14 { top: 605px; left: 1317px; }
-  &.position-15 { top: 605px; left: 1206px; }
-  &.position-16 { top: 507px; left: 1153px; }
-  &.position-17 { top: 410px; left: 1099px; }
-  &.position-18 { top: 410px; left: 986px; }
-  &.position-19 { top: 410px; left: 873px; }
-  &.position-20 { top: 410px; left: 762px; }
-  &.position-21 { top: 410px; left: 652px; }
-  &.position-22 { top: 508px; left: 597px; }
-  &.position-23 { top: 606px; left: 544px; }
+  &.position-10 { top: 315px; left: 1146px; }
+  &.position-11 { top: 410px; left: 1201px; }
+  &.position-12 { top: 509px; left: 1146px; }
+  &.position-13 { top: 607px; left: 1201px; }
+  &.position-14 { top: 704px; left: 1146px; }
+  &.position-15 { top: 704px; left: 1034px; }
+  &.position-16 { top: 704px; left: 922px; }
+  &.position-17 { top: 705px; left: 811px; }
+  &.position-18 { top: 802px; left: 754px; }
+  &.position-19 { top: 802px; left: 643px; }
+  &.position-20 { top: 707px; left: 589px; }
+  &.position-21 { top: 611px; left: 645px; }
+  &.position-22 { top: 513px; left: 698px; }
+  &.position-23 { top: 419px; left: 642px; }
   &.position-24 { top: 701px; left: 598px; }
   &.position-25 { top: 797px; left: 653px; }
   &.position-26 { top: 892px; left: 709px; }
@@ -75,13 +75,13 @@
   &.position-63 { top: 1856px; left: 1031px; }
   &.position-64 { top: 1856px; left: 897px; }
   &.position-65 { top: 1856px; left: 762px; }
-  &.position-66 { top: 1979px; left: 662px; }
+  &.position-66 { top: 364px; left: 593px; }
 }
 
 .dancing-monkey {
   position: absolute;
-  top: 543px;
-  left: 710px;
+  top: 283px;
+  left: 732px;
 }
 
 .bg-board {
@@ -230,4 +230,10 @@ h3 {
 
 .white-text {
   color: whitesmoke;
+}
+
+.player {
+  height: 120px;
+  width: 120px;
+  z-index: 3;
 }
