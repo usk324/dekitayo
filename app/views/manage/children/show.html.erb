@@ -3,7 +3,11 @@
   <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
   </div>
 </a>
-<%= image_tag "caro1.png", class:"charactor-image" %>
+<%= image_tag "caro-2.png", class:"charactor-image" %>
+<!--
+<%= image_tag "voice.png", class:"voice-pop" %>
+-->
+
 <div class="show_container" id="show-body">
   <main class="row">
     <aside class="col-2 card p-50 parent-card-dashboard">
@@ -42,37 +46,37 @@
         <br>
         <br>
         <button class="parent-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <h3> <i class="fa-solid fa-rocket"></i> New Mission</h3>
+          <h4> <i class="fa-solid fa-rocket"></i> New Mission</h4>
         </button>
         <br>
         <br>
         <button class="parent-btn">
-          <h3><i class="fa-regular fa-message"></i> Message</h3>
+          <h4><i class="fa-regular fa-message"></i> Message</h4>
         </button>
         <br>
         <br>
         <button class="parent-btn" onclick="#">
-          <h3><i class="fa-regular fa-map"></i> Map</h3>
+          <h4><i class="fa-regular fa-map"></i> Map</h4>
         </button>
         <br>
         <br>
         <button class="parent-btn" onclick="#">
-          <h3><%= link_to "Set Reward", rewards_path, class: "nav-link nav-link-1" %></h3>
+          <h4><%= link_to "Set Reward", rewards_path, class: "nav-link nav-link-1" %></h4>
         </button>
         <br>
         <br>
         <button class="parent-btn" onclick="#">
-          <h3><%= link_to "Gameboard", board_missions_path, class: "nav-link nav-link-1" %></h3>
+          <h4><%= link_to "Gameboard", board_missions_path, class: "nav-link nav-link-1" %></h4>
         </button>
       </div>
       <!-- aside menu bar  -->
     </aside>
     <div class ="col-10">
       <!-- summary number from here  -->
-      <div class="d-flex">
+      <div class="d-flex gap-2">
         <div class="col-4 card parent-card-dashboard">
           <div class="card-body">
-            <h3 class="card-title"> Today's Mission Progress<i class="fa-solid fa-pencil"></i></h3>
+            <h3 class="card-title"> Today's Progress<i class="fa-solid fa-pencil"></i></h3>
             <h6 class="card-subtitle mb-2 text-muted center"></h6>
             <br>
             <h1 class="card-text"></h1>
@@ -118,8 +122,17 @@
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false">
+
+            <button class="nav-link position-relative" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false">
               <h4>Notifications</h4>
+
+              <% @claimed_rewards.each do |claimed_reward| %>
+              <% if claimed_reward.read == false %>
+                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                <span class="visually-hidden">New alerts</span>
+                </span>
+              <% end %>
+              <% end %>
             </button>
           </li>
         </ul>
@@ -128,14 +141,15 @@
       <div class="tab-content p-3" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
           <ul>
+            <br>
             <li>
               <h4>
-                <%= @child.name %> has <%= pluralize(@child.missions.daily_missions.size, "mission")%> today.
+                <strong><%= @child.name %> has <%= pluralize(@child.missions.daily_missions.size, "mission")%> today.</strong>
               </h4>
             </li>
             <li>
               <h4>And <%=@child.missions.daily_missions.where(status: "finished").count%> mission are alreday completed !</h4>
-              <h4>Remaining Mission for today....Let us check with <%= @child.name %></h4>
+              <h4>Remaining Mission for today....Let us check with <%= @child.name %> !!</h4><br><br>
             </li>
             <% @child.missions.daily_missions.each do |mission| %>
               <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
@@ -144,6 +158,7 @@
           <!-- PROFILE TAB ("All missions") -->
           <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
             <!-- Show all missions in the future -->
+            <br>
             <h4>There are <%= pluralize(@child.missions.future_missions.size, "mission") %> set going forward ! </h4>
             <h4> You are seting those TOP 3 category.  </h4>
             <br>
@@ -203,7 +218,7 @@
             <!--charts -->
             <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
               <div class="chart-container">
-                <div class="chart mb-4">
+                <div class="chart mb-4"><br>
                   <h3 class="align-self-center font-weight-bold">Missions completed by <%= @child.name%>
                     <h3>
                       <h4>
@@ -241,6 +256,7 @@
                 </div>
                 <!-- noti ----->
                 <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
+                  <br><br>
                   <div class="d-flex">
                     <div class="reward-container">
                       <h3>Rewards claimed by <%= @child.name %>
@@ -249,20 +265,21 @@
                         <% if claimed_reward.read == false %>
                           <div class="card card-notif">
                             <div class="card-header d-flex justify-content-between">
-                              <h3 class="mt-4">New Reward requested !! Give them a reward 😀</h3>
+                              <h3 class="mt-4">New Reward requested !! Give them reward <i class="fa-solid fa-gift"></i></h3>
                               <!--<%= claimed_reward.claimed_at %></p>-->
-                              <div class="card-button-notif">
-                                <%= simple_form_for [claimed_reward] do |f|%>
-                                  <%= f.input :read, as: :hidden, input_html: {value: true}%>
-                                  <%= f.submit "OK!", class: "btn btn-gradient:hover "%>
-                                <% end %>
-                              </div>
                             </div>
                             <div class="card-body d-flex">
                               <h4 class="card-title"><%= claimed_reward.reward.name %></h4>
                               <div>
                                 <h5 class="card-text"><%= claimed_reward.reward.description %>
                                   <%= claimed_reward.reward.price %> Coins redeemed!!</h5>
+                                                                <div class="card-button-notif">
+                                <%= simple_form_for [claimed_reward] do |f|%>
+                                  <%= f.input :read, as: :hidden, input_html: {value: true}%>
+                                  <%= f.submit "Nice Okay!", class: "btn "%>
+                                <% end %>
+                              </div>
+
                               </div>
                             </div>
                           </div>

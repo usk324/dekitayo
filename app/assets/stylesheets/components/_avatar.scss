@@ -34,10 +34,10 @@
 
 .charactor-image{
   position:absolute;
-  width: 150px;
+  width: 100px;
   height: auto;
-  top:60px;
-  right:0px;
+  top:100px;
+  right:40px;
   z-index: 3;
 }
 
@@ -45,17 +45,23 @@
   position:absolute;
   width: 100px;
   height: auto;
-  bottom:700px;
-  right:150px;
+  top:600px;
+  right:40px;
   z-index: 3;
 }
 
-.robot-image2{
+.voice-pop{
   position:absolute;
   width: 100px;
   height: auto;
-  bottom:800px;
+  bottom:1000px;
   right:150px;
+  z-index: 4;
+}
+
+.robot-image2{
+  width: 100px;
+  height: auto;
   z-index: 3;
 }
 
