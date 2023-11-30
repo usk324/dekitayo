@@ -6,7 +6,7 @@
   <%# --------heading-------- %>
   <div id="container">
     <div id="header">
-      <div class="header-left d-flex fs-3 fw-bold">
+      <div class="header-left d-flex fs-3 fw-bold ps-3">
         <div>  Welcome back, <%= current_child.name %>!</div>
       </div>
       <div class="header-center-left d-flex  gap-5 fs-4 white-text">
@@ -28,7 +28,7 @@
     </div>
     <div id="gameboard-body" class="d-flex">
       <!--flex left -->
-      <div class="board-mission-text position-sticky top-0 h-100 pt-3">
+      <div class="board-mission-text position-sticky top-0 h-100 pt-3 ps-3">
         <div class="d-flex justify-content-between">
           <h2><strong>Today's Missions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</strong><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h2>
         </div>
@@ -75,39 +75,39 @@
         <% end %>
         <%# ------Special tile #20----------- %>
         <%= image_tag("multi.png", alt: "game tile", size: "125x125", class: "tile-position position-20") %>
-        <%# -------------tiles 21-29--------------- %>
-        <% (21..29).each do |number| %>
+        <%# -------------tiles 21-22--------------- %>
+        <% (21..22).each do |number| %>
           <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
         <% end %>
         <%# ------Special tile #30----------- %>
-        <%= image_tag("blue.png", alt: "game tile", size: "125x125", class: "tile-position position-30") %>
+        <%# <%= image_tag("blue.png", alt: "game tile", size: "125x125", class: "tile-position position-30") %>
         <%# -------------tiles 31-39--------------- %>
-        <% (31..39).each do |number| %>
-          <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
-        <% end %>
-        <%# ------Special tile #40----------- %>
-        <%= image_tag("pink.png", alt: "game tile", size: "125x125", class: "tile-position position-40") %>
-        <%# -------------tiles 41-49--------------- %>
-        <% (41..49).each do |number| %>
-          <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
-        <% end %>
-        <%# ------Special tile #50----------- %>
-        <%= image_tag("purpleblue.png", alt: "game tile", size: "125x125", class: "tile-position position-50") %>
-        <%# -------------tiles 51-59--------------- %>
-        <% (51..59).each do |number| %>
-          <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
-        <% end %>
-        <%# ------Special tile #60----------- %>
-        <%= image_tag("red.png", alt: "game tile", size: "125x125", class: "tile-position position-60") %>
-        <%# -------------tiles 61-65--------------- %>
-        <% (61..65).each do |number| %>
-          <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
-        <% end %>
-        <%# ------FINISH tile #66----------- %>
-        <%= image_tag("gold.png", alt: "game tile", size: "350x350", class: "tile-position position-66") %>
-        <%# ---------------gamboard background items-------------- %>
-        <%= image_tag("https://www.gifcen.com/wp-content/uploads/2023/11/monkey-gif-1.gif", size: "450x450", class: "dancing-monkey") %>
-      </div>
-    </div>
-  </div>
-</div>
+        <%# <% (31..39).each do |number| %>
+          <%# <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
+          <%# <% end %>
+          <%# ------Special tile #40----------- %>
+          <%# <%= image_tag("pink.png", alt: "game tile", size: "125x125", class: "tile-position position-40") %>
+          <%# -------------tiles 41-49--------------- %>
+          <%# <% (41..49).each do |number| %>
+            <%# <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
+            <%# <% end %>
+            <%# ------Special tile #50----------- %>
+            <%# <%= image_tag("purpleblue.png", alt: "game tile", size: "125x125", class: "tile-position position-50") %>
+            <%# -------------tiles 51-59--------------- %>
+            <%# <% (51..59).each do |number| %>
+              <%# <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
+              <%# <% end %>
+              <%# ------Special tile #60----------- %>
+              <%# <%= image_tag("red.png", alt: "game tile", size: "125x125", class: "tile-position position-60") %>
+              <%# -------------tiles 61-65--------------- %>
+              <%# <% (61..65).each do |number| %>
+                <%# <%= image_tag("game_tile.png", alt: "game tile", size: "125x125", class: "tile-position position-#{number}") %>
+                <%# <% end %>
+                <%# ------FINISH tile #66----------- %>
+                <%= image_tag("gold.png", alt: "game tile", size: "200x200", class: "tile-position position-66") %>
+                <%# ---------------gamboard background items-------------- %>
+                <%= image_tag("dekitayo-chara.png", size: "450x450", class: "dancing-monkey") %>
+              </div>
+            </div>
+          </div>
+        </div>
