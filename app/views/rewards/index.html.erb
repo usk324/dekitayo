@@ -1,4 +1,6 @@
 <div class="reward-index-container">
+  <!-- created a div to host the sound (music player)-->
+  <div data-controller="purchase-reward" data-action="click->purchase-reward#play" data-purchase-reward-src-value="<%= asset_path('purchase-sound.mp3') %>" data-purchase-reward-play-value="<%= @sound == true %>"></div>
   <div class="reward-header row">
     <div class="col-4"> <%= link_to "<- Back to Missions", board_missions_path, class: "reward-missions-back-btn" %></div>
     <div class="reward-header-name col-4">
@@ -30,11 +32,11 @@
                   <p class="m-0 p-0 reward-inv"><%= reward.inventory %> left</p>
                   <p class="m-0 p-0 reward-price"><%= reward.price %><i class="fa-solid fa-coins fa-beat ms-1" style="color: #f19009;"></i></p>
                 </div>
-                <div class="reward-card-price-btn" data-controller="purchase-reward favorite-reward">
+                <div class="reward-card-price-btn">
                   <%# <p><span></span>coins</p> %>
                   <%= simple_form_for([reward, ClaimedReward.new]) do |f| %>
                     <input type="hidden" value="<%= current_child.id %>" name="child_id">
-                    <button type="submit" class="btn btn-primary" data-action="click->purchase-reward#purchase"
+                    <button type="submit" class="btn btn-primary" data-turbo="false"
                       <%= reward.inventory.zero? || reward.price > current_child.coins ? "disabled" : '' %>>Purchase this reward</button>
                   <% end %>
                 </div>
