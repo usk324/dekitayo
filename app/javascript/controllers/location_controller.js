@@ -22,7 +22,7 @@ export default class extends Controller {
       navigator.geolocation.getCurrentPosition((position) => {
           this.completed_latitudeTarget.value = position.coords.latitude
           this.completed_longitudeTarget.value = position.coords.longitude
-          console.log("Got Geolocation")
+          console.log(position.coords)
         });
     }
   }

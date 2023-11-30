@@ -41,19 +41,19 @@
       <div class="kids-profile">
         <br>
         <br>
-        <button class="parent-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+        <button class="parent-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <h3> <i class="fa-solid fa-rocket"></i> New Mission</h3>
         </button>
         <br>
         <br>
-        <button class="parent-btn"> 
+        <button class="parent-btn">
           <h3><i class="fa-regular fa-message"></i> Message</h3>
- </button>
+        </button>
         <br>
         <br>
         <button class="parent-btn" onclick="#">
           <h3><i class="fa-regular fa-map"></i> Map</h3>
- </button>
+        </button>
         <br>
         <br>
         <button class="parent-btn" onclick="#">
@@ -185,134 +185,135 @@
             <!-- Filtering Option -->
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              <label class="form-check-label" for="flexSwitchCheckDefault"> 
-                <h4>Started</h4>
-              </label>
+              <label class="form-check-label" for="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">
+                  <h4>Started</h4>
+                </label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">
+                  <h4>Finished</h4>
+                </label>
+              </div>
+              <% @child.missions.future_missions.each do |mission| %>
+                <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
+              <% end %>
             </div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              <label class="form-check-label" for="flexSwitchCheckDefault"> 
-                <h4>Finished</h4>
-              </label>
-            </div>
-            <% @child.missions.future_missions.each do |mission| %>
-              <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
-            <% end %>
-          </div>
-          <!--charts -->
-          <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
-            <div class="chart-container">
-              <div class="chart mb-4">
-                <h3 class="align-self-center font-weight-bold">Missions completed by <%= @child.name%>
-                  <h3>
-                    <h4>
-                      "This dashboard shows the number of missions assigned to children by parents and their completion status. Look for progress and indicators for a quick understanding of each child's accomplishments and ongoing tasks."
-                    </h4>
-                    <br>
-                    <%= image_tag "dekitayo-logo.png", class:"robot-image" %>
-                    <div class="d-flex">
-                      <div class="bg-white mt-4">
-                        <%= line_chart @child.completed_missions_data,
+            <!--charts -->
+            <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
+              <div class="chart-container">
+                <div class="chart mb-4">
+                  <h3 class="align-self-center font-weight-bold">Missions completed by <%= @child.name%>
+                    <h3>
+                      <h4>
+                        "This dashboard shows the number of missions assigned to children by parents and their completion status. Look for progress and indicators for a quick understanding of each child's accomplishments and ongoing tasks."
+                      </h4>
+                      <br>
+                      <%= image_tag "dekitayo-logo.png", class:"robot-image" %>
+                      <div class="d-flex">
+                        <div class="bg-white mt-4">
+                          <%= line_chart @child.completed_missions_data,
                       colors: ["#98C1D9", "#98C1D9"],
                       width: "700px", height: "400px",
                       xtitle: "Days",
                       ytitle: "Completed Missions",
                       label: "Missions Assigned to #{@child.name}" %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="chart">
-                    <h3 class="align-self-center font-weight-bold">Missions assigned by me</h3>
-                    <h4></h4>
-                    <div class="d-flex">
-                      <div class="bg-white">
-                        <%= column_chart @child.assigned_missions_data,
+                    <div class="chart">
+                      <h3 class="align-self-center font-weight-bold">Missions assigned by me</h3>
+                      <h4></h4>
+                      <div class="d-flex">
+                        <div class="bg-white">
+                          <%= column_chart @child.assigned_missions_data,
                         id: "users-chart",
                         width: "700px", height: "400px",
                         colors: ["#004643", "#666"],
                         xtitle: "Days",
                         ytitle: "Assigned Missions",
                         label: "Missions Assigned to #{@child.name}"  %>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- noti ----->
-              <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
-                <div class="d-flex">
-                  <div class="reward-container">
-                    <h3>Rewards claimed by <%= @child.name %>
-                    </h3>
-                    <% @claimed_rewards.each do |claimed_reward| %>
-                      <% if claimed_reward.read == false %>
-                        <div class="card card-notif">
-                          <div class="card-header d-flex justify-content-between">
-                            <h3 class="mt-4">New Reward requested !! Give them reward 😀</h3>
-                            <!--<%= claimed_reward.claimed_at %></p>-->
-                            <div class="card-button-notif">
-                              <%= simple_form_for [claimed_reward] do |f|%>
-                                <%= f.input :read, as: :hidden, input_html: {value: true}%>
-                                <%= f.submit "OK!", class: "btn btn-gradient:hover "%>
-                              <% end %>
+                <!-- noti ----->
+                <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
+                  <div class="d-flex">
+                    <div class="reward-container">
+                      <h3>Rewards claimed by <%= @child.name %>
+                      </h3>
+                      <% @claimed_rewards.each do |claimed_reward| %>
+                        <% if claimed_reward.read == false %>
+                          <div class="card card-notif">
+                            <div class="card-header d-flex justify-content-between">
+                              <h3 class="mt-4">New Reward requested !! Give them reward 😀</h3>
+                              <!--<%= claimed_reward.claimed_at %></p>-->
+                              <div class="card-button-notif">
+                                <%= simple_form_for [claimed_reward] do |f|%>
+                                  <%= f.input :read, as: :hidden, input_html: {value: true}%>
+                                  <%= f.submit "OK!", class: "btn btn-gradient:hover "%>
+                                <% end %>
+                              </div>
+                            </div>
+                            <div class="card-body d-flex">
+                              <h4 class="card-title"><%= claimed_reward.reward.name %></h4>
+                              <div>
+                                <h5 class="card-text"><%= claimed_reward.reward.description %>
+                                  <%= claimed_reward.reward.price %> Coins redeemed!!</h5>
+                              </div>
                             </div>
                           </div>
-                          <div class="card-body d-flex">
-                            <h4 class="card-title"><%= claimed_reward.reward.name %></h4>
-                            <div>
-                              <h5 class="card-text"><%= claimed_reward.reward.description %>
-                                <%= claimed_reward.reward.price %> Coins redeemed!!</h5>
-                            </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="mission-notif-container">
+                      <h3>When All Missions are Completed</h3>
+                      <% if @child.missions.daily_missions.where(status: "finished").count ==  @child.missions.daily_missions.size %>
+                        <div class="card card-notif">
+                          <div class="card-body card-notif w-100">
+                            <p> <%=@child.name%> finished all missions for the day!</p>
                           </div>
                         </div>
                       <% end %>
-                    <% end %>
-                  </div>
-                  <div class="mission-notif-container">
-                    <!--
-                  <h3>All Missions Completed</h3>
-                  <%if @missions_done_today == @missions_due_today%>
-                    <div class="card-body card-notif">
-                      <p> All Missions Done!</p>
                     </div>
-                    -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content modal-style">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
+                  <div class="d-flex justify-content-between">
+                    <div class="form-column">
+                      <%= f.input :title %>
+                      <%= f.input :coins %>
+                      <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
+                      <%= f.input :required_photo %>
+                    </div>
+                    <div class="form-colum">
+                      <%= f.input :description %>
+                      <%= f.input :date, html5: true %>
+                      <%= f.input :photo, as: :file %>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
-    </div>
-    <!-- Button trigger modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content modal-style">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
-              <div class="d-flex justify-content-between">
-                <div class="form-column">
-                  <%= f.input :title %>
-                  <%= f.input :coins %>
-                  <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
-                  <%= f.input :required_photo %>
-                </div>
-                <div class="form-colum">
-                  <%= f.input :description %>
-                  <%= f.input :date, html5: true %>
-                  <%= f.input :photo, as: :file %>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center">
-                <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
