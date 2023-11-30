@@ -39,6 +39,16 @@
   color: white;
 }
 
+.btn-reward{
+  background: linear-gradient($light-brown, $medium-brown);
+  color:lightgreen;
+}
+.btn-reward:hover {
+  background: linear-gradient($light-brown, $medium-brown);
+  color:green;
+}
+
+
 .rewards-link-btn {
   text-decoration: none;
   font-size: medium;
