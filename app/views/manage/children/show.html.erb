@@ -7,7 +7,6 @@
 <!--
 <%= image_tag "voice.png", class:"voice-pop" %>
 -->
-
 <div class="show_container" id="show-body">
   <main class="row">
     <aside class="col-2 card p-50 parent-card-dashboard">
@@ -122,16 +121,14 @@
             </button>
           </li>
           <li class="nav-item" role="presentation">
-
             <button class="nav-link position-relative" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false">
               <h4>Notifications</h4>
-
               <% @claimed_rewards.each do |claimed_reward| %>
-              <% if claimed_reward.read == false %>
-                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
-                </span>
-              <% end %>
+                <% if claimed_reward.read == false %>
+                  <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                  </span>
+                <% end %>
               <% end %>
             </button>
           </li>
@@ -149,9 +146,11 @@
             </li>
             <li>
               <h4>And <%=@child.missions.daily_missions.where(status: "finished").count%> mission are alreday completed !</h4>
-              <h4>Remaining Mission for today....Let us check with <%= @child.name %> !!</h4><br><br>
+              <h4>Remaining Mission for today....Let us check with <%= @child.name %> !!</h4>
+              <br>
+              <br>
             </li>
-            <% @child.missions.daily_missions.each do |mission| %>
+            <% @child.missions.daily_missions.sort_by(&:status).reverse.each do |mission| %>
               <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
             <% end %>
           </div>
@@ -211,7 +210,7 @@
                   <h4>Finished</h4>
                 </label>
               </div>
-              <% @child.missions.future_missions.each do |mission| %>
+              <% @child.missions.future_missions.sort_by(&:status).reverse.each do |mission| %>
                 <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
               <% end %>
             </div>
@@ -256,7 +255,8 @@
                 </div>
                 <!-- noti ----->
                 <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
-                  <br><br>
+                  <br>
+                  <br>
                   <div class="d-flex">
                     <div class="reward-container">
                       <h3>Rewards claimed by <%= @child.name %>
@@ -273,13 +273,12 @@
                               <div>
                                 <h5 class="card-text"><%= claimed_reward.reward.description %>
                                   <%= claimed_reward.reward.price %> Coins redeemed!!</h5>
-                                                                <div class="card-button-notif">
-                                <%= simple_form_for [claimed_reward] do |f|%>
-                                  <%= f.input :read, as: :hidden, input_html: {value: true}%>
-                                  <%= f.submit "Nice Okay!", class: "btn "%>
-                                <% end %>
-                              </div>
-
+                                <div class="card-button-notif">
+                                  <%= simple_form_for [claimed_reward] do |f|%>
+                                    <%= f.input :read, as: :hidden, input_html: {value: true}%>
+                                    <%= f.submit "Nice Okay!", class: "btn "%>
+                                  <% end %>
+                                </div>
                               </div>
                             </div>
                           </div>
