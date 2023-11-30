@@ -102,6 +102,17 @@ Child.all.each do |child|
   )
 
   Mission.create!(
+    title: "Visit grandma after school",
+    description: "walk to grandma's house after school and take a picture with grandma",
+    status: "pending",
+    coins: 1,
+    child: child,
+    category: :activity,
+    required_photo: true,
+    date: Date.new(2023, 11, 28)
+  )
+
+  Mission.create!(
     title: "Go to your baseball lesson",
     description: "walk to your baseball lesson",
     status: "started",
@@ -120,9 +131,41 @@ Child.all.each do |child|
     child: child,
     category: :study,
     required_photo: false,
-    date: Date.new(2023, 11, 30)
+    date: Date.new(2023, 11, 18)
   )
-  puts "Finished!"
+
+  Mission.create!(
+    title: "Go to your baseball lesson",
+    description: "walk to your baseball lesson",
+    status: "started",
+    coins: 1,
+    child: child,
+    category: :activity,
+    required_photo: true,
+    date: Date.new(2023, 11, 18)
+  )
+
+  Mission.create!(
+    title: "Read for 10 pages",
+    description: "read 10 pages from your reading book",
+    status: "finished",
+    coins: 3,
+    child: child,
+    category: :study,
+    required_photo: false,
+    date: Date.new(2023, 11, 07)
+  )
+
+  Mission.create!(
+    title: "Read for 10 pages",
+    description: "read 10 pages from your reading book",
+    status: "finished",
+    coins: 3,
+    child: child,
+    category: :study,
+    required_photo: false,
+    date: Date.new(2023, 11, 05)
+  )
 
   Mission.create!(
     title: "Give water to the plants",
@@ -133,6 +176,39 @@ Child.all.each do |child|
     category: :chore,
     required_photo: false,
     date: Date.new(2023, 11, 30)
+  )
+
+  Mission.create!(
+    title: "Read for 10 pages",
+    description: "read 10 pages from your reading book",
+    status: "finished",
+    coins: 3,
+    child: child,
+    category: :study,
+    required_photo: false,
+    date: Date.new(2023, 11, 07)
+  )
+
+  Mission.create!(
+    title: "Give water to the plants",
+    description: "Give one cup of water to each plant in the kitchen, living room and bathroom",
+    status: "started",
+    coins: 2,
+    child: child,
+    category: :chore,
+    required_photo: false,
+    date: Date.new(2023, 11, 30)
+  )
+
+  Mission.create!(
+    title: "Give water to the plants",
+    description: "Give one cup of water to each plant in the kitchen, living room and bathroom",
+    status: "started",
+    coins: 2,
+    child: child,
+    category: :chore,
+    required_photo: false,
+    date: Date.new(2023, 11, 27)
   )
 
   Mission.create!(
@@ -147,6 +223,17 @@ Child.all.each do |child|
   )
 
   Mission.create!(
+    title: "Set the dinner table",
+    description: "Set the dinner table with chopsticks, napkins and one cup for you, mom and dad",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :chore,
+    required_photo: true,
+    date: Date.new(2023, 11, 04)
+  )
+
+  Mission.create!(
     title: "Write in your journal",
     description: "write 3 sentences about your day in your journal",
     status: "pending",
@@ -158,6 +245,17 @@ Child.all.each do |child|
   )
 
   Mission.create!(
+    title: "Write in your journal",
+    description: "write 3 sentences about your day in your journal",
+    status: "pending",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: true,
+    date: Date.new(2023, 11, 11)
+  )
+
+  Mission.create!(
     title: "Clean up your bedroom",
     description: "put all your toys back in their spot and make sure the floor is cleared",
     status: "started",
@@ -166,28 +264,6 @@ Child.all.each do |child|
     category: :chore,
     required_photo: true,
     date: Date.new(2023, 12, 02)
-  )
-
-  Mission.create!(
-    title: "Do your math homework",
-    description: "finish your math homework. If you get stuck, write down your question in your notebook.",
-    status: "started",
-    coins: 4,
-    child: child,
-    category: :study,
-    required_photo: false,
-    date: Date.today
-  )
-
-  Mission.create!(
-    title: "Prepare your pajamas for bedtime",
-    description: "Go to your closet and choose your pajamas for tonight. Put them nicely on your bed",
-    status: "started",
-    coins: 1,
-    child: child,
-    category: :organization,
-    required_photo: true,
-    date: Date.today
   )
 
   snack = Mission.create!(
@@ -529,6 +605,72 @@ Child.all.each do |child|
     category: :responsibility,
     required_photo: false,
     date: Date.new(2023, 11, 2)
+  )
+
+  bacon = Mission.create!(
+    title: "Get bacon from the store",
+    description: "get bacon from Ozeki with the change on the counter",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: false,
+    date: Date.new(2023, 11, 3)
+  )
+
+  eggs = Mission.create!(
+    title: "Get eggs from the store",
+    description: "get eggs from Ozeki with the change on the counter",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: false,
+    date: Date.new(2023, 11, 3)
+  )
+
+  bacon = Mission.create!(
+    title: "Get bacon from the store",
+    description: "get bacon from Ozeki with the change on the counter",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: false,
+    date: Date.new(2023, 11, 24)
+  )
+
+  eggs = Mission.create!(
+    title: "Get eggs from the store",
+    description: "get eggs from Ozeki with the change on the counter",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: false,
+    date: Date.new(2023, 11, 24)
+  )
+
+  bacon = Mission.create!(
+    title: "Get bacon from the store",
+    description: "get bacon from Ozeki with the change on the counter",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: false,
+    date: Date.new(2023, 11, 19)
+  )
+
+  eggs = Mission.create!(
+    title: "Get eggs from the store",
+    description: "get eggs from Ozeki with the change on the counter",
+    status: "finished",
+    coins: 2,
+    child: child,
+    category: :responsibility,
+    required_photo: false,
+    date: Date.new(2023, 11, 19)
   )
 
   eggs = Mission.create!(
