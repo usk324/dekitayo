@@ -10,6 +10,15 @@ class Manage::ChildrenController < ApplicationController
     @child = Child.find(params[:id])
     @mission = Mission.new()
     @claimed_rewards = @child.claimed_rewards
+
+    @last_mission = @child.completed_missions.order(:created_at).where.not(completed_latitude: nil, completed_longitude: nil).last
+    @markers = [
+      {
+        lat: @last_mission&.completed_latitude,
+        lng: @last_mission&.completed_longitude,
+        marker_html: render_to_string(partial: "manage/children/marker")
+      }
+    ]
   end
 
   def new
