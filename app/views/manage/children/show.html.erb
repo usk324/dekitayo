@@ -150,7 +150,7 @@
               <br>
               <br>
             </li>
-            <% @child.missions.daily_missions.each do |mission| %>
+            <% @child.missions.daily_missions.sort_by(&:status).reverse.each do |mission| %>
               <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
             <% end %>
           </div>
@@ -210,7 +210,7 @@
                   <h4>Finished</h4>
                 </label>
               </div>
-              <% @child.missions.future_missions.each do |mission| %>
+              <% @child.missions.future_missions.sort_by(&:status).reverse.each do |mission| %>
                 <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
               <% end %>
             </div>
