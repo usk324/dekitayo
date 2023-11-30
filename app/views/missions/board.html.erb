@@ -1,6 +1,3 @@
-<audio id="backgroundAudio" autoplay loop>
-  <source src="../../assets/images/board_song.mp3" type="audio/mp3">
-</audio>
 <div id="board-page">
   <div id="snowflakeContainer" data-controller="snow"></div>
   <%# --------heading-------- %>
@@ -30,7 +27,7 @@
       <!--flex left -->
       <div class="board-mission-text position-sticky top-0 h-100 pt-3">
         <div class="d-flex justify-content-between">
-          <h2><strong>Today's Missions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</strong><%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h2>
+          <h2 data-controller="bgaudio" data-bgaudio-src-value="<%= image_path('board_song.mp3') %>" data-action="click->bgaudio#play" data-turbo="false"><strong>Today's Missions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</strong><i class="fa-solid fa-volume-high" style="color: #b3dafc;"></i>&#160;<%=current_child.missions.daily_missions.where(status: "finished").count %>/<%= current_child.missions.daily_missions.size %></h2>
         </div>
         <%#------- mission card START------- %>
         <% current_child.missions.daily_missions.in_order_of(:status, Mission.statuses.keys).each do |mission| %>
