@@ -24,7 +24,6 @@ class Manage::MissionsController < ApplicationController
     # end
     @mission.save
     redirect_to manage_child_path(@child)
-
   end
 
   private

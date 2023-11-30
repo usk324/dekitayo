@@ -1,6 +1,5 @@
-<audio id="clickSound">
-  <source src="<%= image_path('board_song.mp3') %>" type="audio/mp3">
-</audio>
+<div data-controller="purchase-reward" data-action="click->purchase-reward#play" data-purchase-reward-src-value="<%= asset_path('click-sound.mp3') %>" data-purchase-reward-play-value="<%= @sound == true %>"></div>
+<div data-controller="missionfinishsound" data-action="click->missionfinishsound#play" data-missionfinishsound-src-value="<%= asset_path('good-work.mp3') %>" data-missionfinishsound-play-value="<%= @finished_sound == true %>"></div>
 <div id="board-page">
   <div id="snowflakeContainer" data-controller="snow"></div>
   <%# --------heading-------- %>
@@ -48,7 +47,7 @@
                   <%= button_to "DekiTaYo!",
                       mission_completed_missions_path(mission),
                       method: :post, class: "btn-board-dekitayo",
-                      data: { bs_dismiss: "modal" } if mission.status == "started" %>
+                      data: { bs_dismiss: "modal", turbo: "false" } if mission.status == "started" %>
                 </div>
               </div>
             </div>
