@@ -209,7 +209,7 @@
                       "This dashboard shows the number of missions assigned to children by parents and their completion status. Look for progress and indicators for a quick understanding of each child's accomplishments and ongoing tasks."
                     </h4>
                     <br>
-                    <%= image_tag "dekitayo-logo", class:"robot-image" %>
+                    <%= image_tag "dekitayo-logo.png", class:"robot-image" %>
                     <div class="d-flex">
                       <div class="bg-white mt-4">
                         <%= line_chart @child.completed_missions_data,
@@ -270,7 +270,7 @@
                   </div>
                   <div class="mission-notif-container">
                     <h3>All Missions Completed</h3>
-                    <%if @missions_done_today == @missions_due_today%>
+                    <% if @child.missions.daily_missions.where(status: "finished").count ==  @child.missions.daily_missions.size %>
                       <div class="card-body card-notif w-100">
                         <p> All Missions Done!</p>
                       </div>
