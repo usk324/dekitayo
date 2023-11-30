@@ -1,3 +1,5 @@
+<div data-controller="purchase-reward" data-action="click->purchase-reward#play" data-purchase-reward-src-value="<%= asset_path('click-sound.mp3') %>" data-purchase-reward-play-value="<%= @sound == true %>"></div>
+<div data-controller="missionfinishsound" data-action="click->missionfinishsound#play" data-missionfinishsound-src-value="<%= asset_path('good-work.mp3') %>" data-missionfinishsound-play-value="<%= @finished_sound == true %>"></div>
 <div id="board-page">
   <div id="snowflakeContainer" data-controller="snow"></div>
   <%# --------heading-------- %>

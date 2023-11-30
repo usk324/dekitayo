@@ -4,4 +4,5 @@ class CompletedMission < ApplicationRecord
   has_one_attached :photo
   geocoded_by :completed_latitude
   validates :completed_at, presence: true
+  validates :mission_id, uniqueness: true
 end
