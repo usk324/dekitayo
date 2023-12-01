@@ -85,7 +85,7 @@
         <div class="col-4 card parent-card-dashboard-center">
           <div class="card-body">
             <h1 class="card-text text-center">
-              <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
+              <%# <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %>
             </h1>
             <h3 class="card-title text-center"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -294,7 +294,7 @@
                           </div>
                         </div>
                       <% end %>
-                      <div style="width: 100%; min-height: 600px; border-radius: 10px;"
+                      <div style="width: 100%; height: 100%; border-radius: 10px;"
                               data-controller="map"
                               data-map-markers-value="<%= @markers.to_json %>"
                               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
