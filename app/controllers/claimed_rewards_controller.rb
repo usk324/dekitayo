@@ -12,8 +12,14 @@ class ClaimedRewardsController < GamesController
       current_child.coins -= @reward.price
       current_child.save
       @reward.save
+
+      # info needed for rerender
+      @rewards = Reward.where(child: current_child)
+      @random_images = ["Reward-icon-1.png", "Reward-icon-2.png", "Reward-icon-3.png", "Reward-icon-4.png", "Reward-icon-5.png"]
+      @sound = true
       flash[:notice] = "#{@reward.name} was purchased"
-      redirect_to rewards_path
+      # redirect_to rewards_path
+      render "rewards/index"
     end
   end
 
