@@ -43,10 +43,6 @@
                 </div>
                 <div class="col-md-3">
                   <h2 class="card-text d-flex align-items-center child-dashboard-card-text"> <%= mission.coins %>&#160;<i class="fa-solid fa-coins fa-beat" style="color: #f19009;"></i></h2>
-                  <%= button_to "DekiTaYo!",
-                      mission_completed_missions_path(mission),
-                      method: :post, class: "btn-board-dekitayo",
-                      data: { bs_dismiss: "modal", turbo: "false" } if mission.status == "started" %>
                   <% if mission.status != "finished" %>
                     <%= simple_form_for [mission, CompletedMission.new],
                       data: { controller: 'location' } do |f| %>
