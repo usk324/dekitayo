@@ -1,0 +1,11 @@
+.mapboxgl-map {
+  min-width: 100%;
+  min-height: 500px;
+}
+
+.mapboxgl-canvas {
+  min-width: 100%;
+  min-height: 500px;
+  object-fit: cover;
+  background-size: cover;
+}

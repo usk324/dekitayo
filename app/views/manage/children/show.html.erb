@@ -144,30 +144,30 @@
                 <div class="col-1">
                 </div>
                 <div class="col-3">
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     <h3 class="card-title"> Daily Chore <i class="fa-solid fa-school"></i></h3>
                     <h6 class="card-subtitle mb-2 text-muted center"></h6>
                     <br>
                     <h2 class="card-text"></h1>
-                    <h2 mt-3 class="text-center">2</h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "chore").count%></h2>
                   </div>
                 </div>
                 <div class="col-3">
-                  <div class="card-body">
-                    <h3 class="card-title"> Organization <i class="fa-solid fa-sitemap"></i></h3>
+                  <div class="card-body text-center">
+                    <h3 class="card-title"> Study <i class="fa-solid fa-sitemap"></i></h3>
                     <h6 class="card-subtitle mb-2 text-muted center"></h6>
                     <br>
                     <h1 class="card-text"></h1>
-                    <h2 mt-3 class="text-center">1</h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "study").count%></h2>
                   </div>
                 </div>
                 <div class="col-4">
-                  <div class="card-body">
-                    <h3 class="card-title"> Responsibility/Study <i class="fa-solid fa-pencil"></i></h3>
+                  <div class="card-body text-center">
+                    <h3 class="card-title"> Responsibility <i class="fa-solid fa-pencil"></i></h3>
                     <h6 class="card-subtitle mb-2 text-muted center"></h6>
                     <br>
                     <h1 class="card-text"></h1>
-                    <h2 mt-3 class="text-center">1</h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "responsibility").count%></h2>
                   </div>
                 </div>
                 <div class="col-1">
@@ -229,49 +229,48 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <!-- noti ----->
-                <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
-                  <br>
-                  <br>
-                  <div class="d-flex">
-                    <div class="reward-container">
-                      <h3>Rewards claimed by <%= @child.name %>
-                      </h3>
-                      <% @claimed_rewards.each do |claimed_reward| %>
-                        <% if claimed_reward.read == false %>
-                          <div class="card card-notif">
-                            <div class="card-header d-flex justify-content-between">
-                              <h3 class="mt-4">New Reward requested <i class="fa-solid fa-gift"></i></h3>
-                              <!--<%= claimed_reward.claimed_at %></p>-->
-                              <div class="card-button-notif">
-                                <%= simple_form_for [claimed_reward] do |f|%>
-                                  <%= f.input :read, as: :hidden, input_html: {value: true}%>
-                                  <%= f.submit "Nice, Okay!", class: "btn btn-gradient"%>
-                                <% end %>
+                  <!-- noti ----->
+                  <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
+                    <br>
+                    <br>
+                    <div class="row">
+                      <div class="col-6">
+                        <h3>Rewards claimed by <%= @child.name %>
+                        </h3>
+                        <% @claimed_rewards.each do |claimed_reward| %>
+                          <% if claimed_reward.read == false %>
+                            <div class="card card-notif">
+                              <div class="card-header d-flex justify-content-between">
+                                <h3 class="mt-4">New Reward requested <i class="fa-solid fa-gift"></i></h3>
+                                <!--<%= claimed_reward.claimed_at %></p>-->
+                                <div class="card-button-notif">
+                                  <%= simple_form_for [claimed_reward] do |f|%>
+                                    <%= f.input :read, as: :hidden, input_html: {value: true}%>
+                                    <%= f.submit "Nice, Okay!", class: "btn btn-gradient"%>
+                                  <% end %>
+                                </div>
+                              </div>
+                              <div class="card-body d-flex">
+                                <h4 class="card-title p-4 border align-self-center "><%= claimed_reward.reward.name %></h4>
+                                <div class="mx-5">
+                                  <h5 class="card-text p-1"><%= claimed_reward.reward.description %></h5>
+                                  <h5 class="card-text p-1"><%= claimed_reward.reward.price %> Coins redeemed!!</h5>
+                                </div>
                               </div>
                             </div>
-                            <div class="card-body d-flex">
-                              <h4 class="card-title p-4 border align-self-center "><%= claimed_reward.reward.name %></h4>
-                              <div class="mx-5">
-                                <h5 class="card-text p-1"><%= claimed_reward.reward.description %></h5>
-                                <h5 class="card-text p-1"><%= claimed_reward.reward.price %> Coins redeemed!!</h5>
-                              </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                      <div class="col-6">
+                        <h3>When All Missions are Completed</h3>
+                        <% if @child.missions.daily_missions.where(status: "finished").count ==  @child.missions.daily_missions.size %>
+                          <div class="card card-notif">
+                            <div class="card-body card-notif">
+                              <p> <%=@child.name%> finished all missions for the day!</p>
                             </div>
                           </div>
                         <% end %>
-                      <% end %>
-                    </div>
-                    <div class="mission-notif-container">
-                      <h3>When All Missions are Completed</h3>
-                      <% if @child.missions.daily_missions.where(status: "finished").count ==  @child.missions.daily_missions.size %>
-                        <div class="card card-notif">
-                          <div class="card-body card-notif">
-                            <p> <%=@child.name%> finished all missions for the day!</p>
-                          </div>
-                        </div>
-                      <% end %>
-                      <div style="width: 100%; height: 100%; border-radius: 10px;"
+                        <div style="border-radius: 10px;"
                               data-controller="map"
                               data-map-markers-value="<%= @markers.to_json %>"
                               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
