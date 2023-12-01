@@ -140,39 +140,36 @@
             <!-- PROFILE TAB ("All missions") -->
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
               <!--Mission category icon -->
-              <%# <div class="d-flex">
+              <div class="d-flex">
                 <div class="col-1">
                 </div>
                 <div class="col-3">
-                  <div class="card-body text-center">
-                    <h3 class="card-title"> Daily Chore <i class="fa-solid fa-school"></i></h3>
-                    <h6 class="card-subtitle mb-2 text-muted center"></h6>
+                  <div class="card-body">
+                    <h3 class="card-title text-center"> Study <i class="fa-solid fa-school" style="color: #5e7cc7;"></i></h3>
                     <br>
-                    <h2 class="card-text"></h1>
-                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "chore").count%></h2>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="card-body text-center">
-                    <h3 class="card-title"> Study <i class="fa-solid fa-sitemap"></i></h3>
-                    <h6 class="card-subtitle mb-2 text-muted center"></h6>
-                    <br>
-                    <h1 class="card-text"></h1>
+                    <h2 class="card-text"></h2>
                     <h2 mt-3 class="text-center"><%= @child.missions.where(category: "study").count%></h2>
                   </div>
                 </div>
-                <div class="col-4">
-                  <div class="card-body text-center">
-                    <h3 class="card-title"> Responsibility <i class="fa-solid fa-pencil"></i></h3>
-                    <h6 class="card-subtitle mb-2 text-muted center"></h6>
+                <div class="col-3">
+                  <div class="card-body">
+                    <h3 class="card-title text-center"> Chore <i class="fa-solid fa-sitemap" style="color: #5e7cc7;"></i></h3>
                     <br>
-                    <h1 class="card-text"></h1>
+                    <h2 class="card-text"></h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "chore").count%></h2>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card-body">
+                    <h3 class="card-title text-center"> Responsibility <i class="fa-solid fa-pencil" style="color: #5e7cc7;"></i></h3>
+                    <br>
+                    <h2 class="card-text"></h2>
                     <h2 mt-3 class="text-center"><%= @child.missions.where(category: "responsibility").count%></h2>
                   </div>
                 </div>
                 <div class="col-1">
                 </div>
-              </div> %>
+              </div>
               <!-- Filtering Option -->
               <%# <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -274,43 +271,43 @@
                               data-controller="map"
                               data-map-markers-value="<%= @markers.to_json %>"
                               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </main>
-          <!-- Button trigger modal -->
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-              <div class="modal-content modal-style">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Create a Mission</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
-                    <div class="d-flex justify-content-between">
-                      <div class="form-column">
-                        <%= f.input :title %>
-                        <%= f.input :coins %>
-                        <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
-                        <%= f.input :required_photo %>
+            </main>
+            <!-- Button trigger modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content modal-style">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create a Mission</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
+                      <div class="d-flex justify-content-between">
+                        <div class="form-column">
+                          <%= f.input :title %>
+                          <%= f.input :coins %>
+                          <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
+                          <%= f.input :required_photo %>
+                        </div>
+                        <div class="form-colum">
+                          <%= f.input :description %>
+                          <%= f.input :date, html5: true %>
+                          <%= f.input :photo, as: :file %>
+                        </div>
                       </div>
-                      <div class="form-colum">
-                        <%= f.input :description %>
-                        <%= f.input :date, html5: true %>
-                        <%= f.input :photo, as: :file %>
-                      </div>
+                      <div class="d-flex justify-content-center">
+                        <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+                      <% end %>
                     </div>
-                    <div class="d-flex justify-content-center">
-                      <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-                    <% end %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
