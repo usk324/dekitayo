@@ -20,16 +20,19 @@
 }
 
 .circular-image {
-  position:absolute;
-  top:120px;
-  left:70px;
+  border: solid 5px gray;
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
   background-size: cover;
   background-position: center;
   z-index: 3;
-  width: 230px;  /* or any other size */
-  height:230px; /* must be the same as width for a perfect circle */
-  border-radius: 50%; /* this makes the image circular */
-  object-fit: cover; /* optional: this ensures the image covers the area without stretching */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .charactor-image{

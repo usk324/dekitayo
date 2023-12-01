@@ -1,8 +1,4 @@
 <h1 class="text-center mb-0 board-mission-text" id="show-body">"Dekitayo!" from <%= @child.name %></h1>
-<a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-  <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
-  </div>
-</a>
 <%= image_tag "caro-2.png", class:"charactor-image" %>
 <!--
 <%= image_tag "voice.png", class:"voice-pop" %>
@@ -10,6 +6,11 @@
 <div class="show_container" id="show-body">
   <main class="row">
     <aside class="col-2 card p-50 parent-card-dashboard">
+    <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    <div class="circular-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @child.photo.attached? ? cl_image_path(@child.photo.key) : image_path('monkey.jpg') %>')">
+    </div>
+    </a>
+
       <!-- popup bar from the end -->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -85,7 +86,11 @@
         <div class="col-4 card parent-card-dashboard-center">
           <div class="card-body">
             <h1 class="card-text text-center">
-              <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
+              <% if @child.missions.daily_missions.where(status: "finished").count.to_f == 0 %>
+              100 %
+              <% else %>
+              <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %>
+              <% end %>
             </h1>
             <h3 class="card-title text-center"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -307,7 +312,7 @@
           <!-- Button trigger modal -->
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
               <div class="modal-content modal-style">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
