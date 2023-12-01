@@ -596,7 +596,7 @@ Child.all.each do |child|
     date: Date.new(2023, 11, 12)
   )
 
-  bacon = Mission.create!(
+    Mission.create!(
     title: "Get bacon from the store",
     description: "get bacon from Ozeki with the change on the counter",
     status: "finished",
@@ -607,7 +607,7 @@ Child.all.each do |child|
     date: Date.new(2023, 11, 2)
   )
 
-  bacon = Mission.create!(
+    Mission.create!(
     title: "Get bacon from the store",
     description: "get bacon from Ozeki with the change on the counter",
     status: "finished",
@@ -618,7 +618,7 @@ Child.all.each do |child|
     date: Date.new(2023, 11, 3)
   )
 
-  eggs = Mission.create!(
+    Mission.create!(
     title: "Get eggs from the store",
     description: "get eggs from Ozeki with the change on the counter",
     status: "finished",
@@ -629,7 +629,7 @@ Child.all.each do |child|
     date: Date.new(2023, 11, 3)
   )
 
-  bacon = Mission.create!(
+    Mission.create!(
     title: "Get bacon from the store",
     description: "get bacon from Ozeki with the change on the counter",
     status: "finished",
@@ -640,7 +640,7 @@ Child.all.each do |child|
     date: Date.new(2023, 11, 24)
   )
 
-  eggs = Mission.create!(
+    Mission.create!(
     title: "Get eggs from the store",
     description: "get eggs from Ozeki with the change on the counter",
     status: "finished",
@@ -662,7 +662,7 @@ Child.all.each do |child|
     date: Date.new(2023, 11, 19)
   )
 
-  eggs = Mission.create!(
+    Mission.create!(
     title: "Get eggs from the store",
     description: "get eggs from Ozeki with the change on the counter",
     status: "finished",
@@ -784,13 +784,6 @@ Child.all.each do |child|
   CompletedMission.create!(
     mission: afterschool,
     completed_at: DateTime.now - 14.days,
-    completed_latitude: 35.63388858566281,
-    completed_longitude: 139.70823189299546,
-  )
-
-  CompletedMission.create!(
-    mission: lunch,
-    completed_at: DateTime.now - 16.days,
     completed_latitude: 35.63388858566281,
     completed_longitude: 139.70823189299546,
   )
