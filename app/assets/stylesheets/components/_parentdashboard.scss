@@ -20,7 +20,6 @@ aside {
 
 .parent-card-dashboard-left {
   background-color: #f79d9fea;
-  height: 200px;
   border-radius: 15px;
   size: 20px;
   font-weight: 400;
@@ -28,14 +27,18 @@ aside {
 
 .parent-card-dashboard-center {
   background-color: #65d9f6f5;
-  height: 200px;
   border-radius: 15px;
 }
 
 .parent-card-dashboard-right {
   background-color: #c772b2c9;
-  height: 200px;
   border-radius: 15px;
+}
+
+.parent-card-dashboard-left h1,
+.parent-card-dashboard-center h1,
+.parent-card-dashboard-right h1 {
+  font-size: 80px
 }
 
 .parent-card-dashboard{
@@ -54,4 +57,68 @@ aside.col-2 .parent-card-dashboard{
 
 .bg-parent {
 background-color: white;
+}
+
+#show-body{
+  background-color: whitesmoke;
+  padding-top: 50px;
+}
+
+.show_container{
+  background-color: rgb(179, 218, 252);
+  padding: 3em;
+}
+
+.show_container .aside-card{
+  background-color: #efeeec !important;
+  padding: 3em;
+}
+
+.parent-btn{
+  padding-left: 10px;
+  border:none;
+  background: transparent;
+  text-align: left;
+
+  h4 {
+    text-wrap: nowrap;
+  }
+}
+
+.kids-profile{
+  position:absolute;
+  top:150px;
+  left:30px;
+}
+
+.parent-card-dashboard{
+  height:1000px;
+}
+
+.parent-card-dashboard{
+  background-color:whitesmoke;
+  border-radius: 30px;
+}
+.col-10 .parent-card-dashboard{
+  height: 200px;
+  background-color:whitesmoke;
+}
+
+aside.col-2 .parent-card-dashboard{
+  position: relative;
+  min-height: 2000px;
+  background-color:whitesmoke;
+}
+
+.parent-dashboard-child-tasks-card {
+  min-height: 90px;
+  background:white;
+  border-radius:10px;
+  margin-bottom: 8px;
+  padding: 16px 8px;
+}
+
+.parent-dashboard-child-tasks-card-title {
+font-size: 20px;
+font-weight: 700;
 }

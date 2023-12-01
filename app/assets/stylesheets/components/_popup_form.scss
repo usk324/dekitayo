@@ -47,10 +47,26 @@
 }
 
 .form-column {
-  width: 30%;
+  width: 50%;
 }
 
 .modal-style {
   background-color: #D2D4C8;
   margin: 5px;
+  border-radius: 16px;
+  .modal-header {
+    background-color: #5e7cc7;
+    border-radius: 16px 16px 0 0;
+    color: white;
+  }
+
+  .btn-close {
+    filter: invert(1);
+  }
+
+  .btn-popup {
+    background-color: #5e7cc7;
+    color: white;
+    padding: 16px 24px;
+  }
 }

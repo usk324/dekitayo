@@ -214,7 +214,7 @@ Child.all.each do |child|
   Mission.create!(
     title: "Set the dinner table",
     description: "Set the dinner table with chopsticks, napkins and one cup for you, mom and dad",
-    status: "finished",
+    status: "pending",
     coins: 2,
     child: child,
     category: :chore,
