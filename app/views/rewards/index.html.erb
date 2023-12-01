@@ -1,3 +1,16 @@
+<% if @sound == true %>
+    <script>
+      function play() {
+        var url = location.origin
+        var audio = new Audio(url + '/assets/board_song.mp3');
+        audio.play();
+        const isPlaying = true;
+        audio.loop = true
+        if (isPlaying) audio.play();
+      }
+      window.onload = play();
+    </script>
+<% end %>
 <div class="reward-index-container">
   <!-- created a div to host the sound (music player)-->
   <div data-controller="purchase-reward" data-action="click->purchase-reward#play" data-purchase-reward-src-value="<%= asset_path('purchase-sound.mp3') %>" data-purchase-reward-play-value="<%= @sound == true %>"></div>
