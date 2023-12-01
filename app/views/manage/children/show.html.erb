@@ -1,5 +1,5 @@
 <div class="bg-parent">
-  <h1 class="text-center mb-0 board-mission-text" id="show-body">"Dekitayo!" from <%= @child.name %></h1>
+  <h1 class="text-center mb-0 board-mission-text" id="show-body"><%= @child.name %>'s DeKiTaYo Dashboard</h1>
   <%= image_tag "caro-2.png", class:"charactor-image" %>
   <!--
 <%= image_tag "voice.png", class:"voice-pop" %>
@@ -45,27 +45,27 @@
         <div class="kids-profile">
           <br>
           <br>
-          <button class="parent-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <h4> <i class="fa-solid fa-rocket"></i> New Mission</h4>
-          </button>
+          <a class="btn-parent-sidebar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <h4> <i class="fa-solid fa-rocket" style="color: #5e7cc7;"></i> New Mission</h4>
+          </a>
           <br>
           <br>
-          <button class="parent-btn" onclick="#">
-            <h4><%= link_to "Set Reward", rewards_path, class: "nav-link nav-link-1" %></h4>
-          </button>
+          <%= link_to rewards_path, class: "btn-parent-sidebar" do %>
+            <h4><i class="fa-solid fa-sack-dollar "style="color: #5e7cc7;"></i> Set Reward </h4>
+          <% end %>
           <br>
           <br>
-          <button class="parent-btn" onclick="#">
-            <h4><%= link_to "Gameboard", board_missions_path, class: "nav-link nav-link-1" %></h4>
-          </button>
+          <%= link_to board_missions_path, class: "btn-parent-sidebar" do %>
+            <h4><i class="fa-solid fa-puzzle-piece"style="color: #5e7cc7;"></i> Gameboard</h4>
+          <% end %>
         </div>
         <!-- aside menu bar  -->
       </aside>
       <div class ="col-10">
         <!-- summary number from here  -->
-        <div class="d-flex gap-2">
-          <div class="col-4 card parent-card-dashboard-left">
-            <div class="card-body">
+        <div class="d-flex justify-content-around">
+          <div class="col-3 card parent-card-dashboard-left">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
               <h1 class="card-text"></h1>
               <% if @child.missions.daily_missions.where(status: "finished").count.zero? %>
                 <p>No Missions Finished yet</p>
@@ -73,32 +73,26 @@
                 <h1 mt-3 class="text-center">
                   <%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %>
                 </h1>
-                <h3 class="card-title text-center"> Today's Progress <i class="fa-solid fa-pencil"></i></h3>
+                <h3 class="card-title text-center mb-0"> Today's Progress<i class="fa-solid fa-pencil"></i></h3>
               <% end %>
-              <h6 class="card-subtitle mb-2 text-muted center"></h6>
-              <br>
             </div>
           </div>
-          <div class="col-4 card parent-card-dashboard-center">
-            <div class="card-body">
+          <div class="col-3 card parent-card-dashboard-center">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
               <% if @child.missions.daily_missions.where(status: "finished").count.zero? %>
                 <p>No Missions Finished yet</p>
               <% else %>
                 <h1 class="card-text text-center">
                   <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
                 </h1>
-                <h3 class="card-title text-center"> Completion Rate  <i class="fa-solid fa-percent"></i></h3>
+                <h3 class="card-title text-center mb-0"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
               <% end %>
-              <h6 class="card-subtitle mb-2 text-muted"></h6>
-              <br>
             </div>
           </div>
-          <div class="col-4 card parent-card-dashboard-right">
-            <div class="card-body">
+          <div class="col-3 card parent-card-dashboard-right">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
               <h1 class="card-text text-center"><%=@child.coins%> </h1>
-              <h3 class="card-title text-center"> Total  <i class="fa-solid fa-coins" style="color: #f19009"></i></h3>
-              <h6 class="card-subtitle mb-2 text-muted"></h6>
-              <br>
+              <h3 class="card-title text-center mb-0"> Total <i class="fa-solid fa-coins" style="color: #f19009"></i></h3>
             </div>
           </div>
         </div>
@@ -139,32 +133,14 @@
         <div class="tab-content p-3" id="myTabContent">
           <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
             <ul>
-              <br>
-              <li>
-                <h4>
-                  <strong><%= @child.name %> has <%= pluralize(@child.missions.daily_missions.size, "mission")%> today.</strong>
-                </h4>
-              </li>
-              <li>
-                <h4>And <%=@child.missions.daily_missions.where(status: "finished").count%> missions are already completed !</h4>
-                <h4>Remaining Missions for today....Let's check with <%= @child.name %> !!</h4>
-                <br>
-                <br>
-              </li>
               <% @child.missions.daily_missions.sort_by(&:status).reverse.each do |mission| %>
                 <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
               <% end %>
             </div>
             <!-- PROFILE TAB ("All missions") -->
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-              <!-- Show all missions in the future -->
-              <br>
-              <h4>There are <%= pluralize(@child.missions.future_missions.size, "mission") %> set going forward ! </h4>
-              <h4> You are setting these TOP 3 categories.  </h4>
-              <br>
-              <br>
               <!--Mission category icon -->
-              <div class="d-flex">
+              <%# <div class="d-flex">
                 <div class="col-1">
                 </div>
                 <div class="col-3">
@@ -196,12 +172,12 @@
                 </div>
                 <div class="col-1">
                 </div>
-              </div>
+              </div> %>
               <!-- Filtering Option -->
-              <div class="form-check form-switch">
+              <%# <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">
-                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault"> %>
+              <%# <label class="form-check-label" for="flexSwitchCheckDefault">
                     <h4>Started</h4>
                   </label>
                 </div>
@@ -209,47 +185,46 @@
                   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                   <label class="form-check-label" for="flexSwitchCheckDefault">
                     <h4>Finished</h4>
-                  </label>
-                </div>
-                <% @child.missions.future_missions.sort_by(&:status).reverse.each do |mission| %>
-                  <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
-                <% end %>
-              </div>
-              <!--charts -->
-              <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
-                <div class="chart-container">
-                  <div class="chart mb-4"><br>
-                    <h3 class="align-self-center font-weight-bold">Missions completed by <%= @child.name%>
-                      <h3>
-                        <h4>
-                          "This dashboard shows the number of missions assigned to children by parents and their completion status. Look for progress and indicators for a quick understanding of each child's accomplishments and ongoing tasks."
-                        </h4>
-                        <br>
-                        <%= image_tag "dekitayo-logo.png", class:"robot-image" %>
-                        <div class="d-flex">
-                          <div class="bg-white mt-4">
-                            <%= line_chart @child.completed_missions_data,
+                  </label> %>
+              <%# </div> %>
+              <% @child.missions.future_missions.sort_by(&:status).reverse.each do |mission| %>
+                <%= render partial: "manage/children/mission_card_parent", locals: { mission: mission } %>
+              <% end %>
+            </div>
+            <!--charts -->
+            <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
+              <div class="chart-container">
+                <div class="chart mb-4"><br>
+                  <h3 class="align-self-center font-weight-bold">Missions completed by <%= @child.name%>
+                    <h3>
+                      <h4>
+                        This dashboard shows the number of missions assigned to children by parents and their completion status. Look for progress and indicators for a quick understanding of each child's accomplishments and ongoing tasks.
+                      </h4>
+                      <br>
+                      <%= image_tag "dekitayo-logo.png", class:"robot-image" %>
+                      <div class="d-flex">
+                        <div class="bg-white mt-4">
+                          <%= line_chart @child.completed_missions_data,
                       colors: ["#98C1D9", "#98C1D9"],
                       width: "700px", height: "400px",
                       xtitle: "Days",
                       ytitle: "Completed Missions",
                       label: "Missions Assigned to #{@child.name}" %>
-                          </div>
                         </div>
                       </div>
-                      <div class="chart">
-                        <h3 class="align-self-center font-weight-bold">Missions assigned by me</h3>
-                        <h4></h4>
-                        <div class="d-flex">
-                          <div class="bg-white">
-                            <%= column_chart @child.assigned_missions_data,
+                    </div>
+                    <div class="chart">
+                      <h3 class="align-self-center font-weight-bold">Missions assigned by me</h3>
+                      <h4></h4>
+                      <div class="d-flex">
+                        <div class="bg-white">
+                          <%= column_chart @child.assigned_missions_data,
                         id: "users-chart",
                         width: "700px", height: "400px",
                         colors: ["#004643", "#666"],
                         xtitle: "Days",
                         ytitle: "Assigned Missions",
                         label: "Missions Assigned to #{@child.name}"  %>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -299,43 +274,43 @@
                               data-controller="map"
                               data-map-markers-value="<%= @markers.to_json %>"
                               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </main>
-            <!-- Button trigger modal -->
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content modal-style">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 mt-4" id="exampleModalLabel">Create a Mission</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
-                      <div class="d-flex justify-content-between">
-                        <div class="form-column">
-                          <%= f.input :title %>
-                          <%= f.input :coins %>
-                          <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
-                          <%= f.input :required_photo %>
-                        </div>
-                        <div class="form-colum">
-                          <%= f.input :description %>
-                          <%= f.input :date, html5: true %>
-                          <%= f.input :photo, as: :file %>
-                        </div>
+            </div>
+          </main>
+          <!-- Button trigger modal -->
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content modal-style">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Create a Mission</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for [:manage, @child, @mission], remote: true do |f| %>
+                    <div class="d-flex justify-content-between">
+                      <div class="form-column">
+                        <%= f.input :title %>
+                        <%= f.input :coins %>
+                        <%= f.input :category, collection: ["chore", "responsibility", "activity", "organization", "study", "other"], include_blank: false  %>
+                        <%= f.input :required_photo %>
                       </div>
-                      <div class="d-flex justify-content-center">
-                        <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
-                      <% end %>
+                      <div class="form-colum">
+                        <%= f.input :description %>
+                        <%= f.input :date, html5: true %>
+                        <%= f.input :photo, as: :file %>
+                      </div>
                     </div>
+                    <div class="d-flex justify-content-center">
+                      <%= f.submit "Submit Mission", class: "btn btn-primary btn-popup"%>
+                    <% end %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
