@@ -268,8 +268,8 @@
                   <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
                     <br>
                     <br>
-                    <div class="d-flex">
-                      <div class="reward-container">
+                    <div class="row">
+                      <div class="col-6">
                         <h3>Rewards claimed by <%= @child.name %>
                         </h3>
                         <% @claimed_rewards.each do |claimed_reward| %>
@@ -296,7 +296,7 @@
                           <% end %>
                         <% end %>
                       </div>
-                      <div class="mission-notif-container">
+                      <div class="col-6">
                         <h3>When All Missions are Completed</h3>
                         <% if @child.missions.daily_missions.where(status: "finished").count ==  @child.missions.daily_missions.size %>
                           <div class="card card-notif">
@@ -305,7 +305,7 @@
                             </div>
                           </div>
                         <% end %>
-                        <div style="width: 100%; height: 100%; border-radius: 10px;"
+                        <div style="border-radius: 10px;"
                               data-controller="map"
                               data-map-markers-value="<%= @markers.to_json %>"
                               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
