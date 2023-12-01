@@ -50,16 +50,6 @@
           </button>
           <br>
           <br>
-          <button class="parent-btn">
-            <h4><i class="fa-regular fa-message"></i> Message</h4>
-          </button>
-          <br>
-          <br>
-          <button class="parent-btn" onclick="#">
-            <h4><i class="fa-regular fa-map"></i> Map</h4>
-          </button>
-          <br>
-          <br>
           <button class="parent-btn" onclick="#">
             <h4><%= link_to "Set Reward", rewards_path, class: "nav-link nav-link-1" %></h4>
           </button>
@@ -83,7 +73,7 @@
                 <h1 mt-3 class="text-center">
                   <%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %>
                 </h1>
-                <h3 class="card-title text-center"> Today's Progress<i class="fa-solid fa-pencil"></i></h3>
+                <h3 class="card-title text-center"> Today's Progress <i class="fa-solid fa-pencil"></i></h3>
               <% end %>
               <h6 class="card-subtitle mb-2 text-muted center"></h6>
               <br>
@@ -97,7 +87,7 @@
                 <h1 class="card-text text-center">
                   <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
                 </h1>
-                <h3 class="card-title text-center"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
+                <h3 class="card-title text-center"> Completion Rate  <i class="fa-solid fa-percent"></i></h3>
               <% end %>
               <h6 class="card-subtitle mb-2 text-muted"></h6>
               <br>
@@ -106,7 +96,7 @@
           <div class="col-4 card parent-card-dashboard-right">
             <div class="card-body">
               <h1 class="card-text text-center"><%=@child.coins%> </h1>
-              <h3 class="card-title text-center"> Total <i class="fa-solid fa-coins" style="color: #f19009"></i></h3>
+              <h3 class="card-title text-center"> Total  <i class="fa-solid fa-coins" style="color: #f19009"></i></h3>
               <h6 class="card-subtitle mb-2 text-muted"></h6>
               <br>
             </div>
@@ -156,8 +146,8 @@
                 </h4>
               </li>
               <li>
-                <h4>And <%=@child.missions.daily_missions.where(status: "finished").count%> mission are alreday completed !</h4>
-                <h4>Remaining Mission for today....Let us check with <%= @child.name %> !!</h4>
+                <h4>And <%=@child.missions.daily_missions.where(status: "finished").count%> missions are already completed !</h4>
+                <h4>Remaining Missions for today....Let's check with <%= @child.name %> !!</h4>
                 <br>
                 <br>
               </li>
@@ -170,7 +160,7 @@
               <!-- Show all missions in the future -->
               <br>
               <h4>There are <%= pluralize(@child.missions.future_missions.size, "mission") %> set going forward ! </h4>
-              <h4> You are seting those TOP 3 category.  </h4>
+              <h4> You are setting these TOP 3 categories.  </h4>
               <br>
               <br>
               <!--Mission category icon -->
@@ -178,30 +168,30 @@
                 <div class="col-1">
                 </div>
                 <div class="col-3">
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     <h3 class="card-title"> Daily Chore <i class="fa-solid fa-school"></i></h3>
                     <h6 class="card-subtitle mb-2 text-muted center"></h6>
                     <br>
                     <h2 class="card-text"></h1>
-                    <h2 mt-3 class="text-center">2</h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "chore").count%></h2>
                   </div>
                 </div>
                 <div class="col-3">
-                  <div class="card-body">
-                    <h3 class="card-title"> Organization <i class="fa-solid fa-sitemap"></i></h3>
+                  <div class="card-body text-center">
+                    <h3 class="card-title"> Study <i class="fa-solid fa-sitemap"></i></h3>
                     <h6 class="card-subtitle mb-2 text-muted center"></h6>
                     <br>
                     <h1 class="card-text"></h1>
-                    <h2 mt-3 class="text-center">1</h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "study").count%></h2>
                   </div>
                 </div>
                 <div class="col-4">
-                  <div class="card-body">
-                    <h3 class="card-title"> Responsibility/Study <i class="fa-solid fa-pencil"></i></h3>
+                  <div class="card-body text-center">
+                    <h3 class="card-title"> Responsibility <i class="fa-solid fa-pencil"></i></h3>
                     <h6 class="card-subtitle mb-2 text-muted center"></h6>
                     <br>
                     <h1 class="card-text"></h1>
-                    <h2 mt-3 class="text-center">1</h2>
+                    <h2 mt-3 class="text-center"><%= @child.missions.where(category: "responsibility").count%></h2>
                   </div>
                 </div>
                 <div class="col-1">

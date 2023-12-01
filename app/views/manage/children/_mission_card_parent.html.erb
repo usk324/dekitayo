@@ -4,17 +4,17 @@
       <h5 class="text-center"><%= mission.date %></h5>
     </div>
     <div class="col-md-6">
-      <p class="parent-dashboard-child-tasks-card-title"><%= mission.title %></p>
+      <p class="parent-dashboard-child-tasks-card-title fw-bold fs-4"><%= mission.title %></p>
       <i class="fa-solid fa-circle-info" style="color: #5862ee;"></i>
       <%= mission.description %>
     </div>
     <div class="col-md-2">
       <h5 class="card-text d-flex align-items-center"><i class="fa-solid fa-coins" style="color: #f19009;"> &#160;</i>
-        <%= pluralize(mission.coins, "coin")%>
+        <%= mission.coins%>
       </h5>
     </div>
     <div class="col-md-2">
-      <p class="<%= status_color_class(mission.status) %>">Status: <%= mission.status %></p>
+      <p class="<%= status_color_class(mission.status) %> fw-bold fs-5">Status: <%= mission.status %></p>
     </div>
   </div>
 </div>
