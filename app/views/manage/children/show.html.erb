@@ -77,22 +77,28 @@
         <div class="col-4 card parent-card-dashboard-left">
           <div class="card-body">
             <h1 class="card-text"></h1>
-            <h1 mt-3 class="text-center"><%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %></h1>
-            <h3 class="card-title text-center"> Today's Progress<i class="fa-solid fa-pencil"></i></h3>
+            <% if @child.missions.daily_missions.where(status: "finished").count.zero? %>
+              <p>No Missions Finished yet</p>
+            <% else %>
+              <h1 mt-3 class="text-center">
+                <%=@child.missions.daily_missions.where(status: "finished").count %>/<%= @child.missions.daily_missions.size %>
+              </h1>
+              <h3 class="card-title text-center"> Today's Progress<i class="fa-solid fa-pencil"></i></h3>
+            <% end %>
             <h6 class="card-subtitle mb-2 text-muted center"></h6>
             <br>
           </div>
         </div>
         <div class="col-4 card parent-card-dashboard-center">
           <div class="card-body">
-            <h1 class="card-text text-center">
-              <% if @child.missions.daily_missions.where(status: "finished").count.to_f == 0 %>
-              100 %
-              <% else %>
-              <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %>
-              <% end %>
-            </h1>
-            <h3 class="card-title text-center"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
+            <% if @child.missions.daily_missions.where(status: "finished").count.zero? %>
+              <p>No Missions Finished yet</p>
+            <% else %>
+              <h1 class="card-text text-center">
+                <%=(@child.missions.daily_missions.where(status: "finished").count.to_f/@child.missions.daily_missions.size * 100).floor %> %
+              </h1>
+              <h3 class="card-title text-center"> Completion Rate <i class="fa-solid fa-percent"></i></h3>
+            <% end %>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
             <br>
           </div>
